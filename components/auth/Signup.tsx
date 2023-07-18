@@ -2,6 +2,7 @@
 
 import React from "react";
 import Input from "../ui/Input";
+import Button from "../ui/Button";
 import { useValidation } from "@/hooks/useValidation";
 import { VALIDATOR_EMAIL } from "@/utility/validators";
 
@@ -21,6 +22,7 @@ const Signup = () => {
         label="Email"
         helperText="Please enter email"
       />
+      <Button value="Hi" type="button" styleType="initial" disabled={false} />
     </div>
   );
 };
