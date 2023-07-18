@@ -1,4 +1,4 @@
-import MainNavigation from "@/components/navbar/MainNavigation";
+import { MainNavigation } from "@/components/landingpage";
 import "./globals.css";
 import type { Metadata } from "next";
 
