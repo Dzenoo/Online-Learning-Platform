@@ -1,3 +1,8 @@
+export enum SignupType {
+  Instructor = "instructor",
+  Student = "student",
+}
+
 export interface RegisterData {
   first_name: string;
   last_name: string;
@@ -6,5 +11,5 @@ export interface RegisterData {
 }
 
 export interface SubmitProps {
-  register: (values: RegisterData) => void;
+  register: (values: RegisterData, type: SignupType) => void;
 }

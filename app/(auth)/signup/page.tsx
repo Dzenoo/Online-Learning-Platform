@@ -1,11 +1,18 @@
 "use client";
 
 import Signup from "@/components/auth/Signup";
-import { RegisterData } from "@/types/SignupTypes";
+import { RegisterData, SignupType } from "@/types/SignupTypes";
 
 const SignupPage = () => {
-  function registerUser(data: RegisterData) {
-    console.log(data);
+  function registerUser(
+    data: RegisterData,
+    type: SignupType.Instructor | SignupType.Student
+  ) {
+    if (type === SignupType.Instructor) {
+      console.log("Instructor");
+    } else {
+      console.log("Student");
+    }
   }
 
   return (
