@@ -5,7 +5,7 @@ import Button from "../ui/formElements/Button";
 
 const MainNavigation: React.FC = () => {
   return (
-    <header className="p-4 shadow-md flex justify-between items-center">
+    <header className="p-4 shadow-md flex justify-between items-center sticky top-0 z-20 bg-white">
       <div className="w-fit">
         <Image
           src="/assets/images/log.png"
