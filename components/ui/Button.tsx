@@ -9,6 +9,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
+      disabled={disabled}
       type={type}
       className={`
          py-4 mt-4 w-full rounded-full shadow-sm border-2 text-white

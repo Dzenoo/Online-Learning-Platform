@@ -10,8 +10,9 @@ import {
   VALIDATOR_REQUIRE,
 } from "@/utility/validators";
 import Link from "next/link";
+import { SubmitProps } from "@/types/SignupTypes";
 
-const Signup = () => {
+const Signup: React.FC<SubmitProps> = ({ register }) => {
   const first_name = useValidation([
     VALIDATOR_MINLENGTH(3),
     VALIDATOR_REQUIRE(),
@@ -23,13 +24,37 @@ const Signup = () => {
   const email = useValidation([VALIDATOR_EMAIL()]);
   const password = useValidation([VALIDATOR_MINLENGTH(3)]);
 
+  let formIsValid = false;
+  if (
+    first_name.isValid &&
+    last_name.isValid &&
+    email.isValid &&
+    password.isValid
+  ) {
+    formIsValid = true;
+  }
+
+  function submitRegister(e: React.FormEvent) {
+    e.preventDefault();
+
+    const values = {
+      first_name: first_name.value,
+      last_name: last_name.value,
+      email: email.value,
+      password: password.value,
+    };
+
+    register(values);
+  }
+
   return (
-    <form className="p-9 mt-4 max-w-2xl m-auto flex gap-6 flex-col justify-center align-right bg-white shadow-lg">
-      <div>
-        <h1 className="font-bold text-2xl uppercase text-center">
-          Create Account
-        </h1>
-        <p className="p-2 text-gray-400 text-lg text-center">
+    <form
+      onSubmit={submitRegister}
+      className="p-9 mt-4 max-w-2xl m-auto flex gap-6 flex-col justify-center align-right bg-white shadow-lg rounded-lg"
+    >
+      <div className="text-center">
+        <h1 className="font-bold text-2xl uppercase">Create Account</h1>
+        <p className="p-2 text-gray-400 text-lg">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
           mollitia, molestiae quas vel sint commodi.
         </p>
@@ -82,13 +107,13 @@ const Signup = () => {
         />
         <Button
           value="Register"
-          type="button"
+          type="submit"
           styleType="initial"
-          disabled={false}
+          disabled={!formIsValid}
         />
       </div>
-      <div>
-        <p className="font-medium text-center">
+      <div className="text-center">
+        <p className="font-medium">
           You already have account?{" "}
           <Link className="text-blue-600 underline" href="/">
             Click Here
