@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import Button from "../ui/formElements/Button";
 
-const MainNavigation = () => {
+const MainNavigation: React.FC = () => {
   return (
     <header className="p-4 shadow-md flex justify-between items-center">
       <div className="w-fit">
@@ -31,7 +31,7 @@ const MainNavigation = () => {
       <div className="flex gap-2">
         <Button
           value="Sign In"
-          styleType="outlined"
+          styleType="initial"
           type="button"
           disabled={false}
           isLink={true}

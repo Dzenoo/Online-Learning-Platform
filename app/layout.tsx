@@ -1,4 +1,4 @@
-import { MainNavigation } from "@/components/landingpage";
+import { Footer, MainNavigation } from "@/components/landingpage";
 import "./globals.css";
 import type { Metadata } from "next";
 
@@ -18,6 +18,7 @@ export default function RootLayout({
       <body>
         <MainNavigation />
         {children}
+        <Footer />
       </body>
     </html>
   );

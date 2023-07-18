@@ -1,3 +1,17 @@
+import {
+  AfterHero,
+  Categories,
+  FeaturedCourses,
+  Hero,
+} from "@/components/landingpage";
+
 export default function LandingPage() {
-  return <section></section>;
+  return (
+    <section>
+      <Hero />
+      <AfterHero />
+      <Categories />
+      <FeaturedCourses />
+    </section>
+  );
 }
