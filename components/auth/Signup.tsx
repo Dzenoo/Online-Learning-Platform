@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
 import { useValidation } from "@/hooks/useValidation";
@@ -13,6 +13,8 @@ import Link from "next/link";
 import { SubmitProps } from "@/types/SignupTypes";
 
 const Signup: React.FC<SubmitProps> = ({ register }) => {
+  const [isType, setisType] = useState("");
+
   const first_name = useValidation([
     VALIDATOR_MINLENGTH(3),
     VALIDATOR_REQUIRE(),
@@ -32,6 +34,10 @@ const Signup: React.FC<SubmitProps> = ({ register }) => {
     password.isValid
   ) {
     formIsValid = true;
+  }
+
+  function chooseType(type: string) {
+    setisType((prevType) => (prevType = type));
   }
 
   function submitRegister(e: React.FormEvent) {
@@ -58,6 +64,25 @@ const Signup: React.FC<SubmitProps> = ({ register }) => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
           mollitia, molestiae quas vel sint commodi.
         </p>
+        <p className="font-bold">Register As:</p>
+        <div className="flex justify-center gap-2 pt-2">
+          <p
+            className={`text-yellow-400 cursor-pointer ${
+              isType === "instructor" && "font-bold"
+            }`}
+            onClick={() => chooseType("instructor")}
+          >
+            Instructor
+          </p>
+          <p
+            onClick={() => chooseType("student")}
+            className={`text-blue-400 cursor-pointer ${
+              isType === "student" && "font-bold"
+            }`}
+          >
+            Student
+          </p>
+        </div>
       </div>
       <div>
         <Input
