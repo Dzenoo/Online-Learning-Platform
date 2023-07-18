@@ -4,7 +4,6 @@ const categoryFilters = [
   { label: "Business", value: "business" },
   { label: "Arts", value: "arts" },
 ];
-
 // Price Range Filter
 const priceRangeFilters = [
   { label: "Free", value: "free" },
