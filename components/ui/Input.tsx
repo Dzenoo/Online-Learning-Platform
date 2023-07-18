@@ -11,6 +11,7 @@ const Input: React.FC<InputProps> = ({
   onChange,
   onBlur,
   id,
+  extraType,
 }) => {
   if (type === "textarea") {
     return (
@@ -37,7 +38,7 @@ const Input: React.FC<InputProps> = ({
     );
   } else {
     return (
-      <div className="flex gap-2 flex-col p-2 w-80">
+      <div className="flex gap-2 flex-col p-2">
         <label htmlFor={id} className={`font-bold ${error && "text-red-600"}`}>
           {label}
         </label>
@@ -45,7 +46,7 @@ const Input: React.FC<InputProps> = ({
           className={`border p-4 rounded-md hover:border-black ${
             error && "border-red-600"
           }`}
-          type={type}
+          type={extraType}
           id={id}
           onChange={
             onChange as (e: React.ChangeEvent<HTMLInputElement>) => void

@@ -12,4 +12,5 @@ export interface InputProps {
   ) => void;
   onBlur: () => void;
   id: string;
+  extraType?: "password" | "number";
 }
