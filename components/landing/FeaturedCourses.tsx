@@ -1,6 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import Button from "../ui/formElements/Button";
+import Button from "../shared/form/Button";
+import Card from "../shared/ui/Card";
+import { CoursesData } from "@/data/coursesdata.config";
+import CourseCard from "./CourseCard";
 
 const FeaturedCourses: React.FC = () => {
   return (
@@ -26,7 +29,16 @@ const FeaturedCourses: React.FC = () => {
           />
         </div>
       </div>
-      <div>KURSEVI KURSEVI KURSEVI</div>
+      <div className="flex justify-center items-center gap-4 p-6 flex-wrap">
+        {CoursesData.map((course) => (
+          <CourseCard
+            id={course.id}
+            title={course.title}
+            image={course.image}
+            price={course.price}
+          />
+        ))}
+      </div>
     </section>
   );
 };

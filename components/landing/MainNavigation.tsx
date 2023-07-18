@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Button from "../ui/formElements/Button";
+import Button from "../shared/form/Button";
 
 const MainNavigation: React.FC = () => {
   return (

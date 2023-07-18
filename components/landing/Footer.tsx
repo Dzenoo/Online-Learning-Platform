@@ -5,13 +5,14 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-white border-2 shadow-md flex gap-2 justify-between p-12 mt-12">
+    <footer className="bg-white border-2 shadow-md flex gap-2 justify-evenly p-12 mt-12">
       <div className="w-1/3">
         <Image
           src="/assets/images/log.png"
           width={200}
           height={200}
           alt="logo"
+          style={{ position: "relative", right: "6px" }}
         />
         <p className="text-gray-400 font-light">
           Explore our wide range of courses and unlock your learning potential

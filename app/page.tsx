@@ -3,7 +3,7 @@ import {
   Categories,
   FeaturedCourses,
   Hero,
-} from "@/components/landingpage";
+} from "@/components/landing";
 
 export default function LandingPage() {
   return (

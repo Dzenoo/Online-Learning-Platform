@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../ui/formElements/Button";
+import Button from "../shared/form/Button";
 import Image from "next/image";
 
 const Hero: React.FC = () => {

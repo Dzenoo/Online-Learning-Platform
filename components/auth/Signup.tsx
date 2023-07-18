@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import Input from "../ui/formElements/Input";
-import Button from "../ui/formElements/Button";
+import Input from "../shared/form/Input";
+import Button from "../shared/form/Button";
 import { useValidation } from "@/hooks/useValidation";
 import {
   VALIDATOR_EMAIL,

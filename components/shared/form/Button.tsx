@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
           disabled={disabled}
           type={type}
           className={`
-         py-4 px-6 w-full rounded-full shadow-sm text-white
+         py-2 px-6 w-full rounded-full shadow-sm text-white
          font-bold hover:bg-[#4540e1ea] transition-all
          ${disabled && "disabled:opacity-40 cursor-not-allowed"}
          ${styleType === "error" && "bg-red-600"}
@@ -36,7 +36,7 @@ const Button: React.FC<ButtonProps> = ({
         disabled={disabled}
         type={type}
         className={`
-         py-4 px-6 w-full rounded-full shadow-sm text-white
+         py-2 px-6 w-full rounded-full shadow-sm text-white
          font-bold hover:bg-[#4540e1ea] transition-all
          ${disabled && "disabled:opacity-40 cursor-not-allowed"}
          ${styleType === "error" && "bg-red-600"}

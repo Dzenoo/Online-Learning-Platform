@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import Input from "../ui/formElements/Input";
-import Button from "../ui/formElements/Button";
 import Link from "next/link";
 import { useValidation } from "@/hooks/useValidation";
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from "@/utility/validators";
 import { LoginProps, LoginType } from "@/types/LoginTypes";
+import Input from "../shared/form/Input";
+import Button from "../shared/form/Button";
 
 const Login: React.FC<LoginProps> = ({ login }) => {
   const [isType, setisType] = useState(LoginType.Instructor);
