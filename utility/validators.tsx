@@ -1,4 +1,4 @@
-import { ValidatorTypes } from "@/types/Validator";
+import { ValidatorTypes } from "@/types/ValidatorHookTypes";
 
 const VALIDATOR_TYPE_REQUIRE = "REQUIRE";
 const VALIDATOR_TYPE_FIRST_NAME = "FIRST_NAME";

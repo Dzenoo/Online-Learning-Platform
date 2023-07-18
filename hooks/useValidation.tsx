@@ -1,9 +1,11 @@
+"use client";
+
 import {
   ActionType,
   ActionTypes,
   ValidatorState,
   ValidatorTypes,
-} from "@/types/Validator";
+} from "@/types/ValidatorHookTypes";
 import { validate } from "@/utility/validators";
 import React, { useReducer } from "react";
 
@@ -37,7 +39,9 @@ const reducer = (state: ValidatorState, action: ActionTypes) => {
 export const useValidation = (validators: ValidatorTypes[]) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): void => {
     dispatch({
       type: ActionType.INPUT_CHANGE,
       payload: e.target.value,
@@ -45,7 +49,7 @@ export const useValidation = (validators: ValidatorTypes[]) => {
     });
   };
 
-  const onBlurHandler = () => {
+  const onBlurHandler = (): void => {
     dispatch({
       type: ActionType.INPUT_BLUR,
       payload: "",
