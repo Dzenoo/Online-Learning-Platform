@@ -15,3 +15,7 @@
 .yellowText {
   @apply text-[#FFC845];
 }
+
+.purpleText {
+  @apply text-[#4540E1];
+}
