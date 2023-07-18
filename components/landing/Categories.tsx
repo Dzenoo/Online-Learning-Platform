@@ -12,7 +12,7 @@ const Categories: React.FC = () => {
           Explore various courses by categories and filters
         </p>
       </div>
-      <div className="flex justify-center items-center gap-12 text-center w-full">
+      <div className="flex justify-center items-center gap-12 flex-wrap text-center w-full">
         <div className="bg-white shadow-md p-7 flex justify-center items-center gap-2 cursor-pointer hover:shadow-lg transition-all">
           <Image
             src="/assets/graphics/promotion.png"

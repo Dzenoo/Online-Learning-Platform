@@ -5,7 +5,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-white border-2 shadow-md flex gap-2 justify-evenly p-12 mt-12">
+    <footer className="bg-white border-2 shadow-md flex gap-2 justify-evenly p-12 mt-12 flex-wrap">
       <div className="w-1/3">
         <Image
           src="/assets/images/log.png"

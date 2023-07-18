@@ -16,7 +16,7 @@ const CourseCard: React.FC<CourseCardLandingProps> = ({
   const discountedPrice = price - discountAmount;
 
   return (
-    <Card styles="w-[360px] flex flex-col gap-4">
+    <Card styles="w-[360px] flex flex-col gap-4 hover:shadow-xl transition">
       <Link href={id}>
         <Image
           src={image}
