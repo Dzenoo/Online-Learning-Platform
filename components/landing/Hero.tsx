@@ -22,7 +22,6 @@ const Hero: React.FC = () => {
         <Image
           src="/assets/images/hero-img.png"
           alt="hero"
-          className=""
           width={700}
           height={700}
         />
