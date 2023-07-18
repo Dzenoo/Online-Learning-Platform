@@ -35,7 +35,6 @@ const reducer = (state: ValidatorState, action: ActionTypes) => {
     }
   }
 };
-
 export const useValidation = (validators: ValidatorTypes[]) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 

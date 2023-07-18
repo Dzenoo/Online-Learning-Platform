@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const Categories = () => {
+const Categories: React.FC = () => {
   return (
     <section className="flex flex-col gap-2 justify-start items-start p-12 mt-12">
       <div className="flex flex-col gap-2 mb-6">

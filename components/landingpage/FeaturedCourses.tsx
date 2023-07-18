@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Button from "../ui/formElements/Button";
 
-const FeaturedCourses = () => {
+const FeaturedCourses: React.FC = () => {
   return (
     <section className="flex flex-col gap-2 justify-center p-12 mt-12">
       <div className="flex justify-between gap-2 mb-6">
