@@ -20,3 +20,7 @@ export interface CourseCardLandingProps {
 export interface CourseListProps {
   courses: CourseCardLandingProps[];
 }
+
+export interface CourseDetailsProps {
+  course: CourseCardLandingProps;
+}
