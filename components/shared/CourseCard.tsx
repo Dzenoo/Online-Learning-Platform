@@ -1,8 +1,8 @@
 import React from "react";
-import Card from "../shared/ui/Card";
+import Card from "./ui/Card";
 import { CourseCardLandingProps } from "@/types/CourseCardTypes";
 import Image from "next/image";
-import Button from "../shared/form/Button";
+import Button from "./form/Button";
 import Link from "next/link";
 
 const CourseCard: React.FC<CourseCardLandingProps> = ({

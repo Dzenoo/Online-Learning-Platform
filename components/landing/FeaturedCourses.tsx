@@ -3,7 +3,7 @@ import React from "react";
 import Button from "../shared/form/Button";
 import Card from "../shared/ui/Card";
 import { CoursesData } from "@/data/coursesdata.config";
-import CourseCard from "./CourseCard";
+import CourseCard from "../shared/CourseCard";
 import { CourseCardLandingProps } from "@/types/CourseCardTypes";
 
 const FeaturedCourses: React.FC = () => {
