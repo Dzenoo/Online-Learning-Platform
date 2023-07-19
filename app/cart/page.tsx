@@ -10,7 +10,7 @@ const CartPage = () => {
         <p className="text-gray-400 mt-4">2 Courses in Cart</p>
       </div>
       <hr />
-      <div className="flex items-stretch justify-center">
+      <div className="flex items-stretch justify-center gap-2">
         <CartList cartCourses={CartData} />
         <CartDetails />
       </div>
