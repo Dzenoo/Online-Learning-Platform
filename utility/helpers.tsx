@@ -7,7 +7,6 @@ export function convertToDiscountPrice(
 ): number {
   const discountAmount = currentPrice * discount;
   const discountedPrice = currentPrice - discountAmount;
-
   return discountedPrice;
 }
 
