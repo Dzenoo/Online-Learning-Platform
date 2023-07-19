@@ -41,10 +41,7 @@ const Button: React.FC<ButtonProps> = ({
          ${disabled && "disabled:opacity-40 cursor-not-allowed"}
          ${styleType === "error" && "bg-red-600"}
          ${styleType === "success" && "bg-green-600"}
-         ${
-           styleType === "outlined" &&
-           "bg-white border-2 text-black hover:text-white"
-         }
+         ${styleType === "outlined" && "bg-white border text-black"}
          ${styleType === "initial" && "bg-[#4540e1]"}
         `}
       >

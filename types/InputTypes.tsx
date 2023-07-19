@@ -1,7 +1,7 @@
 export interface InputProps {
   type: "input" | "textarea";
   error: boolean;
-  helperText: string;
+  helperText?: string;
   label: string;
   placeholder: string;
   value: string;
@@ -10,7 +10,7 @@ export interface InputProps {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
   ) => void;
-  onBlur: () => void;
+  onBlur?: () => void;
   id: string;
   extraType?: "password" | "number";
 }
