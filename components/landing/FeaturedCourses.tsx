@@ -4,6 +4,7 @@ import Button from "../shared/form/Button";
 import Card from "../shared/ui/Card";
 import { CoursesData } from "@/data/coursesdata.config";
 import CourseCard from "./CourseCard";
+import { CourseCardLandingProps } from "@/types/CourseCardTypes";
 
 const FeaturedCourses: React.FC = () => {
   return (
@@ -31,12 +32,13 @@ const FeaturedCourses: React.FC = () => {
         </div>
       </div>
       <div className="flex justify-center items-center gap-4 p-6 flex-wrap">
-        {CoursesData.map((course) => (
+        {CoursesData.map((course: CourseCardLandingProps) => (
           <CourseCard
             id={course.id}
             title={course.title}
             image={course.image}
             price={course.price}
+            instructor={course.instructor}
           />
         ))}
       </div>

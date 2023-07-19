@@ -10,6 +10,7 @@ const CourseCard: React.FC<CourseCardLandingProps> = ({
   title,
   price,
   image,
+  instructor,
 }) => {
   const discountPercentage = 0.7;
   const discountAmount = price * discountPercentage;
@@ -32,6 +33,7 @@ const CourseCard: React.FC<CourseCardLandingProps> = ({
       </Link>
       <div>
         <h1 className="font-bold text-xl">{title}</h1>
+        <p className="font-light text-lg text-gray-400">{instructor}</p>
         <div className="flex items-center gap-2 mt-4">
           <Image
             src="/assets/graphics/dollar.png"

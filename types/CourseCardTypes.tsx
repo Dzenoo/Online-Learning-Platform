@@ -3,4 +3,5 @@ export interface CourseCardLandingProps {
   title: string;
   price: number;
   image: string;
+  instructor: string;
 }
