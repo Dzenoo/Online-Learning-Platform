@@ -4,7 +4,6 @@ import {
   FeaturedCourses,
   Hero,
 } from "@/components/landing";
-
 export default function LandingPage() {
   return (
     <section>
