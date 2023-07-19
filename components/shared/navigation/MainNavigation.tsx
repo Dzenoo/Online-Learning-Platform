@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Button from "../shared/form/Button";
+import Button from "../form/Button";
 import { createGraphicIcon } from "@/utility/helpers";
 
 const MainNavigation: React.FC = () => {
@@ -22,10 +22,10 @@ const MainNavigation: React.FC = () => {
           <Link href="/courses" className="text-gray-400 font-light">
             Courses
           </Link>
-          <Link href="/" className="text-gray-400 font-light">
+          <Link href="/my-courses" className="text-gray-400 font-light">
             My Courses
           </Link>
-          <Link href="/" className="text-gray-400 font-light">
+          <Link href="/profile" className="text-gray-400 font-light">
             Profile
           </Link>
         </nav>

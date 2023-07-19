@@ -10,6 +10,7 @@ const Button: React.FC<ButtonProps> = ({
   isLink,
   linkHref,
   additionalStyles,
+  onClick,
 }) => {
   if (isLink) {
     return (
@@ -23,7 +24,9 @@ const Button: React.FC<ButtonProps> = ({
          ${disabled && "disabled:opacity-40 cursor-not-allowed"}
          ${styleType === "error" && "bg-red-600"}
          ${styleType === "success" && "bg-green-600"}
-         ${styleType === "outlined" && "bg-white text-black hover:text-white"}
+         ${
+           styleType === "outlined" && "bg-gray-200 text-black hover:text-white"
+         }
          ${styleType === "initial" && "bg-[#4540e1]"}
         `}
         >
@@ -34,6 +37,7 @@ const Button: React.FC<ButtonProps> = ({
   } else {
     return (
       <button
+        onClick={onClick}
         disabled={disabled}
         type={type}
         className={`

@@ -1,4 +1,3 @@
-import { LinkProps } from "next/link";
 import { ReactNode } from "react";
 
 export interface ButtonProps {
@@ -9,4 +8,5 @@ export interface ButtonProps {
   isLink?: boolean;
   linkHref?: string;
   additionalStyles?: string;
+  onClick?: () => void;
 }
