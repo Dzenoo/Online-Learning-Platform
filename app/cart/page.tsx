@@ -1,5 +1,6 @@
 import { CartDetails, CartList } from "@/components/cart";
-import { CartData } from "@/data/coursesdata.config";
+import { CourseList } from "@/components/courses";
+import { CartData, CoursesData } from "@/data/coursesdata.config";
 import React from "react";
 
 const CartPage = () => {
@@ -11,11 +12,12 @@ const CartPage = () => {
       </div>
       <hr />
       <div className="flex items-stretch justify-center gap-2">
-        <CartList cartCourses={CartData} />
+        <CartList cartCourses={CartData} />k
         <CartDetails />
       </div>
-      <div className="border pt-6">
-        <h1>You might also like</h1>
+      <div className="mt-20">
+        <h1 className="font-bold text-4xl">You might also like</h1>
+        <CourseList courses={CoursesData} />
       </div>
     </section>
   );
