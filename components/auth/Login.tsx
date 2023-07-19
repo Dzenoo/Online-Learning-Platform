@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useValidation } from "@/hooks/useValidation";
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from "@/utility/validators";
-import { LoginProps, LoginType } from "@/types/LoginTypes";
+import { LoginProps, LoginType } from "@/types/auth/LoginTypes";
 import Input from "../shared/form/Input";
 import Button from "../shared/form/Button";
 

@@ -1,4 +1,4 @@
-import { CartItemProps, CartListProps } from "@/types/CartTypes";
+import { CartItemProps, CartListProps } from "@/types/cart/CartTypes";
 import React from "react";
 import CartItem from "./CartItem";
 

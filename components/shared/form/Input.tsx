@@ -1,4 +1,4 @@
-import { InputProps } from "@/types/InputTypes";
+import { InputProps } from "@/types/form/InputTypes";
 import React from "react";
 
 const Input: React.FC<InputProps> = ({
@@ -15,12 +15,12 @@ const Input: React.FC<InputProps> = ({
 }) => {
   if (type === "textarea") {
     return (
-      <div className="flex gap-2 flex-col p-2 w-80">
+      <div className="flex gap-2 flex-col p-2">
         <label htmlFor={id} className={`font-bold ${error && "text-red-600"}`}>
           {label}
         </label>
         <textarea
-          className={`border p-4 rounded-md hover:border-black ${
+          className={`border p-4 rounded-md w-full hover:border-black ${
             error && "border-red-600"
           }`}
           id={id}

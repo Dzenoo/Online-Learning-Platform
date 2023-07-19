@@ -1,7 +1,7 @@
 "use client";
 
 import Signup from "@/components/auth/Signup";
-import { RegisterData, SignupType } from "@/types/SignupTypes";
+import { RegisterData, SignupType } from "@/types/auth/SignupTypes";
 
 const SignupPage = () => {
   function registerUser(

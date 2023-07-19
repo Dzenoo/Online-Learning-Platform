@@ -22,3 +22,7 @@
 .headingTitle {
   @apply font-bold text-4xl;
 }
+
+.img {
+  @apply w-40 h-40 rounded-full bg-purple-600;
+}

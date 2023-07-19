@@ -1,4 +1,4 @@
-import { CartItemProps } from "@/types/CartTypes";
+import { CartItemProps } from "@/types/cart/CartTypes";
 import { convertToDiscountPrice, createGraphicIcon } from "@/utility/helpers";
 import Image from "next/image";
 import React from "react";

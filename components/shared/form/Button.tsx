@@ -1,4 +1,4 @@
-import { ButtonProps } from "@/types/ButtonTypes";
+import { ButtonProps } from "@/types/form/ButtonTypes";
 import Link from "next/link";
 import React from "react";
 

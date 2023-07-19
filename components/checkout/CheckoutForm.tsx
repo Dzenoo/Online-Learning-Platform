@@ -2,7 +2,7 @@
 
 import React from "react";
 import Input from "../shared/form/Input";
-import { InputType } from "@/types/InputTypes";
+import { InputType } from "@/types/form/InputTypes";
 import { useValidation } from "@/hooks/useValidation";
 import { VALIDATOR_REQUIRE } from "@/utility/validators";
 

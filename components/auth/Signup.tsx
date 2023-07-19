@@ -10,7 +10,7 @@ import {
   VALIDATOR_REQUIRE,
 } from "@/utility/validators";
 import Link from "next/link";
-import { SignupType, SubmitProps } from "@/types/SignupTypes";
+import { SignupType, SubmitProps } from "@/types/auth/SignupTypes";
 
 const Signup: React.FC<SubmitProps> = ({ register }) => {
   const [isType, setisType] = useState(SignupType.Instructor);
