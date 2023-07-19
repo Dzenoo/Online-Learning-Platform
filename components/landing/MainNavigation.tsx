@@ -48,7 +48,7 @@ const MainNavigation: React.FC = () => {
       )}
       <div className="flex gap-4 items-center">
         {isLoggedIn && (
-          <Link href="/">
+          <Link href="/cart">
             {createGraphicIcon("/assets/graphics/shopping-cart.png", "cart")}
           </Link>
         )}

@@ -1,5 +1,15 @@
+export enum InputType {
+  Input = "input",
+  Textarea = "textarea",
+}
+
+export enum ExtraType {
+  Password = "password",
+  Number = "number",
+}
+
 export interface InputProps {
-  type: "input" | "textarea";
+  type: InputType.Input | InputType.Textarea;
   error: boolean;
   helperText?: string;
   label: string;
@@ -12,5 +22,5 @@ export interface InputProps {
   ) => void;
   onBlur?: () => void;
   id: string;
-  extraType?: "password" | "number";
+  extraType?: ExtraType.Password | ExtraType.Number;
 }

@@ -12,7 +12,7 @@ const CartPage = () => {
       </div>
       <hr />
       <div className="flex items-stretch justify-center gap-2">
-        <CartList cartCourses={CartData} />k
+        <CartList cartCourses={CartData} />
         <CartDetails />
       </div>
       <div className="mt-20">
