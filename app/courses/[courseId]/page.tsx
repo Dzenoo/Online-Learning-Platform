@@ -188,7 +188,26 @@ const CourseDetails = ({ params }: { params: { courseId: string } }) => {
               </div>
             </div>
           </div>
-          <div>ACTIONS</div>
+          <div className="flex gap-2">
+            <Button type="button" isLink={false} styleType="initial">
+              <span className="flex items-center justify-center gap-4">
+                {createGraphicIcon(
+                  "/assets/graphics/agreement2.png",
+                  "graduation"
+                )}
+                Buy now
+              </span>
+            </Button>
+            <Button type="button" isLink={false} styleType="outlined">
+              <span className="text-black hover:text-white flex items-center justify-center gap-4">
+                {createGraphicIcon(
+                  "/assets/graphics/gift-box.png",
+                  "graduation"
+                )}
+                Buy as gift
+              </span>
+            </Button>
+          </div>
         </div>
       </div>
       <div className="border">
