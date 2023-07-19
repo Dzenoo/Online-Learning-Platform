@@ -5,7 +5,7 @@ import { useValidation } from "@/hooks/useValidation";
 import { VALIDATOR_REQUIRE } from "@/utility/validators";
 import React from "react";
 
-const CoursesInput = () => {
+const CoursesInput: React.FC = () => {
   const searchInput = useValidation([VALIDATOR_REQUIRE()]);
 
   return (

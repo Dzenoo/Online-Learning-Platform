@@ -35,4 +35,16 @@ export const CoursesData = [
     duration: "8 weeks",
     popularity: "High",
   },
+  {
+    id: "c4",
+    title: "React for Beginners",
+    price: 129,
+    image: "/assets/images/react-img.png",
+    instructor: "Mike Johnson",
+    category: "Web Development",
+    skillLevel: "Beginner",
+    language: "English",
+    duration: "8 weeks",
+    popularity: "High",
+  },
 ];

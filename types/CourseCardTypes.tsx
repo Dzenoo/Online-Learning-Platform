@@ -5,3 +5,7 @@ export interface CourseCardLandingProps {
   image: string;
   instructor: string;
 }
+
+export interface CourseListProps {
+  courses: CourseCardLandingProps[];
+}
