@@ -130,12 +130,9 @@ const Signup: React.FC<SubmitProps> = ({ register }) => {
           helperText="Please enter valid password"
           extraType="password"
         />
-        <Button
-          value="Register"
-          type="submit"
-          styleType="initial"
-          disabled={!formIsValid}
-        />
+        <Button type="submit" styleType="initial" disabled={!formIsValid}>
+          Register
+        </Button>
       </div>
       <div className="text-center">
         <p className="font-medium">

@@ -1,7 +1,7 @@
 import React from "react";
 
-const CoursePage = () => {
-  return <div>CoursePage</div>;
+const CoursesPage = () => {
+  return <div>CoursesPage</div>;
 };
 
-export default CoursePage;
+export default CoursesPage;

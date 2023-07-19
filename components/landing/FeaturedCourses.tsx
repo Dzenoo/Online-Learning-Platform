@@ -22,11 +22,12 @@ const FeaturedCourses: React.FC = () => {
         <div>
           <Button
             type="button"
-            value="See More Courses"
             styleType="initial"
             linkHref="courses"
             isLink={true}
-          />
+          >
+            See More Courses
+          </Button>
         </div>
       </div>
       <div className="flex justify-center items-center gap-4 p-6 flex-wrap">

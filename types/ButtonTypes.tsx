@@ -1,8 +1,9 @@
 import { LinkProps } from "next/link";
+import { ReactNode } from "react";
 
 export interface ButtonProps {
   type: "button" | "submit";
-  value: string;
+  children: ReactNode;
   styleType: "error" | "success" | "outlined" | "initial";
   disabled?: boolean;
   isLink?: boolean;

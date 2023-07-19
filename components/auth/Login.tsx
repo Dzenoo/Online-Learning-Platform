@@ -87,12 +87,9 @@ const Login: React.FC<LoginProps> = ({ login }) => {
           helperText="Please enter valid password"
           extraType="password"
         />
-        <Button
-          value="Login"
-          type="submit"
-          styleType="initial"
-          disabled={!formIsValid}
-        />
+        <Button type="submit" styleType="initial" disabled={!formIsValid}>
+          Login
+        </Button>
       </div>
       <div className="text-center">
         <p className="font-medium">

@@ -30,21 +30,23 @@ const MainNavigation: React.FC = () => {
       </nav>
       <div className="flex gap-2">
         <Button
-          value="Sign In"
           styleType="initial"
           type="button"
           disabled={false}
           isLink={true}
           linkHref="login"
-        />
+        >
+          Sign In
+        </Button>
         <Button
-          value="Sign Up"
           disabled={false}
           styleType="initial"
           type="button"
           isLink={true}
           linkHref="signup"
-        />
+        >
+          Sign Up
+        </Button>
       </div>
     </header>
   );

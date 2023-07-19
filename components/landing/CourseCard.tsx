@@ -44,7 +44,9 @@ const CourseCard: React.FC<CourseCardLandingProps> = ({
         </div>
       </div>
       <Link href={id}>
-        <Button styleType="initial" type="button" value="Details" />
+        <Button styleType="initial" type="button">
+          Details
+        </Button>
       </Link>
     </Card>
   );

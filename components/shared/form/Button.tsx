@@ -5,7 +5,7 @@ import React from "react";
 const Button: React.FC<ButtonProps> = ({
   styleType,
   type,
-  value,
+  children,
   disabled,
   isLink,
   linkHref,
@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
          ${styleType === "initial" && "bg-[#4540e1]"}
         `}
         >
-          {value}
+          {children}
         </button>
       </Link>
     );
@@ -48,7 +48,7 @@ const Button: React.FC<ButtonProps> = ({
          ${styleType === "initial" && "bg-[#4540e1]"}
         `}
       >
-        {value}
+        {children}
       </button>
     );
   }
