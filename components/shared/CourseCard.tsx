@@ -4,6 +4,7 @@ import { CourseCardLandingProps } from "@/types/CourseCardTypes";
 import Image from "next/image";
 import Button from "./form/Button";
 import Link from "next/link";
+import { convertToDiscountPrice } from "@/utility/helpers";
 
 const CourseCard: React.FC<CourseCardLandingProps> = ({
   id,
@@ -12,9 +13,7 @@ const CourseCard: React.FC<CourseCardLandingProps> = ({
   image,
   instructor,
 }) => {
-  const discountPercentage = 0.7;
-  const discountAmount = price * discountPercentage;
-  const discountedPrice = price - discountAmount;
+  const discountedPrice = convertToDiscountPrice(price, 0.7);
 
   return (
     <Card styles="w-[290px] flex flex-col gap-4 hover:shadow-xl transition">
