@@ -57,3 +57,28 @@ export const CoursesData = [
     sections: 16,
   },
 ];
+
+export const CartData = [
+  {
+    id: "c1",
+    title: "Typescript for Beginners",
+    image: "/assets/images/typescript-img.png",
+    instructor: "John Doe",
+    skillLevel: "Beginner",
+    language: "English",
+    duration: "4h",
+    price: 100,
+    lectures: 200,
+  },
+  {
+    id: "c2",
+    title: "Typescript for Beginners",
+    image: "/assets/images/typescript-img.png",
+    instructor: "John Doe",
+    skillLevel: "Beginner",
+    language: "English",
+    duration: "4h",
+    price: 100,
+    lectures: 200,
+  },
+];

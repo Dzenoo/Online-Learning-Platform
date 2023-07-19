@@ -19,3 +19,7 @@
 .purpleText {
   @apply text-[#4540E1];
 }
+
+.headingTitle {
+  @apply font-bold text-4xl;
+}

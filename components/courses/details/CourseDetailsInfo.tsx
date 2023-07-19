@@ -4,7 +4,7 @@ import { convertToDiscountPrice, createGraphicIcon } from "@/utility/helpers";
 import React from "react";
 
 const CourseDetailsInfo: React.FC<CourseDetailsProps> = ({ course }) => {
-  const discountedPrice = convertToDiscountPrice(course?.price, 0.7);
+  let discountedPrice = convertToDiscountPrice(course?.price, 0.7);
 
   return (
     <div className="p-6 flex flex-col gap-7 flex-grow basis-1/3">
