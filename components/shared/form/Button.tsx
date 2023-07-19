@@ -9,6 +9,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   isLink,
   linkHref,
+  additionalStyles,
 }) => {
   if (isLink) {
     return (
@@ -18,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
           type={type}
           className={`
          py-2 px-6 w-full rounded-full shadow-sm text-white
-         font-bold hover:bg-[#4540e1ea] transition-all
+         font-bold hover:bg-[#4540e1ea] transition-all ${additionalStyles}
          ${disabled && "disabled:opacity-40 cursor-not-allowed"}
          ${styleType === "error" && "bg-red-600"}
          ${styleType === "success" && "bg-green-600"}
@@ -36,8 +37,8 @@ const Button: React.FC<ButtonProps> = ({
         disabled={disabled}
         type={type}
         className={`
-         py-3 px-6 w-full rounded-lg shadow-sm text-white
-         font-bold hover:bg-[#4540e1ea] transition-all
+         py-2 px-6 w-full rounded-lg shadow-sm text-white
+         font-bold hover:bg-[#4540e1ea] transition-all ${additionalStyles}
          ${disabled && "disabled:opacity-40 cursor-not-allowed"}
          ${styleType === "error" && "bg-red-600"}
          ${styleType === "success" && "bg-green-600"}

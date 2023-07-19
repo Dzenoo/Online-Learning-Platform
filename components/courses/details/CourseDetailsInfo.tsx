@@ -7,7 +7,7 @@ const CourseDetailsInfo: React.FC<CourseDetailsProps> = ({ course }) => {
   const discountedPrice = convertToDiscountPrice(course?.price, 0.7);
 
   return (
-    <div className="p-6 flex flex-col gap-7 flex-grow basis-1/3 border">
+    <div className="p-6 flex flex-col gap-7 flex-grow basis-1/3">
       <div className="flex items-center justify-between gap-7">
         <h1 className="flex items-center gap-4">
           <span className="font-bold text-4xl">${discountedPrice}</span>{" "}
@@ -15,7 +15,12 @@ const CourseDetailsInfo: React.FC<CourseDetailsProps> = ({ course }) => {
             ${course?.price}
           </span>
         </h1>
-        <Button type="button" isLink={false} styleType="initial">
+        <Button
+          type="button"
+          isLink={false}
+          additionalStyles="w-40"
+          styleType="initial"
+        >
           Apply Coupon
         </Button>
       </div>
@@ -32,14 +37,14 @@ const CourseDetailsInfo: React.FC<CourseDetailsProps> = ({ course }) => {
             </h2>
           </div>
           <div className="flex items-center gap-2">
-            {createGraphicIcon("/assets/graphics/language.png", "graduation")}
+            {createGraphicIcon("/assets/graphics/language.png", "language")}
             <h2 className="text-gray-400">
               Language:{" "}
               <span className="font-bold text-black">{course?.language}</span>
             </h2>
           </div>
           <div className="flex items-center gap-2">
-            {createGraphicIcon("/assets/graphics/play.png", "graduation")}
+            {createGraphicIcon("/assets/graphics/play.png", "play")}
             <h2 className="text-gray-400">
               Duration:{" "}
               <span className="font-bold text-black">{course?.duration}</span>
@@ -48,14 +53,14 @@ const CourseDetailsInfo: React.FC<CourseDetailsProps> = ({ course }) => {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
-            {createGraphicIcon("/assets/graphics/list.png", "graduation")}
+            {createGraphicIcon("/assets/graphics/list.png", "list")}
             <h2 className="text-gray-400">
               Category:{" "}
               <span className="font-bold text-black">{course?.category}</span>
             </h2>
           </div>
           <div className="flex items-center gap-2">
-            {createGraphicIcon("/assets/graphics/news.png", "graduation")}
+            {createGraphicIcon("/assets/graphics/news.png", "news")}
             <h2 className="text-gray-400">
               Articles:{" "}
               <span className="font-bold text-black">{course?.articles}</span>
@@ -64,7 +69,7 @@ const CourseDetailsInfo: React.FC<CourseDetailsProps> = ({ course }) => {
           <div className="flex items-center gap-2">
             {createGraphicIcon(
               "/assets/graphics/certificate.png",
-              "graduation"
+              "certificate"
             )}
             <h2 className="text-gray-400">
               Certificate:{" "}
@@ -76,13 +81,13 @@ const CourseDetailsInfo: React.FC<CourseDetailsProps> = ({ course }) => {
       <div className="flex gap-2">
         <Button type="button" isLink={false} styleType="initial">
           <span className="flex items-center justify-center gap-4">
-            {createGraphicIcon("/assets/graphics/agreement2.png", "graduation")}
+            {createGraphicIcon("/assets/graphics/agreement2.png", "agreement2")}
             Buy now
           </span>
         </Button>
         <Button type="button" isLink={false} styleType="outlined">
           <span className="text-black hover:text-white flex items-center justify-center gap-4">
-            {createGraphicIcon("/assets/graphics/gift-box.png", "graduation")}
+            {createGraphicIcon("/assets/graphics/gift-box.png", "gift")}
             Buy as gift
           </span>
         </Button>

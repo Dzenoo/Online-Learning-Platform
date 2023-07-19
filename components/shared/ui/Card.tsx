@@ -5,7 +5,7 @@ const Card = ({
   styles,
 }: {
   children: ReactNode;
-  styles: string;
+  styles?: string;
 }) => {
   return (
     <div className={`bg-white shadow-md w-fit p-3 rounded-md ${styles}`}>

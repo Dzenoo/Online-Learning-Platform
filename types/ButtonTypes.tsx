@@ -8,4 +8,5 @@ export interface ButtonProps {
   disabled?: boolean;
   isLink?: boolean;
   linkHref?: string;
+  additionalStyles?: string;
 }

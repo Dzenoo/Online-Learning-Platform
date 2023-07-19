@@ -1,5 +1,9 @@
-import CourseDetailsContent from "@/components/courses/details/CourseDetailsContent";
-import CourseDetailsInfo from "@/components/courses/details/CourseDetailsInfo";
+import {
+  CourseDetailsContent,
+  CourseDetailsInfo,
+  CourseList,
+  InstructorDetails,
+} from "@/components/courses";
 import { CoursesData } from "@/data/coursesdata.config";
 import { CourseCardLandingProps } from "@/types/CourseCardTypes";
 import Link from "next/link";
@@ -22,15 +26,22 @@ const CourseDetails = ({ params }: { params: { courseId: string } }) => {
         Search / <Link href="/courses">Courses /</Link>{" "}
         <strong className="font-bold text-black">{course?.title}</strong>
       </h1>
-      <div className="flex items-stretch justify-center gap-2 border">
+      <div className="flex items-stretch justify-center gap-2">
         <CourseDetailsContent course={course} />
-        <CourseDetailsInfo course={course} />
+        <div className="p-4 flex flex-col items-center gap-2">
+          <CourseDetailsInfo course={course} />
+          <InstructorDetails />
+        </div>
       </div>
-      <div className="border">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium ut
-        itaque quidem suscipit, soluta sed totam cumque repellendus repudiandae.
-        Aperiam rerum a error nihil quidem nobis laboriosam quam consectetur!
-        Quidem.
+      <div>
+        <h1 className="mt-2 font-bold text-4xl text-center">
+          Browse Related Courses
+        </h1>
+        <CourseList
+          courses={CoursesData.filter(
+            (course) => course.id !== params.courseId
+          )}
+        />
       </div>
     </section>
   );

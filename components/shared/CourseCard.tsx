@@ -16,7 +16,7 @@ const CourseCard: React.FC<CourseCardLandingProps> = ({
   const discountedPrice = convertToDiscountPrice(price, 0.7);
 
   return (
-    <Card styles="w-[290px] flex flex-col gap-4 hover:shadow-xl transition">
+    <Card styles="max-w-sm flex flex-col gap-4 hover:shadow-xl transition">
       <Link href={`/courses/${id}`}>
         <Image
           src={image}

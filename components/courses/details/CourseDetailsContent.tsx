@@ -4,7 +4,7 @@ import React from "react";
 
 const CourseDetailsContent: React.FC<CourseDetailsProps> = ({ course }) => {
   return (
-    <div className="p-6 flex-grow basis-1/2 border">
+    <div className="p-6 flex-grow basis-1/2">
       <div className="flex gap-6 w-full">
         <Image
           src={course?.image}
