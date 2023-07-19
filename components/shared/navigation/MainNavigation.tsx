@@ -10,12 +10,14 @@ const MainNavigation: React.FC = () => {
   return (
     <header className="p-4 shadow-md flex justify-between items-center sticky top-0 z-20 bg-white">
       <div className="w-fit">
-        <Image
-          src="/assets/images/log.png"
-          alt="logo"
-          width={200}
-          height={200}
-        />
+        <Link href="/">
+          <Image
+            src="/assets/images/log.png"
+            alt="logo"
+            width={200}
+            height={200}
+          />
+        </Link>
       </div>
       {isLoggedIn && (
         <nav className="flex gap-6 align-middle">
