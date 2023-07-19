@@ -18,7 +18,7 @@ const MainNavigation: React.FC = () => {
         <Link href="/" className="text-gray-400 font-light">
           Home
         </Link>
-        <Link href="/" className="text-gray-400 font-light">
+        <Link href="/courses" className="text-gray-400 font-light">
           About us
         </Link>
         <Link href="/" className="text-gray-400 font-light">

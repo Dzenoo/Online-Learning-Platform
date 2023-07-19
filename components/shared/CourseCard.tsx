@@ -18,7 +18,7 @@ const CourseCard: React.FC<CourseCardLandingProps> = ({
 
   return (
     <Card styles="w-[360px] flex flex-col gap-4 hover:shadow-xl transition">
-      <Link href={id}>
+      <Link href={`/courses/${id}`}>
         <Image
           src={image}
           alt={title}
@@ -45,7 +45,7 @@ const CourseCard: React.FC<CourseCardLandingProps> = ({
           <span className="line-through text-gray-400 text-s">${price}</span>
         </div>
       </div>
-      <Link href={id}>
+      <Link href={`/courses/${id}`}>
         <Button styleType="initial" type="button">
           Details
         </Button>
