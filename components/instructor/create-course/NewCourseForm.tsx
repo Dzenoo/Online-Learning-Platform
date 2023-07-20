@@ -12,7 +12,7 @@ const NewCourseForm: React.FC = () => {
   const { currentStep, setCurrentStep, newCourseValues, setnewCourseValues } =
     useContext(InstructorContext);
 
-  console.log(newCourseValues);
+  console.log(currentStep);
 
   return (
     <form className="py-40">

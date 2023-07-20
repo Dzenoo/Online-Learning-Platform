@@ -23,11 +23,11 @@ export default function InstructorLayout({
       <InstructorNav />
       {isCreating && (
         <div
-          className={`bg-purple-700 h-2 w-[25%] transition-all ${
+          className={`bg-purple-700 h-2 transition-all ${
+            (currentStep === 0 && "w-[25%]") ||
             (currentStep === 1 && "w-[50%]") ||
             (currentStep === 2 && "w-[75%]") ||
-            (currentStep === 3 && "w-[100%]") ||
-            (currentStep === 4 && "w-[100%]")
+            (currentStep === 3 && "w-full")
           }`}
         ></div>
       )}
