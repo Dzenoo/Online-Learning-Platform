@@ -15,7 +15,12 @@ const Hero: React.FC = () => {
           Empowering You to Cultivate New Skills and Pursue Your Passion
         </p>
         <div className="w-60">
-          <Button type="button" styleType="initial">
+          <Button
+            type="button"
+            styleType="initial"
+            isLink={true}
+            linkHref="courses"
+          >
             Browse Courses
           </Button>
         </div>
