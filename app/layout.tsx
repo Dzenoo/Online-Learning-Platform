@@ -1,6 +1,8 @@
+"use client";
 import { Footer, MainNavigation } from "@/components/landing";
 import "./globals.css";
 import type { Metadata } from "next";
+import { usePathname } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Online Learning Application",
@@ -13,10 +15,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const isInstructorPathname =
+    pathname === "/instructor-dashboard" ||
+    pathname === "/instructor-dashboard/courses" ||
+    pathname === "/instructor-dashboard/new-course";
+
   return (
     <html lang="en">
       <body>
-        <MainNavigation />
+        {!isInstructorPathname && <MainNavigation />}
         {children}
         <Footer />
       </body>

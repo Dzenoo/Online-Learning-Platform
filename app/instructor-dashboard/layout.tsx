@@ -1,15 +1,15 @@
 import { InstructorNav } from "@/components/instructor";
 import React from "react";
 
-const InstructorDashboard = () => {
+export default function InstructorLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <section>
       <InstructorNav />
-      <div>
-        <h1></h1>
-      </div>
+      {children}
     </section>
   );
-};
-
-export default InstructorDashboard;
+}

@@ -3,22 +3,24 @@ import Button from "../shared/form/Button";
 
 const InstructorNav = () => {
   return (
-    <nav className="">
+    <nav className="w-full flex gap-2 p-4 bg-slate-900 justify-center">
       <Button
         isLink={true}
         type="button"
         styleType="initial"
-        linkHref="instructor-nav/new-course"
+        linkHref="instructor-dashboard/new-course"
+        additionalStyles="rounded-sm"
       >
         Create Course
       </Button>
       <Button
         isLink={true}
-        linkHref="instructor-nav/courses"
+        linkHref="instructor-dashboard/courses"
         type="button"
         styleType="initial"
+        additionalStyles="rounded-sm"
       >
-        Courses
+        My Courses
       </Button>
     </nav>
   );
