@@ -1,7 +1,23 @@
+import { InstructorCourseListProps } from "@/types/courses/InstructorCourseCard";
 import React from "react";
+import InstructorCourseCard from "./InstructorCourseCard";
 
-const InstructorCoursesList = () => {
-  return <div>InstructorCoursesList</div>;
+const InstructorCoursesList: React.FC<InstructorCourseListProps> = ({
+  courses,
+}) => {
+  return (
+    <ul className="flex flex-col gap-2 p-12">
+      {courses.map((course) => (
+        <InstructorCourseCard
+          key={course.id}
+          id={course.id}
+          title={course.title}
+          description={course.description}
+          image={course.image}
+        />
+      ))}
+    </ul>
+  );
 };
 
 export default InstructorCoursesList;

@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../shared/form/Button";
 
-const InstructorNav = () => {
+const InstructorNav: React.FC = () => {
   return (
     <nav className="w-full flex gap-2 p-4 bg-slate-900 justify-center">
       <Button

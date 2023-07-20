@@ -10,12 +10,12 @@ export enum ExtraType {
 
 export interface InputProps {
   type: InputType.Input | InputType.Textarea;
-  error: boolean;
+  error?: boolean;
   helperText?: string;
   label: string;
   placeholder: string;
-  value: string;
-  onChange: (
+  value?: string;
+  onChange?: (
     e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
