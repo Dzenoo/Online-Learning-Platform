@@ -18,7 +18,6 @@ export default function RootLayout({
   const pathname = usePathname();
   const isInstructorPathname =
     pathname === "/instructor-dashboard" ||
-    pathname === "/instructor-dashboard/courses" ||
     pathname === "/instructor-dashboard/new-course";
 
   return (

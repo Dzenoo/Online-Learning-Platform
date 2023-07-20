@@ -15,7 +15,7 @@ const InstructorNav = () => {
       </Button>
       <Button
         isLink={true}
-        linkHref="instructor-dashboard/courses"
+        linkHref="instructor-dashboard"
         type="button"
         styleType="initial"
         additionalStyles="rounded-sm"
