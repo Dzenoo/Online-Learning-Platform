@@ -1,5 +1,5 @@
 import { InstructorContextType } from "@/types/InstructorContextTypes";
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 export const InstructorContext = createContext<InstructorContextType>({
   currentStep: 0,
@@ -19,12 +19,18 @@ export const InstructorProvider = ({
   children: React.ReactNode;
 }) => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [newCourseValues, setnewCourseValues] = useState({
-    type: "",
-    title: "",
-    category: "",
-    language: "",
-  });
+  const [newCourseValues, setnewCourseValues] = useState(
+    JSON.parse(localStorage.getItem("new-value-course")!) || {
+      type: "",
+      title: "",
+      category: "",
+      language: "",
+    }
+  );
+
+  useEffect(() => {
+    localStorage.setItem("new-value-course", JSON.stringify(newCourseValues));
+  }, [newCourseValues]);
 
   return (
     <InstructorContext.Provider
