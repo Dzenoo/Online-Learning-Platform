@@ -3,6 +3,7 @@ import { Footer, MainNavigation } from "@/components/landing";
 import "./globals.css";
 import type { Metadata } from "next";
 import { usePathname } from "next/navigation";
+import { InstructorProvider } from "@/context/InstructorContext";
 
 export const metadata: Metadata = {
   title: "Online Learning Application",
@@ -24,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {!isInstructorPathname && <MainNavigation />}
-        {children}
+        <InstructorProvider>{children}</InstructorProvider>
         <Footer />
       </body>
     </html>

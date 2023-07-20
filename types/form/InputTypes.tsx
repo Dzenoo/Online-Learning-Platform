@@ -12,7 +12,7 @@ export interface InputProps {
   type: InputType.Input | InputType.Textarea;
   error?: boolean;
   helperText?: string;
-  label: string;
+  label?: string;
   placeholder: string;
   value?: string;
   onChange?: (
