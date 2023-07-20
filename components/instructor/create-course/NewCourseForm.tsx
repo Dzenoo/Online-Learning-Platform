@@ -12,8 +12,6 @@ const NewCourseForm: React.FC = () => {
   const { currentStep, setCurrentStep, newCourseValues, setnewCourseValues } =
     useContext(InstructorContext);
 
-  console.log(currentStep);
-
   return (
     <form className="py-40">
       {currentStep === 0 && (
@@ -65,6 +63,7 @@ const NewCourseForm: React.FC = () => {
               styleType="initial"
               additionalStyles="mt-12"
               onClick={() => setCurrentStep((prevStep) => prevStep + 1)}
+              disabled={newCourseValues.type === ""}
             >
               Next
             </Button>
@@ -81,6 +80,7 @@ const NewCourseForm: React.FC = () => {
               type={InputType.Input}
               placeholder="e.g. JavaScript for beginners"
               id="title"
+              value={newCourseValues.title}
               onChange={(e) =>
                 setnewCourseValues((prevValues) => ({
                   ...prevValues,
@@ -95,6 +95,7 @@ const NewCourseForm: React.FC = () => {
               styleType="initial"
               additionalStyles="mt-7"
               onClick={() => setCurrentStep((prevStep) => prevStep + 1)}
+              disabled={newCourseValues.title === ""}
             >
               Next
             </Button>
@@ -109,6 +110,7 @@ const NewCourseForm: React.FC = () => {
           <div className="w-[40rem]">
             <Select
               options={categoryFilters}
+              value={newCourseValues.category}
               onChange={(e: ChangeEvent<HTMLSelectElement>) =>
                 setnewCourseValues((prevValues) => ({
                   ...prevValues,
@@ -122,6 +124,7 @@ const NewCourseForm: React.FC = () => {
               type="button"
               styleType="initial"
               additionalStyles="mt-7"
+              disabled={newCourseValues.category === ""}
               onClick={() => setCurrentStep((prevStep) => prevStep + 1)}
             >
               Next
@@ -137,6 +140,7 @@ const NewCourseForm: React.FC = () => {
           <div className="w-[40rem]">
             <Select
               options={languageFilters}
+              value={newCourseValues.language}
               onChange={(e: ChangeEvent<HTMLSelectElement>) =>
                 setnewCourseValues((prevValues) => ({
                   ...prevValues,
@@ -153,6 +157,7 @@ const NewCourseForm: React.FC = () => {
                 additionalStyles="mt-7"
                 isLink={true}
                 linkHref="instructor-dashboard/new-course/manage"
+                disabled={newCourseValues.language === ""}
               >
                 Create Course
               </Button>
