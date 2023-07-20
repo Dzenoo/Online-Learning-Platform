@@ -6,17 +6,17 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 enum CourseType {
-  MyCourse = "courses",
+  MyCourse = "my-courses",
   Favorites = "favorites",
 }
 
-const MyCoursesPage = () => {
+const FavoritesPage = () => {
   const router = useRouter();
 
   return (
     <section className="py-20 px-40">
       <div className="flex flex-col gap-4">
-        <h1 className="headingTitle">My Courses</h1>
+        <h1 className="headingTitle">Wishlist</h1>
         <div className="flex gap-2 max-w-md">
           <h2
             className={`cursor-pointer font-bold`}
@@ -39,4 +39,4 @@ const MyCoursesPage = () => {
   );
 };
 
-export default MyCoursesPage;
+export default FavoritesPage;
