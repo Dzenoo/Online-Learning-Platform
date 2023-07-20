@@ -55,7 +55,7 @@ const MainNavigation: React.FC = () => {
           </Link>
         )}
         {isLoggedIn && (
-          <Link href="/">
+          <Link href="/favorites">
             {createGraphicIcon("/assets/graphics/heart.png", "favorite")}
           </Link>
         )}
