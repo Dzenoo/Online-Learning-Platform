@@ -4,7 +4,7 @@ export interface InstructorContextTypes {
   category: string;
   language: string;
   requirements: string[];
-  forCourse: string;
+  forCourse: string[];
 }
 
 export enum CourseManagamentCreation {
@@ -32,7 +32,5 @@ export interface InstructorContextType {
     React.SetStateAction<CourseManagamentCreation>
   >;
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
-  setnewCourseValues: React.Dispatch<
-    React.SetStateAction<InstructorContextTypes>
-  >;
+  setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
 }
