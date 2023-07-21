@@ -24,7 +24,7 @@ const Manage = () => {
   return (
     <section className="p-20 flex justify-center items-stretch gap-4">
       <NewCourseSidebar setCourseManage={setCourseManage} />
-      <div className="border basis-1/2">
+      <div className="basis-1/2">
         {courseManage === CourseManagamentCreation.Requirements && (
           <Requirements />
         )}
