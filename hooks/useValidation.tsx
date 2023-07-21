@@ -30,6 +30,12 @@ const reducer = (state: ValidatorState, action: ActionTypes) => {
         isTouched: true,
       };
     }
+    case ActionType.INPUT_EMP: {
+      return {
+        ...state,
+        value: "",
+      };
+    }
     default: {
       return state;
     }
@@ -56,11 +62,20 @@ export const useValidation = (validators: ValidatorTypes[]) => {
     });
   };
 
+  const emptyInput = (): void => {
+    dispatch({
+      type: ActionType.INPUT_EMP,
+      payload: "",
+      validators: [],
+    });
+  };
+
   return {
     value: state.value,
     isTouched: state.isTouched,
     isValid: state.isValid,
     onChangeHandler,
     onBlurHandler,
+    emptyInput,
   };
 };

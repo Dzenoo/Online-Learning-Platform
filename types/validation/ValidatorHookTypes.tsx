@@ -1,6 +1,7 @@
 export enum ActionType {
   INPUT_CHANGE = "INPUT_CHANGE",
   INPUT_BLUR = "INPUT_BLUR",
+  INPUT_EMP = "INPUT_EMP",
 }
 
 export type ValidatorTypes = {

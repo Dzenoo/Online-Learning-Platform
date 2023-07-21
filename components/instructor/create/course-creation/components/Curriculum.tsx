@@ -21,7 +21,6 @@ type LectureProps = {
 const Section: React.FC<SectionProps> = ({ title, id, index }) => {
   const [lectures, setLectures] = useState<any>([]);
   const [isItemCreating, setIsItemCreating] = useState<boolean | null>(false);
-
   const newLectureInput = useValidation([VALIDATOR_REQUIRE()]);
 
   function createLecture(): void {
@@ -30,43 +29,57 @@ const Section: React.FC<SectionProps> = ({ title, id, index }) => {
       title: newLectureInput.value,
     };
 
-    if (newLectureInput.isValid) {
+    if (newLectureInput.isValid && newLectureInput.value !== "") {
       setLectures((prevState: {}[]) => [...prevState, newLecture]);
+      setIsItemCreating(false);
+      newLectureInput.emptyInput();
     }
   }
 
   return (
-    <div id={id}>
-      <h1>
-        Section {index}: {title}
-      </h1>
-      <div>
-        <button onClick={() => setIsItemCreating(!isItemCreating)}>
-          Add Curriculum item
-        </button>
-        {isItemCreating && (
-          <div>
-            <Input
-              type={InputType.Input}
-              label="Lecture name"
-              placeholder="Introduction..."
-              onChange={newLectureInput.onChangeHandler}
-              onBlur={newLectureInput.onBlurHandler}
-              value={newLectureInput.value}
-              helperText="Please enter valid input"
-              error={!newLectureInput.isValid || newLectureInput.isTouched}
-              id={"lecture_name"}
-            />
-            <Button styleType="initial" type={"button"} onClick={createLecture}>
-              Add lecture
-            </Button>
-          </div>
-        )}
+    <div id={id} className="shadow-md p-4 mt-4 flex flex-col gap-2 border">
+      <div className="flex justify-between">
+        <h1 className="font-bold text-2xl">
+          Section {index}: {title}
+        </h1>
+        <p>{lectures.length} lectures</p>
+        <div className="w-60">
+          <Button
+            additionalStyles="bg-gray-700"
+            type="button"
+            styleType="initial"
+            onClick={() => setIsItemCreating(!isItemCreating)}
+          >
+            Add Curriculum item
+          </Button>
+        </div>
       </div>
+      {isItemCreating && (
+        <div className="border p-2">
+          <Input
+            type={InputType.Input}
+            label="Lecture name"
+            placeholder="Introduction..."
+            onChange={newLectureInput.onChangeHandler}
+            onBlur={newLectureInput.onBlurHandler}
+            helperText="Please enter valid input"
+            error={!newLectureInput.isValid && newLectureInput.isTouched}
+            id={"lecture_name"}
+          />
+          <Button
+            styleType="initial"
+            additionalStyles="bg-gray-700 mt-4"
+            type={"button"}
+            onClick={createLecture}
+          >
+            Add lecture
+          </Button>
+        </div>
+      )}
       <div>
         {lectures?.map((lecture: LectureProps, i: number) => (
-          <div key={lecture.id} id={lecture.id}>
-            <h1>
+          <div key={lecture.id} id={lecture.id} className="border m-4 p-4">
+            <h1 className="font-light text-md">
               Lecture {i + 1}: {lecture.title}
             </h1>
           </div>
@@ -89,11 +102,13 @@ const Curriculum: React.FC = () => {
       title: newSectionInput.value,
     };
 
-    if (!newSectionInput.isValid) {
+    if (newSectionInput.isValid && newSectionInput.value !== "") {
       setsections((prevState: any) => ({
         ...prevState,
         sectionsContainer: [...prevState.sectionsContainer, newSection],
       }));
+      setisSectionAdding(false);
+      newSectionInput.emptyInput();
     }
   }
 
@@ -108,28 +123,37 @@ const Curriculum: React.FC = () => {
         </p>
       </div>
       <div>
-        <Button
-          type="button"
-          styleType="initial"
-          onClick={() => setisSectionAdding(!isSectionAdding)}
-        >
-          Add Section
-        </Button>
+        <div className="w-40">
+          <Button
+            type="button"
+            styleType="initial"
+            additionalStyles="bg-gray-700"
+            onClick={() => setisSectionAdding(!isSectionAdding)}
+          >
+            Add Section
+          </Button>
+        </div>
         {isSectionAdding && (
-          <div className="bg-red-200">
-            <h2>New Section</h2>
+          <div className="border border-gray-700 rounded-md shadow-sm p-4 m-4">
+            <h2 className="font-bold text-2xl my-2 text-purple-600">
+              New Section
+            </h2>
             <Input
               type={InputType.Input}
               label="Enter Section name"
               placeholder="Introduction..."
               onChange={newSectionInput.onChangeHandler}
               onBlur={newSectionInput.onBlurHandler}
-              value={newSectionInput.value}
               helperText="Please enter valid input"
-              error={!newSectionInput.isValid || newSectionInput.isTouched}
+              error={!newSectionInput.isValid && newSectionInput.isTouched}
               id={"section_name"}
             />
-            <Button styleType="initial" type={"button"} onClick={createSection}>
+            <Button
+              additionalStyles="mt-4"
+              styleType="initial"
+              type={"button"}
+              onClick={createSection}
+            >
               Add section
             </Button>
           </div>
