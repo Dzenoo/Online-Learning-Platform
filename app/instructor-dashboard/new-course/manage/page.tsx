@@ -1,4 +1,5 @@
 "use client";
+import NewCourseSidebar from "@/components/instructor/create/course-creation/NewCourseSidebar";
 import { InstructorContext } from "@/context/InstructorContext";
 import React, { useContext, useEffect } from "react";
 
@@ -10,12 +11,10 @@ const Manage = () => {
   }, []);
 
   return (
-    <div>
-      {newCourseValues.type}
-      {newCourseValues.title}
-      {newCourseValues.category}
-      {newCourseValues.language}
-    </div>
+    <section className="p-20 flex justify-center items-stretch gap-4">
+      <NewCourseSidebar />
+      <div className="border basis-1/2">CARD</div>
+    </section>
   );
 };
 

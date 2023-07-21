@@ -1,0 +1,37 @@
+import Button from "@/components/shared/form/Button";
+import React from "react";
+
+const NewCourseSidebar = () => {
+  return (
+    <nav className="p-2 basis-1/6 flex flex-col gap-6">
+      <div className="flex flex-col justify-start items-start gap-4">
+        <h1 className="font-bold text-xl mb-2">Create Your Course</h1>
+        <button className={`font-light text-md text-gray-700`}>
+          Requirements
+        </button>
+        <button className={`font-light text-md text-gray-700`}>
+          Curriculum
+        </button>
+        <button className={`font-light text-md text-gray-700`}>Captions</button>
+      </div>
+      <div className="flex flex-col justify-start items-start gap-4">
+        <h1 className="font-bold text-xl mb-2">Publish Your Course</h1>
+        <button className={`font-light text-md text-gray-700`}>
+          Basic Info
+        </button>
+        <button className={`font-light text-md text-gray-700`}>
+          Set Price
+        </button>
+        <button className={`font-light text-md text-gray-700`}>Coupons</button>
+        <button className={`font-light text-md text-gray-700`}>Messages</button>
+      </div>
+      <div>
+        <Button styleType="initial" type="button" additionalStyles="rounded-sm">
+          Submit Creation
+        </Button>
+      </div>
+    </nav>
+  );
+};
+
+export default NewCourseSidebar;
