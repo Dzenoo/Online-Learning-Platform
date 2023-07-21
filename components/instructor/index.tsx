@@ -9,6 +9,7 @@ import Curriculum from "./create/course-creation/components/Curriculum";
 import Coupons from "./create/course-creation/components/Coupons";
 import Captions from "./create/course-creation/components/Captions";
 import BasicInfo from "./create/course-creation/components/BasicInfo";
+import FilterCourses from "./courses/FilterCourses";
 
 export {
   InstructorNav,
@@ -22,4 +23,5 @@ export {
   Coupons,
   Captions,
   BasicInfo,
+  FilterCourses,
 };

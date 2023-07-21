@@ -1,5 +1,4 @@
-import { InstructorCoursesList } from "@/components/instructor";
-import FilterCourses from "@/components/instructor/courses/FilterCourses";
+import { FilterCourses, InstructorCoursesList } from "@/components/instructor";
 import { CoursesData } from "@/data/coursesdata.config";
 import React from "react";
 

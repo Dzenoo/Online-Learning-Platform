@@ -1,5 +1,5 @@
 "use client";
-import NewCourseSidebar from "@/components/instructor/create/course-creation/NewCourseSidebar";
+import { NewCourseSidebar } from "@/components/instructor";
 import { InstructorContext } from "@/context/InstructorContext";
 import React, { useContext, useEffect } from "react";
 
