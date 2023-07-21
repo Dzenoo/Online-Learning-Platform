@@ -2,7 +2,7 @@ import {
   CourseManagamentCreation,
   InstructorContextType,
 } from "@/types/InstructorContextTypes";
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 
 export const InstructorContext = createContext<InstructorContextType>({
   courseManage: CourseManagamentCreation.Requirements,
@@ -13,7 +13,7 @@ export const InstructorContext = createContext<InstructorContextType>({
     category: "",
     language: "",
     requirements: [],
-    forCourse: "",
+    forCourse: [],
   },
   setCourseManage: () => {},
   setCurrentStep: () => {},
@@ -29,20 +29,14 @@ export const InstructorProvider = ({
   const [courseCreationType, setcourseCreationType] = useState(
     CourseManagamentCreation.Requirements
   );
-  const [newCourseValues, setnewCourseValues] = useState(
-    JSON.parse(localStorage.getItem("new-value-course")!) || {
-      type: "",
-      title: "",
-      category: "",
-      language: "",
-      requirements: [],
-      forCourse: "",
-    }
-  );
-
-  useEffect(() => {
-    localStorage.setItem("new-value-course", JSON.stringify(newCourseValues));
-  }, [newCourseValues]);
+  const [newCourseValues, setnewCourseValues] = useState({
+    type: "",
+    title: "",
+    category: "",
+    language: "",
+    requirements: [],
+    forCourse: [],
+  });
 
   return (
     <InstructorContext.Provider

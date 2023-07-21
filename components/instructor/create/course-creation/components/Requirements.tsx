@@ -2,6 +2,7 @@ import Input from "@/components/shared/form/Input";
 import { useValidation } from "@/hooks/useValidation";
 import { InstructorContextTypes } from "@/types/InstructorContextTypes";
 import { InputType } from "@/types/form/InputTypes";
+import { removeRequirementHandler } from "@/utility/helpers";
 import { VALIDATOR_REQUIRE } from "@/utility/validators";
 import React from "react";
 
@@ -15,26 +16,7 @@ const Requirements = ({
   newCourseValues: InstructorContextTypes;
 }) => {
   const requirementInp = useValidation([VALIDATOR_REQUIRE()]);
-
-  function removeRequirementHandler(indexToRemove: number) {
-    setnewCourseValues((prevState) => {
-      const updatedRequirements = prevState.requirements.filter(
-        (_, index) => index !== indexToRemove
-      );
-
-      return {
-        ...prevState,
-        requirements: updatedRequirements,
-      };
-    });
-  }
-
-  function forCourseHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    setnewCourseValues((prevState) => ({
-      ...prevState,
-      forCourse: e.target.value,
-    }));
-  }
+  const forCourseInp = useValidation([VALIDATOR_REQUIRE()]);
 
   return (
     <div className="shadow-lg p-9">
@@ -62,6 +44,7 @@ const Requirements = ({
               />
             </div>
             <button
+              disabled={!requirementInp.isValid}
               className="bg-yellow-400 p-2 mt-7 rounded-sm cursor-pointer text-white"
               onClick={() =>
                 setnewCourseValues((prevState) => ({
@@ -85,7 +68,13 @@ const Requirements = ({
                 <h2 className="font-bold">{requirement}</h2>
                 <button
                   className="bg-red-600 px-4 py-2 rounded-sm cursor-pointer text-white"
-                  onClick={() => removeRequirementHandler(ind)}
+                  onClick={() =>
+                    removeRequirementHandler(
+                      ind,
+                      setnewCourseValues,
+                      "requirements"
+                    )
+                  }
                 >
                   X
                 </button>
@@ -93,17 +82,56 @@ const Requirements = ({
             ))}
           </div>
         </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="for_course">
-            <strong>This course is for</strong>
-          </label>
-          <input
-            type={InputType.Input}
-            onChange={forCourseHandler}
-            className="border p-4 rounded-md hover:border-black"
-            id="for_course"
-            placeholder="e.g. Web developers which want to learn js"
-          />
+        {/*  */}
+        <div>
+          <div className="flex justify-between items-center gap-4">
+            <div className="w-full">
+              <Input
+                type={InputType.Input}
+                value={forCourseInp.value}
+                onChange={forCourseInp.onChangeHandler}
+                onBlur={forCourseInp.onBlurHandler}
+                helperText="Please enter valid input"
+                id="course_for"
+                label="This course is for"
+                placeholder="e.g. Web developers"
+              />
+            </div>
+            <button
+              disabled={!forCourseInp.isValid}
+              className="bg-yellow-400 p-2 mt-7 rounded-sm cursor-pointer text-white"
+              onClick={() =>
+                setnewCourseValues((prevState) => ({
+                  ...prevState,
+                  forCourse: [...prevState.forCourse, forCourseInp.value],
+                }))
+              }
+            >
+              Add
+            </button>
+          </div>
+          <div>
+            {newCourseValues?.forCourse.map((requirement, ind) => (
+              <div
+                className="border mt-4 pl-2 flex justify-between items-center"
+                key={ind}
+              >
+                <h2 className="font-bold">{requirement}</h2>
+                <button
+                  className="bg-red-600 px-4 py-2 rounded-sm cursor-pointer text-white"
+                  onClick={() =>
+                    removeRequirementHandler(
+                      ind,
+                      setnewCourseValues,
+                      "forCourse"
+                    )
+                  }
+                >
+                  X
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
