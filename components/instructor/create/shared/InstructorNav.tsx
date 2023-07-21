@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../shared/form/Button";
+import Button from "../../../shared/form/Button";
 
 const InstructorNav: React.FC = () => {
   return (

@@ -1,4 +1,4 @@
-import InstructorNav from "./InstructorNav";
+import InstructorNav from "./create/shared/InstructorNav";
 import InstructorCoursesList from "./courses/InstructorCoursesList";
 import NewCourseForm from "./create/course-creation/NewCourseForm";
 import NewCourseSidebar from "./create/course-creation/NewCourseSidebar";
