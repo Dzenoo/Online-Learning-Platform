@@ -1,6 +1,6 @@
 import React from "react";
 
-const Curriculum = () => {
+const Curriculum: React.FC = () => {
   return (
     <div className="shadow-lg p-9">
       <div className="flex flex-col gap-2 mb-6">

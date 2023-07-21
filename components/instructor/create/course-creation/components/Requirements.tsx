@@ -6,14 +6,14 @@ import { removeRequirementHandler } from "@/utility/helpers";
 import { VALIDATOR_REQUIRE } from "@/utility/validators";
 import React from "react";
 
-const Requirements = ({
+interface RequirementsTypes {
+  newCourseValues: InstructorContextTypes;
+  setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
+}
+
+const Requirements: React.FC<RequirementsTypes> = ({
   setnewCourseValues,
   newCourseValues,
-}: {
-  setnewCourseValues: React.Dispatch<
-    React.SetStateAction<InstructorContextTypes>
-  >;
-  newCourseValues: InstructorContextTypes;
 }) => {
   const requirementInp = useValidation([VALIDATOR_REQUIRE()]);
   const forCourseInp = useValidation([VALIDATOR_REQUIRE()]);
@@ -47,7 +47,7 @@ const Requirements = ({
               disabled={!requirementInp.isValid}
               className="bg-yellow-400 p-2 mt-7 rounded-sm cursor-pointer text-white"
               onClick={() =>
-                setnewCourseValues((prevState) => ({
+                setnewCourseValues((prevState: any) => ({
                   ...prevState,
                   requirements: [
                     ...prevState.requirements,
@@ -101,7 +101,7 @@ const Requirements = ({
               disabled={!forCourseInp.isValid}
               className="bg-yellow-400 p-2 mt-7 rounded-sm cursor-pointer text-white"
               onClick={() =>
-                setnewCourseValues((prevState) => ({
+                setnewCourseValues((prevState: any) => ({
                   ...prevState,
                   forCourse: [...prevState.forCourse, forCourseInp.value],
                 }))

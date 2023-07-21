@@ -1,6 +1,6 @@
 import React from "react";
 
-const BasicInfo = () => {
+const BasicInfo: React.FC = () => {
   return <div>BasicInfo</div>;
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Coupons = () => {
+const Coupons: React.FC = () => {
   return <div>Coupons</div>;
 };
 

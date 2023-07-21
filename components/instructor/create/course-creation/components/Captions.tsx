@@ -1,6 +1,6 @@
 import React from "react";
 
-const Captions = () => {
+const Captions: React.FC = () => {
   return <div>Captions</div>;
 };
 

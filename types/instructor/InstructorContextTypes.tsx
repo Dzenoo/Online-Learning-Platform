@@ -6,7 +6,6 @@ export interface InstructorContextTypes {
   requirements: string[];
   forCourse: string[];
 }
-
 export enum CourseManagamentCreation {
   Requirements = "requirements",
   Curriculum = "curriculum",
