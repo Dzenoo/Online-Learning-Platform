@@ -19,7 +19,6 @@ export const InstructorContext = createContext<InstructorContextType>({
   setCurrentStep: () => {},
   setnewCourseValues: () => {},
 });
-
 export const InstructorProvider = ({
   children,
 }: {

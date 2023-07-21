@@ -46,15 +46,16 @@ const Requirements: React.FC<RequirementsTypes> = ({
             <button
               disabled={!requirementInp.isValid}
               className="bg-yellow-400 p-2 mt-7 rounded-sm cursor-pointer text-white"
-              onClick={() =>
+              onClick={() => {
                 setnewCourseValues((prevState: any) => ({
                   ...prevState,
                   requirements: [
                     ...prevState.requirements,
                     requirementInp.value,
                   ],
-                }))
-              }
+                }));
+                requirementInp.emptyInput();
+              }}
             >
               Add
             </button>
@@ -100,12 +101,13 @@ const Requirements: React.FC<RequirementsTypes> = ({
             <button
               disabled={!forCourseInp.isValid}
               className="bg-yellow-400 p-2 mt-7 rounded-sm cursor-pointer text-white"
-              onClick={() =>
+              onClick={() => {
                 setnewCourseValues((prevState: any) => ({
                   ...prevState,
                   forCourse: [...prevState.forCourse, forCourseInp.value],
-                }))
-              }
+                }));
+                forCourseInp.emptyInput();
+              }}
             >
               Add
             </button>
