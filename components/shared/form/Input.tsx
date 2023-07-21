@@ -38,7 +38,7 @@ const Input: React.FC<InputProps> = ({
     );
   } else {
     return (
-      <div className="flex gap-2 flex-col p-2">
+      <div className="flex gap-2 flex-col">
         <label htmlFor={id} className={`font-bold ${error && "text-red-600"}`}>
           {label}
         </label>

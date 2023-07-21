@@ -14,19 +14,29 @@ import { CourseManagamentCreation } from "@/types/InstructorContextTypes";
 import React, { useContext, useEffect } from "react";
 
 const Manage = () => {
-  const { newCourseValues, setCurrentStep, setCourseManage, courseManage } =
-    useContext(InstructorContext);
+  const {
+    newCourseValues,
+    setCurrentStep,
+    setCourseManage,
+    courseManage,
+    setnewCourseValues,
+  } = useContext(InstructorContext);
 
   useEffect(() => {
     setCurrentStep(0);
   }, []);
 
+  console.log(newCourseValues);
+
   return (
-    <section className="p-20 flex justify-center items-stretch gap-4">
+    <section className="p-20 flex justify-center items-stretch gap-12">
       <NewCourseSidebar setCourseManage={setCourseManage} />
       <div className="basis-1/2">
         {courseManage === CourseManagamentCreation.Requirements && (
-          <Requirements />
+          <Requirements
+            setnewCourseValues={setnewCourseValues}
+            newCourseValues={newCourseValues}
+          />
         )}
         {courseManage === CourseManagamentCreation.Curriculum && <Curriculum />}
         {courseManage === CourseManagamentCreation.Captions && <Captions />}

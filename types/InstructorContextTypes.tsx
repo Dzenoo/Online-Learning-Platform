@@ -3,6 +3,8 @@ export interface InstructorContextTypes {
   title: string;
   category: string;
   language: string;
+  requirements: string[];
+  forCourse: string;
 }
 
 export enum CourseManagamentCreation {

@@ -16,7 +16,6 @@ export interface CourseCardLandingProps {
   lectures?: number;
   sections?: number;
 }
-
 export interface CourseListProps {
   courses: CourseCardLandingProps[];
 }
