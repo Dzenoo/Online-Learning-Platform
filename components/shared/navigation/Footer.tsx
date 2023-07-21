@@ -1,5 +1,5 @@
 import { FooterData } from "@/data/footerdata.config";
-import { FooterProps } from "@/types/FooterTypes";
+import { FooterProps } from "@/types/form/FooterTypes";
 import Image from "next/image";
 import React from "react";
 

@@ -5,7 +5,7 @@ import {
   InstructorDetails,
 } from "@/components/courses";
 import { CoursesData } from "@/data/coursesdata.config";
-import { CourseCardLandingProps } from "@/types/CourseCardTypes";
+import { CourseCardLandingProps } from "@/types/courses/CourseCardTypes";
 import Link from "next/link";
 import React from "react";
 

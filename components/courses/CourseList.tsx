@@ -1,7 +1,7 @@
 import {
   CourseCardLandingProps,
   CourseListProps,
-} from "@/types/CourseCardTypes";
+} from "@/types/courses/CourseCardTypes";
 import React from "react";
 import { CourseCard } from "../landing";
 

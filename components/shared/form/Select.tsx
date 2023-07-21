@@ -1,4 +1,4 @@
-import { FilterArray, FilterProps } from "@/types/FilterTypes";
+import { FilterArray, FilterProps } from "@/types/courses/FilterTypes";
 import React from "react";
 
 const Select: React.FC<FilterArray> = ({ options, onChange, value }) => {

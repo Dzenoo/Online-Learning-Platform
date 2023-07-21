@@ -1,6 +1,6 @@
 import Input from "@/components/shared/form/Input";
 import { useValidation } from "@/hooks/useValidation";
-import { InstructorContextTypes } from "@/types/InstructorContextTypes";
+import { InstructorContextTypes } from "@/types/instructor/InstructorContextTypes";
 import { InputType } from "@/types/form/InputTypes";
 import { removeRequirementHandler } from "@/utility/helpers";
 import { VALIDATOR_REQUIRE } from "@/utility/validators";

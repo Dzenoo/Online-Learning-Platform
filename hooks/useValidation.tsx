@@ -5,7 +5,7 @@ import {
   ActionTypes,
   ValidatorState,
   ValidatorTypes,
-} from "@/types/ValidatorHookTypes";
+} from "@/types/validation/ValidatorHookTypes";
 import { validate } from "@/utility/validators";
 import React, { useReducer } from "react";
 

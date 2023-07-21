@@ -1,7 +1,7 @@
 import {
   CourseManagamentCreation,
   InstructorContextType,
-} from "@/types/InstructorContextTypes";
+} from "@/types/instructor/InstructorContextTypes";
 import React, { createContext, useState } from "react";
 
 export const InstructorContext = createContext<InstructorContextType>({
