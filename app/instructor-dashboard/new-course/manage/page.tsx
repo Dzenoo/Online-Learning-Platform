@@ -43,7 +43,7 @@ const Manage = () => {
           newCourseValues.forCourse.length > 0
         }
       />
-      <div className="basis-1/2">
+      <div className="basis-1/2 flex-grow">
         {courseManage === CourseManagamentCreation.Requirements && (
           <Requirements
             setnewCourseValues={setnewCourseValues}
