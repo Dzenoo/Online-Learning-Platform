@@ -1,6 +1,6 @@
 import Input from "@/components/shared/form/Input";
 import Select from "@/components/shared/form/Select";
-import { languageCaptions, skillLevelFilters } from "@/data/filterdata.config";
+import { skillLevelFilters } from "@/data/filterdata.config";
 import { InputType } from "@/types/form/InputTypes";
 import { InstructorContextTypes } from "@/types/instructor/InstructorContextTypes";
 import Image from "next/image";
@@ -16,9 +16,14 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
   setnewCourseValues,
 }) => {
   function imageCourseHandler(e: ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
+    const file = e.target.files![0];
 
     if (file) {
+      if (!file.type.startsWith("image/")) {
+        console.log("Please upload image");
+        return;
+      }
+
       const reader = new FileReader();
       reader.onload = () => {
         const imageUrl = reader.result as string;
@@ -113,9 +118,13 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
           <strong>Image</strong>
           <div className="flex items-center gap-4">
             <Image
-              src={newCourseValues.image}
-              width={400}
-              height={400}
+              src={
+                newCourseValues.image
+                  ? newCourseValues.image
+                  : "/assets/graphics/initial.png"
+              }
+              width={200}
+              height={200}
               alt="initial"
               className="border p-2"
             />
