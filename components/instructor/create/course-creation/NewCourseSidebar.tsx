@@ -52,12 +52,6 @@ const NewCourseSidebar: React.FC<NewCourseSidebarProps> = ({
         >
           Coupons
         </button>
-        <button
-          className={`font-light text-md text-gray-700`}
-          onClick={() => setCourseManage(CourseManagamentCreation.Messages)}
-        >
-          Messages
-        </button>
       </div>
       <div>
         <Button styleType="initial" type="button" additionalStyles="rounded-sm">

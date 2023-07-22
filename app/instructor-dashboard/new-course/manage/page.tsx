@@ -4,7 +4,6 @@ import {
   Captions,
   Coupons,
   Curriculum,
-  Messages,
   NewCourseSidebar,
   Pricing,
   Requirements,
@@ -64,7 +63,6 @@ const Manage = () => {
           <Pricing setnewCourseValues={setnewCourseValues} />
         )}
         {courseManage === CourseManagamentCreation.Coupons && <Coupons />}
-        {courseManage === CourseManagamentCreation.Messages && <Messages />}
       </div>
       {/* {!isCourseCreated && (
         <NewCourseSidebar setCourseManage={setCourseManage} />
