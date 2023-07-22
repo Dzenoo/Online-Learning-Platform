@@ -23,4 +23,5 @@ export interface InputProps {
   onBlur?: () => void;
   id: string;
   extraType?: ExtraType.Password | ExtraType.Number;
+  defaultValue?: string;
 }

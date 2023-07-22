@@ -15,6 +15,11 @@ export const InstructorContext = createContext<InstructorContextType>({
     requirements: [],
     forCourse: [],
     captions: "",
+    subtitle: "",
+    description: "",
+    image: "",
+    level: "",
+    price: 0,
   },
   setCourseManage: () => {},
   setCurrentStep: () => {},
@@ -37,6 +42,11 @@ export const InstructorProvider = ({
     requirements: [],
     forCourse: [],
     captions: "",
+    subtitle: "",
+    description: "",
+    image: "",
+    level: "",
+    price: 0,
   });
 
   return (

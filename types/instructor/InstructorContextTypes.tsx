@@ -6,6 +6,11 @@ export interface InstructorContextTypes {
   requirements: string[];
   forCourse: string[];
   captions: string;
+  subtitle: string;
+  description: string;
+  image: string;
+  level: string;
+  price: number;
 }
 export enum CourseManagamentCreation {
   Requirements = "requirements",
