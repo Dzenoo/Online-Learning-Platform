@@ -4,22 +4,21 @@ import Button from "@/components/shared/form/Button";
 import Input from "@/components/shared/form/Input";
 import { useValidation } from "@/hooks/useValidation";
 import { InputType } from "@/types/form/InputTypes";
+import {
+  InstructorContextTypes,
+  LectureProps,
+  SectionProps,
+} from "@/types/instructor/InstructorContextTypes";
 import { VALIDATOR_REQUIRE } from "@/utility/validators";
 import React, { useState } from "react";
 
-type SectionProps = {
-  title: string;
-  id: string;
-  index: number;
-};
-
-type LectureProps = {
-  id: string;
-  title: string;
-};
-
-const Section: React.FC<SectionProps> = ({ title, id, index }) => {
-  const [lectures, setLectures] = useState<any>([]);
+const Section: React.FC<SectionProps> = ({
+  title,
+  id,
+  index,
+  lectures,
+  setnewCourseValues,
+}) => {
   const [isItemCreating, setIsItemCreating] = useState<boolean | null>(false);
   const newLectureInput = useValidation([VALIDATOR_REQUIRE()]);
 
@@ -30,7 +29,23 @@ const Section: React.FC<SectionProps> = ({ title, id, index }) => {
     };
 
     if (newLectureInput.isValid && newLectureInput.value !== "") {
-      setLectures((prevState: {}[]) => [...prevState, newLecture]);
+      setnewCourseValues((prevState: any) => {
+        const updatedSections = prevState.sections.map(
+          (section: SectionProps) => {
+            if (section.id === id) {
+              return {
+                ...section,
+                lectures: [...section.lectures!, newLecture],
+              };
+            }
+            return section;
+          }
+        );
+        return {
+          ...prevState,
+          sections: updatedSections,
+        };
+      });
       setIsItemCreating(false);
       newLectureInput.emptyInput();
     }
@@ -42,7 +57,7 @@ const Section: React.FC<SectionProps> = ({ title, id, index }) => {
         <h1 className="font-bold text-2xl">
           Section {index}: {title}
         </h1>
-        <p>{lectures.length} lectures</p>
+        <p>{lectures!.length} lectures</p>
         <div className="w-60">
           <Button
             additionalStyles="bg-gray-700"
@@ -89,10 +104,15 @@ const Section: React.FC<SectionProps> = ({ title, id, index }) => {
   );
 };
 
-const Curriculum: React.FC = () => {
-  const [sections, setsections] = useState<{ sectionsContainer: [] }>({
-    sectionsContainer: [],
-  });
+interface CurriculumTypes {
+  newCourseValues: InstructorContextTypes;
+  setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
+}
+
+const Curriculum: React.FC<CurriculumTypes> = ({
+  setnewCourseValues,
+  newCourseValues,
+}) => {
   const [isSectionAdding, setisSectionAdding] = useState<boolean | null>(false);
   const newSectionInput = useValidation([VALIDATOR_REQUIRE()]);
 
@@ -100,12 +120,13 @@ const Curriculum: React.FC = () => {
     const newSection = {
       id: Math.random(),
       title: newSectionInput.value,
+      lectures: [],
     };
 
     if (newSectionInput.isValid && newSectionInput.value !== "") {
-      setsections((prevState: any) => ({
+      setnewCourseValues((prevState: any) => ({
         ...prevState,
-        sectionsContainer: [...prevState.sectionsContainer, newSection],
+        sections: [...prevState.sections, newSection],
       }));
       setisSectionAdding(false);
       newSectionInput.emptyInput();
@@ -160,12 +181,14 @@ const Curriculum: React.FC = () => {
         )}
       </div>
       <div>
-        {sections?.sectionsContainer.map((section: SectionProps, i: number) => (
+        {newCourseValues?.sections?.map((section: SectionProps, i: number) => (
           <Section
             id={section.id}
             title={section.title}
+            lectures={section.lectures}
             key={section.id}
             index={i + 1}
+            setnewCourseValues={setnewCourseValues}
           />
         ))}
       </div>

@@ -10,6 +10,20 @@ export interface CouponTypes {
   id?: string;
 }
 
+export interface LectureProps {
+  id: string;
+  title: string;
+}
+
+export interface SectionProps {
+  title: string;
+  id: string;
+  index: number;
+  lectures?: LectureProps[];
+  setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
+  newCourseValues?: InstructorContextTypes;
+}
+
 export interface InstructorContextTypes {
   type: string;
   title: string;
@@ -23,6 +37,7 @@ export interface InstructorContextTypes {
   image: string;
   level: string;
   price: number;
+  sections: SectionProps[];
   coupon: CouponTypes;
 }
 export enum CourseManagamentCreation {

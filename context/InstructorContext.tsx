@@ -2,6 +2,7 @@ import {
   CouponEnum,
   CourseManagamentCreation,
   InstructorContextType,
+  SectionProps,
 } from "@/types/instructor/InstructorContextTypes";
 import React, { createContext, useState } from "react";
 
@@ -27,6 +28,7 @@ export const InstructorContext = createContext<InstructorContextType>({
       expiration: "",
       id: "",
     },
+    sections: [],
   },
   setCourseManage: () => {},
   setCurrentStep: () => {},
@@ -54,15 +56,13 @@ export const InstructorProvider = ({
     image: "",
     level: "",
     price: 0,
-    sections: {
-      sectionsContainer: [],
-    },
     coupon: {
       discountType: CouponEnum.FixedCoupon,
       value: "",
       expiration: "",
       id: "",
     },
+    sections: [],
   });
 
   return (

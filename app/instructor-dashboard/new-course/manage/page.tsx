@@ -59,7 +59,12 @@ const Manage = () => {
             newCourseValues={newCourseValues}
           />
         )}
-        {courseManage === CourseManagamentCreation.Curriculum && <Curriculum />}
+        {courseManage === CourseManagamentCreation.Curriculum && (
+          <Curriculum
+            newCourseValues={newCourseValues}
+            setnewCourseValues={setnewCourseValues}
+          />
+        )}
         {courseManage === CourseManagamentCreation.Captions && (
           <Captions setnewCourseValues={setnewCourseValues} />
         )}
