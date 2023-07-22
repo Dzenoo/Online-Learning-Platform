@@ -13,7 +13,7 @@ const BasicInfo: React.FC<NewCoursesState> = ({
   newCourseValues,
   setnewCourseValues,
 }) => {
-  function imageCourseHandler(e: ChangeEvent<HTMLInputElement>) {
+  function imageCourseHandler(e: ChangeEvent<HTMLInputElement>): void {
     const file = e.target.files![0];
 
     if (file) {

@@ -4,6 +4,7 @@ import Select from "@/components/shared/form/Select";
 import { couponData } from "@/data/filterdata.config";
 import {
   CouponEnum,
+  CouponTypes,
   NewCourseValuesTypes,
   NewCoursesState,
 } from "@/types/instructor/InstructorContextTypes";
@@ -11,7 +12,7 @@ import React, { ChangeEvent, useState } from "react";
 
 const Coupons: React.FC<NewCoursesState> = ({ setnewCourseValues }) => {
   const [isCouponCreating, setisCouponCreating] = useState(false);
-  const [coupon, setCoupon] = useState({
+  const [coupon, setCoupon] = useState<CouponTypes>({
     discountType: CouponEnum.FixedCoupon,
     value: "",
     expiration: "",
@@ -21,15 +22,17 @@ const Coupons: React.FC<NewCoursesState> = ({ setnewCourseValues }) => {
   const isTypeFix = coupon.discountType === CouponEnum.FixedCoupon;
   const isButtonDisabled = coupon.value === "" || coupon.expiration === "";
 
-  function changeHandler(e: ChangeEvent<HTMLInputElement & HTMLSelectElement>) {
+  function changeHandler(
+    e: ChangeEvent<HTMLInputElement & HTMLSelectElement>
+  ): void {
     const { id, value } = e.target;
-    setCoupon((prevState: any) => ({
+    setCoupon((prevState: CouponTypes) => ({
       ...prevState,
       [id]: value,
     }));
   }
 
-  function createCoupon() {
+  function createCoupon(): void {
     if (coupon.value !== "" || coupon.expiration !== "") {
       setnewCourseValues((prevVal: NewCourseValuesTypes) => ({
         ...prevVal,

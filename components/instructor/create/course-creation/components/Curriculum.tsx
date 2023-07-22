@@ -5,7 +5,6 @@ import Input from "@/components/shared/form/Input";
 import { useValidation } from "@/hooks/useValidation";
 import { InputType } from "@/types/form/InputTypes";
 import {
-  NewCourseValuesTypes,
   LectureProps,
   SectionProps,
   NewCoursesState,

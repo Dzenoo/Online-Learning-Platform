@@ -1,19 +1,19 @@
 import React from "react";
 import Card from "./ui/Card";
-import { CourseCardLandingProps } from "@/types/courses/CourseInfoTypes";
+import { CourseCardProps } from "@/types/courses/CourseInfoTypes";
 import Image from "next/image";
 import Button from "./form/Button";
 import Link from "next/link";
 import { convertToDiscountPrice } from "@/utility/helpers";
 
-const CourseCard: React.FC<CourseCardLandingProps> = ({
+const CourseCard: React.FC<CourseCardProps> = ({
   id,
   title,
   price,
   image,
   instructor,
 }) => {
-  const discountedPrice = convertToDiscountPrice(price, 0.7);
+  const discountedPrice = convertToDiscountPrice(price, 0.7) as number;
 
   return (
     <Card styles="max-w-sm flex flex-col gap-4 hover:shadow-xl transition">

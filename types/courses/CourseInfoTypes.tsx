@@ -1,4 +1,4 @@
-export interface CourseCard {
+export interface CourseCardProps {
   id: string;
   title: string;
   image: string;
@@ -18,9 +18,9 @@ export interface CourseCard {
 }
 
 export interface CourseListProps {
-  courses: CourseCard[];
+  courses: CourseCardProps[];
 }
 
 export interface CourseDetailsProps {
-  course: CourseCard;
+  course: CourseCardProps;
 }

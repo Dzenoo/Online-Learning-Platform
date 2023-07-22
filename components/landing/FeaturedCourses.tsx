@@ -1,10 +1,8 @@
-import Image from "next/image";
 import React from "react";
 import Button from "../shared/form/Button";
-import Card from "../shared/ui/Card";
-import { CoursesData } from "@/data/coursesdata.config";
 import CourseCard from "../shared/CourseCard";
-import { CourseCardLandingProps } from "@/types/courses/CourseInfoTypes";
+import { CoursesData } from "@/data/coursesdata.config";
+import { CourseCardProps } from "@/types/courses/CourseInfoTypes";
 
 const FeaturedCourses: React.FC = () => {
   return (
@@ -32,7 +30,7 @@ const FeaturedCourses: React.FC = () => {
         </div>
       </div>
       <div className="flex justify-center items-center gap-4 p-6 flex-wrap">
-        {CoursesData.map((course: CourseCardLandingProps) => (
+        {CoursesData.map((course: CourseCardProps) => (
           <CourseCard
             id={course.id}
             title={course.title}

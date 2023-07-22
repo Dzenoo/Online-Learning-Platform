@@ -5,6 +5,7 @@ import Select from "@/components/shared/form/Select";
 import { InstructorContext } from "@/context/InstructorContext";
 import { categoryFilters, languageFilters } from "@/data/filterdata.config";
 import { InputType } from "@/types/form/InputTypes";
+import { NewCourseValuesTypes } from "@/types/instructor/InstructorContextTypes";
 import { createGraphicIcon } from "@/utility/helpers";
 import React, { ChangeEvent, useContext } from "react";
 
@@ -23,7 +24,7 @@ const NewCourseForm: React.FC = () => {
             <button
               type="button"
               onClick={() =>
-                setnewCourseValues((prevValues) => ({
+                setnewCourseValues((prevValues: NewCourseValuesTypes) => ({
                   ...prevValues,
                   type: "course",
                 }))
@@ -41,7 +42,7 @@ const NewCourseForm: React.FC = () => {
             <button
               type="button"
               onClick={() =>
-                setnewCourseValues((prevValues) => ({
+                setnewCourseValues((prevValues: NewCourseValuesTypes) => ({
                   ...prevValues,
                   type: "test",
                 }))
@@ -82,7 +83,7 @@ const NewCourseForm: React.FC = () => {
               id="title"
               value={newCourseValues.title}
               onChange={(e) =>
-                setnewCourseValues((prevValues) => ({
+                setnewCourseValues((prevValues: NewCourseValuesTypes) => ({
                   ...prevValues,
                   title: e.target.value,
                 }))
@@ -109,10 +110,11 @@ const NewCourseForm: React.FC = () => {
           </h2>
           <div className="w-[40rem]">
             <Select
+              id="category"
               options={categoryFilters}
               value={newCourseValues.category}
               onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-                setnewCourseValues((prevValues) => ({
+                setnewCourseValues((prevValues: NewCourseValuesTypes) => ({
                   ...prevValues,
                   category: e.target.value,
                 }))
@@ -139,10 +141,11 @@ const NewCourseForm: React.FC = () => {
           </h2>
           <div className="w-[40rem]">
             <Select
+              id="language"
               options={languageFilters}
               value={newCourseValues.language}
               onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-                setnewCourseValues((prevValues) => ({
+                setnewCourseValues((prevValues: NewCourseValuesTypes) => ({
                   ...prevValues,
                   language: e.target.value,
                 }))

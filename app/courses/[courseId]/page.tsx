@@ -5,7 +5,7 @@ import {
   InstructorDetails,
 } from "@/components/courses";
 import { CoursesData } from "@/data/coursesdata.config";
-import { CourseCardLandingProps } from "@/types/courses/CourseInfoTypes";
+import { CourseCardProps } from "@/types/courses/CourseInfoTypes";
 import Link from "next/link";
 import React from "react";
 
@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 const CourseDetails = ({ params }: { params: { courseId: string } }) => {
   const course = CoursesData.find(
     (course) => course.id === params.courseId
-  ) as CourseCardLandingProps;
+  ) as CourseCardProps;
 
   return (
     <section className="p-7 flex flex-col gap-6 justify-center items-stretch">
