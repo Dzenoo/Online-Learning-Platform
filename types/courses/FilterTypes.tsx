@@ -7,4 +7,5 @@ export interface FilterArray {
   options: FilterProps[];
   onChange: any;
   value?: string;
+  id: string;
 }

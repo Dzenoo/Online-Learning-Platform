@@ -1,3 +1,15 @@
+export enum CouponEnum {
+  PercentageCoupon = "perc",
+  FixedCoupon = "fix",
+}
+
+export interface CouponTypes {
+  discountType?: CouponEnum;
+  value?: string;
+  expiration?: Date | string;
+  id?: string;
+}
+
 export interface InstructorContextTypes {
   type: string;
   title: string;
@@ -11,6 +23,7 @@ export interface InstructorContextTypes {
   image: string;
   level: string;
   price: number;
+  coupon: CouponTypes;
 }
 export enum CourseManagamentCreation {
   Requirements = "requirements",

@@ -1,4 +1,5 @@
 import {
+  CouponEnum,
   CourseManagamentCreation,
   InstructorContextType,
 } from "@/types/instructor/InstructorContextTypes";
@@ -20,6 +21,12 @@ export const InstructorContext = createContext<InstructorContextType>({
     image: "",
     level: "",
     price: 0,
+    coupon: {
+      discountType: CouponEnum.FixedCoupon,
+      value: "",
+      expiration: "",
+      id: "",
+    },
   },
   setCourseManage: () => {},
   setCurrentStep: () => {},
@@ -47,6 +54,12 @@ export const InstructorProvider = ({
     image: "",
     level: "",
     price: 0,
+    coupon: {
+      discountType: CouponEnum.FixedCoupon,
+      value: "",
+      expiration: "",
+      id: "",
+    },
   });
 
   return (

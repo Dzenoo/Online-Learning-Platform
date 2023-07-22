@@ -6,6 +6,7 @@ export enum InputType {
 export enum ExtraType {
   Password = "password",
   Number = "number",
+  Date = "date",
 }
 
 export interface InputProps {
@@ -22,6 +23,6 @@ export interface InputProps {
   ) => void;
   onBlur?: () => void;
   id: string;
-  extraType?: ExtraType.Password | ExtraType.Number;
+  extraType?: ExtraType.Password | ExtraType.Number | ExtraType.Date;
   defaultValue?: string;
 }
