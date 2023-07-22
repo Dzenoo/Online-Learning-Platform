@@ -2,6 +2,7 @@
 
 import Input from "@/components/shared/form/Input";
 import { useValidation } from "@/hooks/useValidation";
+import { InputType } from "@/types/form/InputTypes";
 import { VALIDATOR_REQUIRE } from "@/utility/validators";
 import React from "react";
 
@@ -11,7 +12,7 @@ const CoursesInput: React.FC = () => {
   return (
     <div>
       <Input
-        type="input"
+        type={InputType.Input}
         error={false}
         helperText={"Enter Valid Search Text"}
         label={"Search Courses"}

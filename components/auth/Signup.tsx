@@ -11,6 +11,7 @@ import {
 } from "@/utility/validators";
 import Link from "next/link";
 import { SignupType, SubmitProps } from "@/types/auth/SignupTypes";
+import { ExtraType, InputType } from "@/types/form/InputTypes";
 
 const Signup: React.FC<SubmitProps> = ({ register }) => {
   const [isType, setisType] = useState(SignupType.Instructor);
@@ -36,11 +37,11 @@ const Signup: React.FC<SubmitProps> = ({ register }) => {
     formIsValid = true;
   }
 
-  function chooseType(type: SignupType.Instructor | SignupType.Student) {
+  function chooseType(type: SignupType.Instructor | SignupType.Student): void {
     setisType(type);
   }
 
-  function submitRegister(e: React.FormEvent) {
+  function submitRegister(e: React.FormEvent): void {
     e.preventDefault();
 
     const values = {
@@ -86,7 +87,7 @@ const Signup: React.FC<SubmitProps> = ({ register }) => {
       </div>
       <div>
         <Input
-          type="input"
+          type={InputType.Input}
           error={!first_name.isValid && first_name.isTouched}
           onChange={first_name.onChangeHandler}
           onBlur={first_name.onBlurHandler}
@@ -97,7 +98,7 @@ const Signup: React.FC<SubmitProps> = ({ register }) => {
           helperText="Please enter valid name"
         />
         <Input
-          type="input"
+          type={InputType.Input}
           error={!last_name.isValid && last_name.isTouched}
           onChange={last_name.onChangeHandler}
           onBlur={last_name.onBlurHandler}
@@ -108,7 +109,7 @@ const Signup: React.FC<SubmitProps> = ({ register }) => {
           helperText="Please enter valid last name"
         />
         <Input
-          type="input"
+          type={InputType.Input}
           error={!email.isValid && email.isTouched}
           onChange={email.onChangeHandler}
           onBlur={email.onBlurHandler}
@@ -119,7 +120,7 @@ const Signup: React.FC<SubmitProps> = ({ register }) => {
           helperText="Please enter valid email"
         />
         <Input
-          type="input"
+          type={InputType.Input}
           error={!password.isValid && password.isTouched}
           onChange={password.onChangeHandler}
           onBlur={password.onBlurHandler}
@@ -128,7 +129,7 @@ const Signup: React.FC<SubmitProps> = ({ register }) => {
           placeholder="****"
           label="Password"
           helperText="Please enter valid password"
-          extraType="password"
+          extraType={ExtraType.Password}
         />
         <Button type="submit" styleType="initial" disabled={!formIsValid}>
           Register

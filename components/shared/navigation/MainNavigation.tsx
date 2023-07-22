@@ -5,7 +5,7 @@ import Button from "../form/Button";
 import { createGraphicIcon } from "@/utility/helpers";
 
 const MainNavigation: React.FC = () => {
-  const isLoggedIn = true;
+  const isLoggedIn = true as boolean;
 
   return (
     <header className="p-4 shadow-md flex justify-between items-center sticky top-0 z-20 bg-white">

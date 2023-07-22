@@ -7,10 +7,10 @@ import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from "@/utility/validators";
 import { LoginProps, LoginType } from "@/types/auth/LoginTypes";
 import Input from "../shared/form/Input";
 import Button from "../shared/form/Button";
+import { ExtraType, InputType } from "@/types/form/InputTypes";
 
 const Login: React.FC<LoginProps> = ({ login }) => {
   const [isType, setisType] = useState(LoginType.Instructor);
-
   const email = useValidation([VALIDATOR_EMAIL()]);
   const password = useValidation([VALIDATOR_MINLENGTH(3)]);
 
@@ -19,11 +19,11 @@ const Login: React.FC<LoginProps> = ({ login }) => {
     formIsValid = true;
   }
 
-  function chooseType(type: LoginType.Instructor | LoginType.Student) {
+  function chooseType(type: LoginType.Instructor | LoginType.Student): void {
     setisType(type);
   }
 
-  function submitLogin(e: React.FormEvent) {
+  function submitLogin(e: React.FormEvent): void {
     e.preventDefault();
     const values = {
       email: email.value,
@@ -65,7 +65,7 @@ const Login: React.FC<LoginProps> = ({ login }) => {
       </div>
       <div>
         <Input
-          type="input"
+          type={InputType.Input}
           error={!email.isValid && email.isTouched}
           onChange={email.onChangeHandler}
           onBlur={email.onBlurHandler}
@@ -76,7 +76,7 @@ const Login: React.FC<LoginProps> = ({ login }) => {
           helperText="Please enter valid email"
         />
         <Input
-          type="input"
+          type={InputType.Input}
           error={!password.isValid && password.isTouched}
           onChange={password.onChangeHandler}
           onBlur={password.onBlurHandler}
@@ -85,7 +85,7 @@ const Login: React.FC<LoginProps> = ({ login }) => {
           placeholder="****"
           label="Password"
           helperText="Please enter valid password"
-          extraType="password"
+          extraType={ExtraType.Password}
         />
         <Button type="submit" styleType="initial" disabled={!formIsValid}>
           Login

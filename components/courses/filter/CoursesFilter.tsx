@@ -14,6 +14,7 @@ import Input from "@/components/shared/form/Input";
 import { useValidation } from "@/hooks/useValidation";
 import { VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH } from "@/utility/validators";
 import Image from "next/image";
+import { InputType } from "@/types/form/InputTypes";
 
 const CoursesFilter: React.FC = () => {
   const min = useValidation([VALIDATOR_MINLENGTH(3)]);
@@ -32,14 +33,14 @@ const CoursesFilter: React.FC = () => {
       </div>
       <div className="flex flex-col gap-4">
         <h1 className="font-bold text-xl">Category</h1>
-        <Select options={categoryFilters}></Select>
+        <Select id="category" options={categoryFilters} onChange={undefined} />
       </div>
       <div className="flex flex-col gap-4">
         <h1 className="font-bold text-xl">Price</h1>
         <div>
           <Input
             id="min_value"
-            type="input"
+            type={InputType.Input}
             placeholder="Min"
             label="Min"
             value={min.value}
@@ -53,25 +54,29 @@ const CoursesFilter: React.FC = () => {
             onChange={max.onChangeHandler}
             error={false}
             id="max_value"
-            type="input"
+            type={InputType.Input}
           />
         </div>
       </div>
       <div className="flex flex-col gap-4">
         <h1 className="font-bold text-xl">Skill Level</h1>
-        <Select options={skillLevelFilters}></Select>
+        <Select id="skill" options={skillLevelFilters} onChange={undefined} />
       </div>
       <div className="flex flex-col gap-4">
         <h1 className="font-bold text-xl">Language</h1>
-        <Select options={languageFilters}></Select>
+        <Select id="language" options={languageFilters} onChange={undefined} />
       </div>
       <div className="flex flex-col gap-4">
         <h1 className="font-bold text-xl">Duration</h1>
-        <Select options={durationFilters}></Select>
+        <Select id="duration" options={durationFilters} onChange={undefined} />
       </div>
       <div className="flex flex-col gap-4">
         <h1 className="font-bold text-xl">Popularity</h1>
-        <Select options={popularityFilters}></Select>
+        <Select
+          id="popularity"
+          options={popularityFilters}
+          onChange={undefined}
+        />
       </div>
     </div>
   );

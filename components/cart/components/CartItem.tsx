@@ -14,7 +14,7 @@ const CartItem: React.FC<CartItemProps> = ({
   language,
   price,
 }) => {
-  const discountedPrice = convertToDiscountPrice(price, 0.7);
+  const discountedPrice = convertToDiscountPrice(price, 0.7) as number;
 
   return (
     <div className="flex justify-between gap-2 shadow-md mt-2" id={id}>

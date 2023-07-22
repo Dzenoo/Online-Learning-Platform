@@ -16,7 +16,11 @@ const FilterCourses: React.FC = () => {
         />
       </div>
       <div className="pb-2">
-        <Select options={popularityFilters} />
+        <Select
+          options={popularityFilters}
+          onChange={undefined}
+          id={"popularity"}
+        />
       </div>
     </div>
   );
