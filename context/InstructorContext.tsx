@@ -14,6 +14,7 @@ export const InstructorContext = createContext<InstructorContextType>({
     language: "",
     requirements: [],
     forCourse: [],
+    captions: "",
   },
   setCourseManage: () => {},
   setCurrentStep: () => {},
@@ -35,6 +36,7 @@ export const InstructorProvider = ({
     language: "",
     requirements: [],
     forCourse: [],
+    captions: "",
   });
 
   return (

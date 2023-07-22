@@ -74,3 +74,27 @@ export const courseTypeFilters = [
   { label: "Self-Paced", value: "self-paced" },
   { label: "Instructor-Led", value: "instructor-led" },
 ];
+
+export const languageCaptions = [
+  { label: "English", value: "en" },
+  { label: "Spanish", value: "es" },
+  { label: "French", value: "fr" },
+  { label: "German", value: "de" },
+  { label: "Chinese", value: "zh" },
+  { label: "Arabic", value: "ar" },
+  { label: "Russian", value: "ru" },
+  { label: "Japanese", value: "ja" },
+  { label: "Italian", value: "it" },
+  { label: "Portuguese", value: "pt" },
+  { label: "Korean", value: "ko" },
+  { label: "Dutch", value: "nl" },
+  { label: "Hindi", value: "hi" },
+  { label: "Swedish", value: "sv" },
+  { label: "Greek", value: "el" },
+  { label: "Turkish", value: "tr" },
+  { label: "Polish", value: "pl" },
+  { label: "Hebrew", value: "he" },
+  { label: "Thai", value: "th" },
+  { label: "Danish", value: "da" },
+  // Add more languages as needed
+];

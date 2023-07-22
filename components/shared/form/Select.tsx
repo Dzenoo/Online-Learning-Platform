@@ -11,7 +11,7 @@ const Select: React.FC<FilterArray> = ({ options, onChange, value }) => {
       >
         {options.map((option: FilterProps) => (
           <option key={option.value} value={option.value}>
-            {option.value}
+            {option.label}
           </option>
         ))}
       </select>

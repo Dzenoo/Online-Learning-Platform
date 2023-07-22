@@ -5,6 +5,7 @@ export interface InstructorContextTypes {
   language: string;
   requirements: string[];
   forCourse: string[];
+  captions: string;
 }
 export enum CourseManagamentCreation {
   Requirements = "requirements",
