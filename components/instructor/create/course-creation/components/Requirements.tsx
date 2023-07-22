@@ -1,17 +1,15 @@
 import Input from "@/components/shared/form/Input";
 import { useValidation } from "@/hooks/useValidation";
-import { NewCourseValuesTypes } from "@/types/instructor/InstructorContextTypes";
+import {
+  NewCourseValuesTypes,
+  NewCoursesState,
+} from "@/types/instructor/InstructorContextTypes";
 import { InputType } from "@/types/form/InputTypes";
 import { removeRequirementHandler } from "@/utility/helpers";
 import { VALIDATOR_REQUIRE } from "@/utility/validators";
 import React from "react";
 
-interface RequirementsTypes {
-  newCourseValues: NewCourseValuesTypes;
-  setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
-}
-
-const Requirements: React.FC<RequirementsTypes> = ({
+const Requirements: React.FC<NewCoursesState> = ({
   setnewCourseValues,
   newCourseValues,
 }) => {

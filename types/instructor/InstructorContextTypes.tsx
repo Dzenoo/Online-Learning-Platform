@@ -68,3 +68,8 @@ export interface InstructorContextProviderType {
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
   setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
 }
+
+export interface NewCoursesState {
+  newCourseValues?: NewCourseValuesTypes;
+  setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
+}

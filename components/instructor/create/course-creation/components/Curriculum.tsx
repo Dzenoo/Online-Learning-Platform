@@ -8,6 +8,7 @@ import {
   NewCourseValuesTypes,
   LectureProps,
   SectionProps,
+  NewCoursesState,
 } from "@/types/instructor/InstructorContextTypes";
 import { VALIDATOR_REQUIRE } from "@/utility/validators";
 import React, { useState } from "react";
@@ -103,12 +104,8 @@ const Section: React.FC<SectionProps> = ({
     </div>
   );
 };
-interface CurriculumTypes {
-  newCourseValues: NewCourseValuesTypes;
-  setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
-}
 
-const Curriculum: React.FC<CurriculumTypes> = ({
+const Curriculum: React.FC<NewCoursesState> = ({
   setnewCourseValues,
   newCourseValues,
 }) => {

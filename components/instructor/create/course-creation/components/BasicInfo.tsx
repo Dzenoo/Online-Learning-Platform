@@ -2,16 +2,14 @@ import Input from "@/components/shared/form/Input";
 import Select from "@/components/shared/form/Select";
 import { skillLevelFilters } from "@/data/filterdata.config";
 import { InputType } from "@/types/form/InputTypes";
-import { NewCourseValuesTypes } from "@/types/instructor/InstructorContextTypes";
+import {
+  NewCourseValuesTypes,
+  NewCoursesState,
+} from "@/types/instructor/InstructorContextTypes";
 import Image from "next/image";
 import React, { ChangeEvent } from "react";
 
-type BasicInfoProps = {
-  newCourseValues: NewCourseValuesTypes;
-  setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
-};
-
-const BasicInfo: React.FC<BasicInfoProps> = ({
+const BasicInfo: React.FC<NewCoursesState> = ({
   newCourseValues,
   setnewCourseValues,
 }) => {
@@ -54,7 +52,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
             placeholder={"Learn JavaScript"}
             id={"title"}
             label="Title"
-            defaultValue={newCourseValues.title}
+            defaultValue={newCourseValues?.title}
             onChange={(e) =>
               setnewCourseValues((prevState: NewCourseValuesTypes) => ({
                 ...prevState,
@@ -98,7 +96,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
               className="w-full border py-4 rounded-md"
               type="text"
               disabled
-              defaultValue={newCourseValues.language}
+              defaultValue={newCourseValues?.language}
             />
           </div>
           <div>
@@ -120,8 +118,8 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
           <div className="flex items-center gap-4">
             <Image
               src={
-                newCourseValues.image
-                  ? newCourseValues.image
+                newCourseValues?.image
+                  ? newCourseValues?.image
                   : "/assets/graphics/initial.png"
               }
               width={200}

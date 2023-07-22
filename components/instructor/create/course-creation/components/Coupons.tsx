@@ -5,15 +5,11 @@ import { couponData } from "@/data/filterdata.config";
 import {
   CouponEnum,
   NewCourseValuesTypes,
+  NewCoursesState,
 } from "@/types/instructor/InstructorContextTypes";
 import React, { ChangeEvent, useState } from "react";
 
-type CouponsProps = {
-  newCourseValues: NewCourseValuesTypes;
-  setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
-};
-
-const Coupons: React.FC<CouponsProps> = ({ setnewCourseValues }) => {
+const Coupons: React.FC<NewCoursesState> = ({ setnewCourseValues }) => {
   const [isCouponCreating, setisCouponCreating] = useState(false);
   const [coupon, setCoupon] = useState({
     discountType: CouponEnum.FixedCoupon,

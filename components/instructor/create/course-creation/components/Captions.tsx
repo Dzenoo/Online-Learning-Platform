@@ -1,13 +1,12 @@
 import Select from "@/components/shared/form/Select";
 import { languageCaptions } from "@/data/filterdata.config";
-import { NewCourseValuesTypes } from "@/types/instructor/InstructorContextTypes";
+import {
+  NewCourseValuesTypes,
+  NewCoursesState,
+} from "@/types/instructor/InstructorContextTypes";
 import React, { ChangeEvent } from "react";
 
-type CaptionsProps = {
-  setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
-};
-
-const Captions: React.FC<CaptionsProps> = ({ setnewCourseValues }) => {
+const Captions: React.FC<NewCoursesState> = ({ setnewCourseValues }) => {
   return (
     <div className="shadow-lg p-9">
       <div className="flex flex-col gap-2 mb-6">
