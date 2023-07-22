@@ -113,14 +113,16 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
           <strong>Image</strong>
           <div className="flex items-center gap-4">
             <Image
-              src="/assets/graphics/initial.png"
-              width={200}
-              height={200}
+              src={newCourseValues.image}
+              width={400}
+              height={400}
               alt="initial"
+              className="border p-2"
             />
             <input
               className="border p-4"
               type="file"
+              accept="image/*"
               onChange={imageCourseHandler}
             />
           </div>
