@@ -98,3 +98,15 @@ export const languageCaptions = [
   { label: "Danish", value: "da" },
   // Add more languages as needed
 ];
+
+export const priceData = [
+  { label: "Free", value: "free" },
+  { label: "$20", value: "20" },
+  { label: "$34", value: "34" },
+  { label: "$40", value: "40" },
+  { label: "$60", value: "60" },
+  { label: "$72", value: "72" },
+  { label: "$84", value: "84" },
+  { label: "$90", value: "90" },
+  { label: "$100", value: "100" },
+];

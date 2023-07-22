@@ -60,7 +60,9 @@ const Manage = () => {
             setnewCourseValues={setnewCourseValues}
           />
         )}
-        {courseManage === CourseManagamentCreation.Pricing && <Pricing />}
+        {courseManage === CourseManagamentCreation.Pricing && (
+          <Pricing setnewCourseValues={setnewCourseValues} />
+        )}
         {courseManage === CourseManagamentCreation.Coupons && <Coupons />}
         {courseManage === CourseManagamentCreation.Messages && <Messages />}
       </div>
