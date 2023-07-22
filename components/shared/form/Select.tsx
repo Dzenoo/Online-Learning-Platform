@@ -1,7 +1,7 @@
-import { FilterArray, FilterProps } from "@/types/courses/FilterTypes";
+import { OptionProps, SelectProps } from "@/types/form/SelectTypes";
 import React from "react";
 
-const Select: React.FC<FilterArray> = ({ options, onChange, value, id }) => {
+const Select: React.FC<SelectProps> = ({ options, onChange, value, id }) => {
   return (
     <div>
       <select
@@ -10,7 +10,7 @@ const Select: React.FC<FilterArray> = ({ options, onChange, value, id }) => {
         onChange={onChange}
         className="px-4 py-4 w-96 cursor-pointer rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
-        {options.map((option: FilterProps) => (
+        {options.map((option: OptionProps) => (
           <option key={option.value} value={option.value}>
             {option.label}
           </option>

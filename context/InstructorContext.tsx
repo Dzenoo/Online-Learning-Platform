@@ -1,12 +1,11 @@
 import {
   CouponEnum,
   CourseManagamentCreation,
-  InstructorContextType,
-  SectionProps,
+  InstructorContextProviderType,
 } from "@/types/instructor/InstructorContextTypes";
 import React, { createContext, useState } from "react";
 
-export const InstructorContext = createContext<InstructorContextType>({
+export const InstructorContext = createContext<InstructorContextProviderType>({
   courseManage: CourseManagamentCreation.Requirements,
   currentStep: 0,
   newCourseValues: {
@@ -39,7 +38,7 @@ export const InstructorProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState<number>(0);
   const [courseCreationType, setcourseCreationType] = useState(
     CourseManagamentCreation.Requirements
   );
@@ -50,6 +49,7 @@ export const InstructorProvider = ({
     language: "",
     requirements: [],
     forCourse: [],
+    sections: [],
     captions: "",
     subtitle: "",
     description: "",
@@ -62,7 +62,6 @@ export const InstructorProvider = ({
       expiration: "",
       id: "",
     },
-    sections: [],
   });
 
   return (

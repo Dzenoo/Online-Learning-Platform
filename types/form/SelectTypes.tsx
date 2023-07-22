@@ -1,10 +1,10 @@
-export interface FilterProps {
+export interface OptionProps {
   label: string;
   value: string;
 }
 
-export interface FilterArray {
-  options: FilterProps[];
+export interface SelectProps {
+  options: OptionProps[];
   onChange: any;
   value?: string;
   id: string;

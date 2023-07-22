@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "./ui/Card";
-import { CourseCardLandingProps } from "@/types/courses/CourseCardTypes";
+import { CourseCardLandingProps } from "@/types/courses/CourseInfoTypes";
 import Image from "next/image";
 import Button from "./form/Button";
 import Link from "next/link";

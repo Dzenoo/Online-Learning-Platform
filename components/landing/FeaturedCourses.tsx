@@ -4,7 +4,7 @@ import Button from "../shared/form/Button";
 import Card from "../shared/ui/Card";
 import { CoursesData } from "@/data/coursesdata.config";
 import CourseCard from "../shared/CourseCard";
-import { CourseCardLandingProps } from "@/types/courses/CourseCardTypes";
+import { CourseCardLandingProps } from "@/types/courses/CourseInfoTypes";
 
 const FeaturedCourses: React.FC = () => {
   return (

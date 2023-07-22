@@ -1,4 +1,4 @@
-import { CourseDetailsProps } from "@/types/courses/CourseCardTypes";
+import { CourseDetailsProps } from "@/types/courses/CourseInfoTypes";
 import Image from "next/image";
 import React from "react";
 

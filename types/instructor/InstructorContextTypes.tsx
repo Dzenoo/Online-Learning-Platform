@@ -3,6 +3,16 @@ export enum CouponEnum {
   FixedCoupon = "fix",
 }
 
+export enum CourseManagamentCreation {
+  Requirements = "requirements",
+  Curriculum = "curriculum",
+  Captions = "captions",
+  Basics = "basics",
+  Pricing = "pricing",
+  Coupons = "coupons",
+  Messages = "messages",
+}
+
 export interface CouponTypes {
   discountType?: CouponEnum;
   value?: string;
@@ -21,10 +31,10 @@ export interface SectionProps {
   index: number;
   lectures?: LectureProps[];
   setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
-  newCourseValues?: InstructorContextTypes;
+  newCourseValues?: NewCourseValuesTypes;
 }
 
-export interface InstructorContextTypes {
+export interface NewCourseValuesTypes {
   type: string;
   title: string;
   category: string;
@@ -40,17 +50,8 @@ export interface InstructorContextTypes {
   sections: SectionProps[];
   coupon: CouponTypes;
 }
-export enum CourseManagamentCreation {
-  Requirements = "requirements",
-  Curriculum = "curriculum",
-  Captions = "captions",
-  Basics = "basics",
-  Pricing = "pricing",
-  Coupons = "coupons",
-  Messages = "messages",
-}
 
-export interface InstructorContextType {
+export interface InstructorContextProviderType {
   courseManage:
     | CourseManagamentCreation.Requirements
     | CourseManagamentCreation.Curriculum
@@ -60,7 +61,7 @@ export interface InstructorContextType {
     | CourseManagamentCreation.Coupons
     | CourseManagamentCreation.Messages;
   currentStep: number;
-  newCourseValues: InstructorContextTypes;
+  newCourseValues: NewCourseValuesTypes;
   setCourseManage: React.Dispatch<
     React.SetStateAction<CourseManagamentCreation>
   >;

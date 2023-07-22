@@ -1,5 +1,5 @@
 import Button from "@/components/shared/form/Button";
-import { CourseDetailsProps } from "@/types/courses/CourseCardTypes";
+import { CourseDetailsProps } from "@/types/courses/CourseInfoTypes";
 import { convertToDiscountPrice, createGraphicIcon } from "@/utility/helpers";
 import React from "react";
 

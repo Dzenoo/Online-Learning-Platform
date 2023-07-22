@@ -1,4 +1,4 @@
-export interface CourseCardLandingProps {
+export interface CourseCard {
   id: string;
   title: string;
   image: string;
@@ -16,10 +16,11 @@ export interface CourseCardLandingProps {
   lectures?: number;
   sections?: number;
 }
+
 export interface CourseListProps {
-  courses: CourseCardLandingProps[];
+  courses: CourseCard[];
 }
 
 export interface CourseDetailsProps {
-  course: CourseCardLandingProps;
+  course: CourseCard;
 }
