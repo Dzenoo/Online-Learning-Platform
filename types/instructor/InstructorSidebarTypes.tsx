@@ -5,5 +5,10 @@ export interface NewCourseSidebarProps {
   setCourseManage: React.Dispatch<
     React.SetStateAction<CourseManagamentCreation>
   >;
-  isFilledRequirements: boolean;
+  isFilledRequirements?: boolean;
+  isFilledCurriculum?: boolean;
+  isFilledCaptions?: boolean;
+  isFilledBasic?: boolean;
+  isFilledPrice?: boolean;
+  isFilledCoupon?: boolean;
 }

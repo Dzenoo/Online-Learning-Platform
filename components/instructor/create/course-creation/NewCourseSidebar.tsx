@@ -6,6 +6,11 @@ import React from "react";
 const NewCourseSidebar: React.FC<NewCourseSidebarProps> = ({
   setCourseManage,
   isFilledRequirements,
+  isFilledCurriculum,
+  isFilledCaptions,
+  isFilledBasic,
+  isFilledPrice,
+  isFilledCoupon,
 }) => {
   return (
     <nav className="p-2 basis-1/6 flex flex-col gap-6">
@@ -20,13 +25,17 @@ const NewCourseSidebar: React.FC<NewCourseSidebarProps> = ({
           Requirements
         </button>
         <button
-          className={`font-light text-md text-gray-700`}
+          className={`font-light text-md text-gray-700 ${
+            isFilledCurriculum && "text-green-400"
+          }`}
           onClick={() => setCourseManage(CourseManagamentCreation.Curriculum)}
         >
           Curriculum
         </button>
         <button
-          className={`font-light text-md text-gray-700`}
+          className={`font-light text-md text-gray-700 ${
+            isFilledCaptions && "text-green-400"
+          }`}
           onClick={() => setCourseManage(CourseManagamentCreation.Captions)}
         >
           Captions
@@ -35,19 +44,25 @@ const NewCourseSidebar: React.FC<NewCourseSidebarProps> = ({
       <div className="flex flex-col justify-start items-start gap-4">
         <h1 className="font-bold text-xl mb-2">Publish Your Course</h1>
         <button
-          className={`font-light text-md text-gray-700`}
+          className={`font-light text-md text-gray-700 ${
+            isFilledBasic && "text-green-400"
+          }`}
           onClick={() => setCourseManage(CourseManagamentCreation.Basics)}
         >
           Basic Info
         </button>
         <button
-          className={`font-light text-md text-gray-700`}
+          className={`font-light text-md text-gray-700 ${
+            isFilledPrice && "text-green-400"
+          }`}
           onClick={() => setCourseManage(CourseManagamentCreation.Pricing)}
         >
           Set Price
         </button>
         <button
-          className={`font-light text-md text-gray-700`}
+          className={`font-light text-md text-gray-700 ${
+            isFilledCoupon && "text-green-400"
+          }`}
           onClick={() => setCourseManage(CourseManagamentCreation.Coupons)}
         >
           Coupons

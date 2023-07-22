@@ -25,13 +25,11 @@ const Manage = () => {
     setCurrentStep(0);
   }, []);
 
-  const isCourseCreated =
+  const isCourseBasicsCreated =
     newCourseValues.type === "" &&
     newCourseValues.title === "" &&
     newCourseValues.language === "" &&
     newCourseValues.category === "";
-
-  console.log(newCourseValues);
 
   return (
     <section className="p-20 flex justify-center items-stretch gap-12">
@@ -41,6 +39,16 @@ const Manage = () => {
           newCourseValues.requirements.length > 0 &&
           newCourseValues.forCourse.length > 0
         }
+        isFilledCaptions={newCourseValues.captions !== ""}
+        isFilledBasic={
+          newCourseValues.title !== "" &&
+          newCourseValues.subtitle !== "" &&
+          newCourseValues.description !== "" &&
+          newCourseValues.language !== "" &&
+          newCourseValues.category !== "" &&
+          newCourseValues.image !== ""
+        }
+        isFilledPrice={newCourseValues.price !== 0}
       />
       <div className="basis-1/2 flex-grow">
         {courseManage === CourseManagamentCreation.Requirements && (
