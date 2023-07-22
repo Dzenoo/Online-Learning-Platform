@@ -4,12 +4,12 @@ import Select from "@/components/shared/form/Select";
 import { couponData } from "@/data/filterdata.config";
 import {
   CouponEnum,
-  InstructorContextTypes,
+  NewCourseValuesTypes,
 } from "@/types/instructor/InstructorContextTypes";
 import React, { ChangeEvent, useState } from "react";
 
 type CouponsProps = {
-  newCourseValues: InstructorContextTypes;
+  newCourseValues: NewCourseValuesTypes;
   setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
 };
 
@@ -35,7 +35,7 @@ const Coupons: React.FC<CouponsProps> = ({ setnewCourseValues }) => {
 
   function createCoupon() {
     if (coupon.value !== "" || coupon.expiration !== "") {
-      setnewCourseValues((prevVal: InstructorContextTypes) => ({
+      setnewCourseValues((prevVal: NewCourseValuesTypes) => ({
         ...prevVal,
         coupon: coupon,
       }));

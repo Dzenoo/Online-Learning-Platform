@@ -1,6 +1,6 @@
 import Select from "@/components/shared/form/Select";
 import { priceData } from "@/data/filterdata.config";
-import { InstructorContextType } from "@/types/instructor/InstructorContextTypes";
+import { NewCourseValuesTypes } from "@/types/instructor/InstructorContextTypes";
 import React, { ChangeEvent } from "react";
 
 type CaptionsProps = {
@@ -22,9 +22,10 @@ const Pricing: React.FC<CaptionsProps> = ({ setnewCourseValues }) => {
       <div>
         <label className="font-bold text-xl">Price</label>
         <Select
+          id="price"
           options={priceData}
           onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-            setnewCourseValues((prevState: InstructorContextType) => ({
+            setnewCourseValues((prevState: NewCourseValuesTypes) => ({
               ...prevState,
               price: +e.target.value,
             }))

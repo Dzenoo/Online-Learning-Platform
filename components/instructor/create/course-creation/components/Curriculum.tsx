@@ -5,7 +5,7 @@ import Input from "@/components/shared/form/Input";
 import { useValidation } from "@/hooks/useValidation";
 import { InputType } from "@/types/form/InputTypes";
 import {
-  InstructorContextTypes,
+  NewCourseValuesTypes,
   LectureProps,
   SectionProps,
 } from "@/types/instructor/InstructorContextTypes";
@@ -104,7 +104,7 @@ const Section: React.FC<SectionProps> = ({
   );
 };
 interface CurriculumTypes {
-  newCourseValues: InstructorContextTypes;
+  newCourseValues: NewCourseValuesTypes;
   setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
 }
 

@@ -1,6 +1,6 @@
 import Select from "@/components/shared/form/Select";
 import { languageCaptions } from "@/data/filterdata.config";
-import { InstructorContextTypes } from "@/types/instructor/InstructorContextTypes";
+import { NewCourseValuesTypes } from "@/types/instructor/InstructorContextTypes";
 import React, { ChangeEvent } from "react";
 
 type CaptionsProps = {
@@ -20,9 +20,10 @@ const Captions: React.FC<CaptionsProps> = ({ setnewCourseValues }) => {
       </div>
       <div>
         <Select
+          id="captions"
           options={languageCaptions}
           onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-            setnewCourseValues((prevState: InstructorContextTypes) => ({
+            setnewCourseValues((prevState: NewCourseValuesTypes) => ({
               ...prevState,
               captions: e.target.value,
             }))

@@ -2,12 +2,12 @@ import Input from "@/components/shared/form/Input";
 import Select from "@/components/shared/form/Select";
 import { skillLevelFilters } from "@/data/filterdata.config";
 import { InputType } from "@/types/form/InputTypes";
-import { InstructorContextTypes } from "@/types/instructor/InstructorContextTypes";
+import { NewCourseValuesTypes } from "@/types/instructor/InstructorContextTypes";
 import Image from "next/image";
 import React, { ChangeEvent } from "react";
 
 type BasicInfoProps = {
-  newCourseValues: InstructorContextTypes;
+  newCourseValues: NewCourseValuesTypes;
   setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
 };
 
@@ -27,7 +27,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
       const reader = new FileReader();
       reader.onload = () => {
         const imageUrl = reader.result as string;
-        setnewCourseValues((prevState: InstructorContextTypes) => ({
+        setnewCourseValues((prevState: NewCourseValuesTypes) => ({
           ...prevState,
           image: imageUrl,
         }));
@@ -56,7 +56,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
             label="Title"
             defaultValue={newCourseValues.title}
             onChange={(e) =>
-              setnewCourseValues((prevState: InstructorContextTypes) => ({
+              setnewCourseValues((prevState: NewCourseValuesTypes) => ({
                 ...prevState,
                 title: e.target.value,
               }))
@@ -70,7 +70,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
             id={"subtitle"}
             label="Subtitle"
             onChange={(e) =>
-              setnewCourseValues((prevState: InstructorContextTypes) => ({
+              setnewCourseValues((prevState: NewCourseValuesTypes) => ({
                 ...prevState,
                 subtitle: e.target.value,
               }))
@@ -84,7 +84,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
             id={"description"}
             label="Description"
             onChange={(e) =>
-              setnewCourseValues((prevState: InstructorContextTypes) => ({
+              setnewCourseValues((prevState: NewCourseValuesTypes) => ({
                 ...prevState,
                 description: e.target.value,
               }))
@@ -104,9 +104,10 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
           <div>
             <h2 className="font-bold">Level</h2>
             <Select
+              id="advanced"
               options={skillLevelFilters}
               onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-                setnewCourseValues((prevState: InstructorContextTypes) => ({
+                setnewCourseValues((prevState: NewCourseValuesTypes) => ({
                   ...prevState,
                   level: e.target.value,
                 }))
