@@ -25,7 +25,7 @@ export const InstructorContext = createContext<InstructorContextProviderType>({
       discountType: CouponEnum.FixedCoupon,
       value: "",
       expiration: "",
-      id: "",
+      name: "",
     },
     sections: [],
   },
@@ -60,7 +60,7 @@ export const InstructorProvider = ({
       discountType: CouponEnum.FixedCoupon,
       value: "",
       expiration: "",
-      id: "",
+      name: "",
     },
   });
 

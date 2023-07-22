@@ -16,7 +16,7 @@ const Coupons: React.FC<NewCoursesState> = ({ setnewCourseValues }) => {
     discountType: CouponEnum.FixedCoupon,
     value: "",
     expiration: "",
-    id: Math.random().toString(),
+    name: "",
   });
 
   const isTypeFix = coupon.discountType === CouponEnum.FixedCoupon;
@@ -113,6 +113,15 @@ const Coupons: React.FC<NewCoursesState> = ({ setnewCourseValues }) => {
                     id="value"
                   />
                 )}
+              </div>
+              <div className="w-60">
+                <input
+                  type="text"
+                  placeholder="Enter coupon name"
+                  onChange={changeHandler}
+                  className="p-4 border rounded-md"
+                  id="name"
+                />
               </div>
               <div className="w-60">
                 <input

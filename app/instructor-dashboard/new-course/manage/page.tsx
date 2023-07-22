@@ -31,63 +31,30 @@ const Manage = () => {
     newCourseValues.language === "" &&
     newCourseValues.category === "";
 
-  console.log(newCourseValues);
-
   return (
     <section className="p-20 flex justify-center items-stretch gap-12">
-      <NewCourseSidebar
-        setCourseManage={setCourseManage}
-        isFilledRequirements={
-          newCourseValues.requirements.length > 0 &&
-          newCourseValues.forCourse.length > 0
-        }
-        isFilledCaptions={newCourseValues.captions !== ""}
-        isFilledBasic={
-          newCourseValues.title !== "" &&
-          newCourseValues.subtitle !== "" &&
-          newCourseValues.description !== "" &&
-          newCourseValues.language !== "" &&
-          newCourseValues.category !== "" &&
-          newCourseValues.image !== ""
-        }
-        isFilledPrice={newCourseValues.price !== 0}
-      />
-      <div className="basis-1/2 flex-grow">
-        {courseManage === CourseManagamentCreation.Requirements && (
-          <Requirements
-            setnewCourseValues={setnewCourseValues}
-            newCourseValues={newCourseValues}
-          />
-        )}
-        {courseManage === CourseManagamentCreation.Curriculum && (
-          <Curriculum
-            newCourseValues={newCourseValues}
-            setnewCourseValues={setnewCourseValues}
-          />
-        )}
-        {courseManage === CourseManagamentCreation.Captions && (
-          <Captions setnewCourseValues={setnewCourseValues} />
-        )}
-        {courseManage === CourseManagamentCreation.Basics && (
-          <BasicInfo
-            newCourseValues={newCourseValues}
-            setnewCourseValues={setnewCourseValues}
-          />
-        )}
-        {courseManage === CourseManagamentCreation.Pricing && (
-          <Pricing setnewCourseValues={setnewCourseValues} />
-        )}
-        {courseManage === CourseManagamentCreation.Coupons && (
-          <Coupons
-            newCourseValues={newCourseValues}
-            setnewCourseValues={setnewCourseValues}
-          />
-        )}
-      </div>
-      {/* {!isCourseCreated && (
-        <NewCourseSidebar setCourseManage={setCourseManage} />
+      {!isCourseBasicsCreated && (
+        <NewCourseSidebar
+          setCourseManage={setCourseManage}
+          isFilledCurriculum={newCourseValues.sections.length > 0}
+          isFilledRequirements={
+            newCourseValues.requirements.length > 0 &&
+            newCourseValues.forCourse.length > 0
+          }
+          isFilledCaptions={newCourseValues.captions !== ""}
+          isFilledBasic={
+            newCourseValues.title !== "" &&
+            newCourseValues.subtitle !== "" &&
+            newCourseValues.description !== "" &&
+            newCourseValues.language !== "" &&
+            newCourseValues.category !== "" &&
+            newCourseValues.image !== ""
+          }
+          isFilledPrice={newCourseValues.price !== 0}
+          isFilledCoupon={newCourseValues.coupon.name !== ""}
+        />
       )}
-      {!isCourseCreated && (
+      {!isCourseBasicsCreated && (
         <div className="basis-1/2">
           {courseManage === CourseManagamentCreation.Requirements && (
             <Requirements
@@ -96,22 +63,38 @@ const Manage = () => {
             />
           )}
           {courseManage === CourseManagamentCreation.Curriculum && (
-            <Curriculum />
+            <Curriculum
+              newCourseValues={newCourseValues}
+              setnewCourseValues={setnewCourseValues}
+            />
           )}
-          {courseManage === CourseManagamentCreation.Captions && <Captions />}
-          {courseManage === CourseManagamentCreation.Basics && <BasicInfo />}
-          {courseManage === CourseManagamentCreation.Pricing && <Pricing />}
-          {courseManage === CourseManagamentCreation.Coupons && <Coupons />}
-          {courseManage === CourseManagamentCreation.Messages && <Messages />}
+          {courseManage === CourseManagamentCreation.Captions && (
+            <Captions setnewCourseValues={setnewCourseValues} />
+          )}
+          {courseManage === CourseManagamentCreation.Basics && (
+            <BasicInfo
+              newCourseValues={newCourseValues}
+              setnewCourseValues={setnewCourseValues}
+            />
+          )}
+          {courseManage === CourseManagamentCreation.Pricing && (
+            <Pricing setnewCourseValues={setnewCourseValues} />
+          )}
+          {courseManage === CourseManagamentCreation.Coupons && (
+            <Coupons
+              newCourseValues={newCourseValues}
+              setnewCourseValues={setnewCourseValues}
+            />
+          )}
         </div>
       )}
-      {isCourseCreated && (
+      {isCourseBasicsCreated && (
         <div className="py-48">
           <h1 className="font-bold">
             Please create course first to edit and add more information
           </h1>
         </div>
-      )} */}
+      )}
     </section>
   );
 };

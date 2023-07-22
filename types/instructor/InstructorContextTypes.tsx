@@ -17,7 +17,7 @@ export interface CouponTypes {
   discountType?: CouponEnum;
   value?: string;
   expiration?: Date | string;
-  id?: string;
+  name?: string;
 }
 
 export interface LectureProps {
