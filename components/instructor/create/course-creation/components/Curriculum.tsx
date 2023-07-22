@@ -103,7 +103,6 @@ const Section: React.FC<SectionProps> = ({
     </div>
   );
 };
-
 interface CurriculumTypes {
   newCourseValues: InstructorContextTypes;
   setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
