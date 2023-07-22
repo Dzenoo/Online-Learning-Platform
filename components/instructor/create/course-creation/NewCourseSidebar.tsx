@@ -69,7 +69,19 @@ const NewCourseSidebar: React.FC<NewCourseSidebarProps> = ({
         </button>
       </div>
       <div>
-        <Button styleType="initial" type="button" additionalStyles="rounded-sm">
+        <Button
+          styleType="initial"
+          type="button"
+          additionalStyles="rounded-sm"
+          disabled={
+            !isFilledRequirements ||
+            !isFilledCurriculum ||
+            !isFilledCaptions ||
+            !isFilledBasic ||
+            !isFilledPrice ||
+            !isFilledCoupon
+          }
+        >
           Submit Creation
         </Button>
       </div>

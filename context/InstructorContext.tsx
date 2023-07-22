@@ -54,6 +54,9 @@ export const InstructorProvider = ({
     image: "",
     level: "",
     price: 0,
+    sections: {
+      sectionsContainer: [],
+    },
     coupon: {
       discountType: CouponEnum.FixedCoupon,
       value: "",

@@ -31,6 +31,8 @@ const Manage = () => {
     newCourseValues.language === "" &&
     newCourseValues.category === "";
 
+  console.log(newCourseValues);
+
   return (
     <section className="p-20 flex justify-center items-stretch gap-12">
       <NewCourseSidebar
