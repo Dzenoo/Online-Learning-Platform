@@ -17,10 +17,16 @@ export const POST = async (request: Request) => {
       return responseMessage("Invalid data, please fill required fields!", 500);
     }
 
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({
+      email: email,
+      first_name: first_name,
+    });
 
     if (existingUser) {
-      return responseMessage("User already exist with this email!", 500);
+      return responseMessage(
+        "User already exist with this email or first name!",
+        500
+      );
     }
 
     const hashedPassword = await hashPassword(password);

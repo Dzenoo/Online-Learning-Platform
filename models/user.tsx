@@ -4,6 +4,7 @@ const UserSchema = new Schema({
   first_name: {
     type: String,
     required: [true, "First Name is required"],
+    unique: true,
     match: [
       /^[A-Z][a-z]+$/,
       "First Name invalid, must contain uppercase letters",
