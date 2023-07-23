@@ -110,13 +110,3 @@ export const priceData = [
   { label: "$90", value: "90" },
   { label: "$100", value: "100" },
 ];
-
-export const couponData = [
-  { label: "%0.1", value: "0.1" },
-  { label: "%0.2", value: "0.2" },
-  { label: "%0.3", value: "0.3" },
-  { label: "%0.4", value: "0.4" },
-  { label: "%0.5", value: "0.5" },
-  { label: "%0.6", value: "0.6" },
-  { label: "%0.7", value: "0.7" },
-];

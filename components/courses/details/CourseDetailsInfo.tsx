@@ -15,14 +15,6 @@ const CourseDetailsInfo: React.FC<CourseDetailsProps> = ({ course }) => {
             ${course?.price}
           </span>
         </h1>
-        <Button
-          type="button"
-          isLink={false}
-          additionalStyles="w-40"
-          styleType="initial"
-        >
-          Apply Coupon
-        </Button>
       </div>
       <div className="pt-4 flex gap-12">
         <div className="flex flex-col gap-4">

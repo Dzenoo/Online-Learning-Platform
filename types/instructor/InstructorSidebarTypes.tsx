@@ -11,5 +11,5 @@ export interface NewCourseSidebarProps {
   isFilledCaptions?: boolean;
   isFilledBasic?: boolean;
   isFilledPrice?: boolean;
-  isFilledCoupon?: boolean;
+  isFilledForCourse?: boolean;
 }

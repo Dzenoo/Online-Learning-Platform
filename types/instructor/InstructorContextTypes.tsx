@@ -1,25 +1,13 @@
 import { FormEvent } from "react";
 
-export enum CouponEnum {
-  PercentageCoupon = "perc",
-  FixedCoupon = "fix",
-}
-
 export enum CourseManagamentCreation {
   Requirements = "requirements",
   Curriculum = "curriculum",
   Captions = "captions",
   Basics = "basics",
   Pricing = "pricing",
-  Coupons = "coupons",
   Messages = "messages",
-}
-
-export interface CouponTypes {
-  discountType?: CouponEnum;
-  value?: string;
-  expiration?: Date | string;
-  name?: string;
+  ForCourse = "forcourse",
 }
 
 export interface LectureProps {
@@ -50,7 +38,6 @@ export interface NewCourseValuesTypes {
   level: string;
   price: number;
   sections: SectionProps[];
-  coupon: CouponTypes;
 }
 
 export interface InstructorContextProviderType {
@@ -60,8 +47,8 @@ export interface InstructorContextProviderType {
     | CourseManagamentCreation.Captions
     | CourseManagamentCreation.Basics
     | CourseManagamentCreation.Pricing
-    | CourseManagamentCreation.Coupons
-    | CourseManagamentCreation.Messages;
+    | CourseManagamentCreation.Messages
+    | CourseManagamentCreation.ForCourse;
   currentStep: number;
   newCourseValues: NewCourseValuesTypes;
   setCourseManage: React.Dispatch<

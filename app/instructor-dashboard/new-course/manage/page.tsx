@@ -2,8 +2,8 @@
 import {
   BasicInfo,
   Captions,
-  Coupons,
   Curriculum,
+  ForCourse,
   NewCourseSidebar,
   Pricing,
   Requirements,
@@ -53,7 +53,7 @@ const Manage = () => {
             newCourseValues.image !== ""
           }
           isFilledPrice={newCourseValues.price !== 0}
-          isFilledCoupon={newCourseValues.coupon.name !== ""}
+          isFilledForCourse={newCourseValues.title !== ""}
         />
       )}
       {!isCourseBasicsCreated && (
@@ -82,8 +82,8 @@ const Manage = () => {
           {courseManage === CourseManagamentCreation.Pricing && (
             <Pricing setnewCourseValues={setnewCourseValues} />
           )}
-          {courseManage === CourseManagamentCreation.Coupons && (
-            <Coupons
+          {courseManage === CourseManagamentCreation.ForCourse && (
+            <ForCourse
               newCourseValues={newCourseValues}
               setnewCourseValues={setnewCourseValues}
             />

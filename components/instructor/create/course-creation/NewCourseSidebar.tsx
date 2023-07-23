@@ -11,7 +11,7 @@ const NewCourseSidebar: React.FC<NewCourseSidebarProps> = ({
   isFilledCaptions,
   isFilledBasic,
   isFilledPrice,
-  isFilledCoupon,
+  isFilledForCourse,
 }) => {
   return (
     <nav className="p-2 basis-1/6 flex flex-col gap-6">
@@ -62,11 +62,11 @@ const NewCourseSidebar: React.FC<NewCourseSidebarProps> = ({
         </button>
         <button
           className={`font-light text-md text-gray-700 ${
-            isFilledCoupon && "text-green-400"
+            isFilledForCourse && "text-green-400"
           }`}
-          onClick={() => setCourseManage(CourseManagamentCreation.Coupons)}
+          onClick={() => setCourseManage(CourseManagamentCreation.ForCourse)}
         >
-          Coupons
+          For course
         </button>
       </div>
       <div>
@@ -81,7 +81,7 @@ const NewCourseSidebar: React.FC<NewCourseSidebarProps> = ({
               !isFilledCaptions ||
               !isFilledBasic ||
               !isFilledPrice ||
-              !isFilledCoupon
+              !isFilledForCourse
             }
           >
             Submit Creation

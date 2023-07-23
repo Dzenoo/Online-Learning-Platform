@@ -1,5 +1,4 @@
 import {
-  CouponEnum,
   CourseManagamentCreation,
   InstructorContextProviderType,
 } from "@/types/instructor/InstructorContextTypes";
@@ -21,12 +20,6 @@ export const InstructorContext = createContext<InstructorContextProviderType>({
     image: "",
     level: "",
     price: 0,
-    coupon: {
-      discountType: CouponEnum.FixedCoupon,
-      value: "",
-      expiration: "",
-      name: "",
-    },
     sections: [],
   },
   setCourseManage: () => {},
@@ -57,12 +50,6 @@ export const InstructorProvider = ({
     image: "",
     level: "",
     price: 0,
-    coupon: {
-      discountType: CouponEnum.FixedCoupon,
-      value: "",
-      expiration: "",
-      name: "",
-    },
   });
 
   function submitCreateCourseHandler(e: FormEvent): void {
@@ -85,7 +72,6 @@ export const InstructorProvider = ({
     formData.append("image", newCourseValues.image);
     formData.append("level", newCourseValues.level);
     formData.append("price", newCourseValues.price.toString());
-    formData.append("coupon", JSON.stringify(newCourseValues.coupon));
     console.log(formData.values);
   }
 

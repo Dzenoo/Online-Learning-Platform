@@ -5,7 +5,7 @@ import NewCourseSidebar from "./create/course-creation/NewCourseSidebar";
 import Requirements from "./create/course-creation/components/Requirements";
 import Pricing from "./create/course-creation/components/Pricing";
 import Curriculum from "./create/course-creation/components/Curriculum";
-import Coupons from "./create/course-creation/components/Coupons";
+import ForCourse from "./create/course-creation/components/ForCourse";
 import Captions from "./create/course-creation/components/Captions";
 import BasicInfo from "./create/course-creation/components/BasicInfo";
 import FilterCourses from "./courses/FilterCourses";
@@ -18,7 +18,7 @@ export {
   Requirements,
   Pricing,
   Curriculum,
-  Coupons,
+  ForCourse,
   Captions,
   BasicInfo,
   FilterCourses,
