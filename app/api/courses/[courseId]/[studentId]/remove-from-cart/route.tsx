@@ -27,7 +27,7 @@ export const PATCH = async (
     }
 
     await student.save();
-    return responseMessage("Course added to cart ", 201);
+    return responseMessage("Course removed from cart ", 201);
   } catch (error) {
     console.log(error);
     return responseMessage("Internal server error", 500);
