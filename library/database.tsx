@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 
-export async function connectToDb() {
+export const connectToDB = async () => {
   mongoose.set("strictQuery", true);
 
   try {
-    await mongoose.connect(process.env.MONGODB_URL || "", {
-      dbName: "online-learning-prod",
+    await mongoose.connect(process.env.MONGODB_URI!, {
+      dbName: "online_learning",
     });
+    console.log("Connected");
   } catch (error) {
-    console.log(error);
+    console.log("Cannot connect to db");
   }
-}
+};

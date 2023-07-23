@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React, { ReactNode, SetStateAction } from "react";
+import { hash, compare } from "bcryptjs";
 
 export function convertToDiscountPrice(
   currentPrice: number,
@@ -40,4 +41,17 @@ export function removeRequirementHandler(
       [stateKey]: updatedState,
     };
   });
+}
+
+export async function hashPassword(password: string) {
+  const hashedPassword = await hash(password, 12);
+  return hashedPassword;
+}
+
+export function responseMessage(message: string, status: number) {
+  return new Response(JSON.stringify({ message: message }), { status: status });
+}
+
+export function responseJson(data: any, status: number) {
+  return new Response(JSON.stringify(data), { status: status });
 }
