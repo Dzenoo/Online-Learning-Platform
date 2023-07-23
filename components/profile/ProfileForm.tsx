@@ -13,7 +13,7 @@ const ProfileForm = () => {
   const biography = useValidation([VALIDATOR_MINLENGTH(20)]);
 
   return (
-    <form>
+    <form className="flex flex-col gap-4">
       <Input
         type={InputType.Input}
         error={!first_name.isValid && first_name.isTouched}
