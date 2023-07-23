@@ -51,6 +51,8 @@ const CourseSchema = new Schema({
     expiration: { type: Date },
     name: { type: String },
   },
+  requirements: [{ type: String, default: [] }],
+  forCourse: [{ type: String, default: [] }],
   sections: [
     {
       title: { type: String, required: true },

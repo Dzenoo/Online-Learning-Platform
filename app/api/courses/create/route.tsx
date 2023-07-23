@@ -16,6 +16,8 @@ export const POST = async (request: Request) => {
     popularity,
     coupon,
     sections,
+    requirements,
+    forCourse,
     instructor,
   } = await request.json();
 
@@ -34,6 +36,8 @@ export const POST = async (request: Request) => {
       price === "" ||
       popularity === "" ||
       coupon === "" ||
+      requirements.length === 0 ||
+      forCourse.length === 0 ||
       sections === "" ||
       instructor === ""
     ) {
@@ -52,6 +56,8 @@ export const POST = async (request: Request) => {
       price,
       popularity,
       coupon,
+      requirements,
+      forCourse,
       sections,
       instructor,
     });
