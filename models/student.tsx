@@ -32,6 +32,7 @@ const StudentSchema = new Schema({
     items: [{ type: mongoose.Types.ObjectId, ref: "Course" }],
     totalAmount: { type: Number, default: 0 },
   },
+  courses: [{ type: mongoose.Types.ObjectId, ref: "Course", default: [] }],
 });
 
 const Student = models.Student || model("Student", StudentSchema);

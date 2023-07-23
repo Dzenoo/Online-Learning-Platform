@@ -43,6 +43,8 @@ export const POST = async (request: Request) => {
         last_name,
         email,
         password: hashedPassword,
+        cart: {},
+        courses: [],
       });
 
       const student = await createdStudent.save();
