@@ -48,7 +48,12 @@ export const POST = async (request: Request) => {
       const student = await createdStudent.save();
       const token = generateToken(student.id);
 
-      return responseJson(token, 200);
+      const studentInfo = {
+        token: token,
+        type: type,
+      };
+
+      return responseJson(studentInfo, 200);
     } else {
       const existingInstructor = await Instructor.findOne({
         email: email,
@@ -74,7 +79,12 @@ export const POST = async (request: Request) => {
       const instructor = await createdInstructor.save();
       const token = generateToken(instructor.id);
 
-      return responseJson(token, 200);
+      const instructorInfo = {
+        token: token,
+        type: type,
+      };
+
+      return responseJson(instructorInfo, 200);
     }
   } catch (error) {
     return responseMessage("Internal Server Error", 500);
