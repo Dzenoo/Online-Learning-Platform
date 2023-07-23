@@ -5,6 +5,7 @@ import React from "react";
 
 const NewCourseSidebar: React.FC<NewCourseSidebarProps> = ({
   setCourseManage,
+  submitCreateCourseHandler,
   isFilledRequirements,
   isFilledCurriculum,
   isFilledCaptions,
@@ -69,21 +70,23 @@ const NewCourseSidebar: React.FC<NewCourseSidebarProps> = ({
         </button>
       </div>
       <div>
-        <Button
-          styleType="initial"
-          type="button"
-          additionalStyles="rounded-sm"
-          disabled={
-            !isFilledRequirements ||
-            !isFilledCurriculum ||
-            !isFilledCaptions ||
-            !isFilledBasic ||
-            !isFilledPrice ||
-            !isFilledCoupon
-          }
-        >
-          Submit Creation
-        </Button>
+        <form onSubmit={submitCreateCourseHandler}>
+          <Button
+            styleType="initial"
+            type="submit"
+            additionalStyles="rounded-sm"
+            disabled={
+              !isFilledRequirements ||
+              !isFilledCurriculum ||
+              !isFilledCaptions ||
+              !isFilledBasic ||
+              !isFilledPrice ||
+              !isFilledCoupon
+            }
+          >
+            Submit Creation
+          </Button>
+        </form>
       </div>
     </nav>
   );

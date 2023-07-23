@@ -1,3 +1,5 @@
+import { FormEvent } from "react";
+
 export enum CouponEnum {
   PercentageCoupon = "perc",
   FixedCoupon = "fix",
@@ -67,6 +69,7 @@ export interface InstructorContextProviderType {
   >;
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
   setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
+  submitCreateCourseHandler: (e: FormEvent) => void;
 }
 
 export interface NewCoursesState {

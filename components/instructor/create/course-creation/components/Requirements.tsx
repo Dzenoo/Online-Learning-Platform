@@ -18,7 +18,7 @@ const Requirements: React.FC<NewCoursesState> = ({
   const forCourseInp = useValidation([VALIDATOR_MINLENGTH(20)]);
 
   function addRequirement(): void {
-    if (requirementInp.isValid) {
+    if (requirementInp.isValid && requirementInp.value.length >= 20) {
       const requirements = newCourseValues?.requirements.map(
         (requirement) => requirement
       );
@@ -36,6 +36,7 @@ const Requirements: React.FC<NewCoursesState> = ({
           "requirements",
           requirementInp.value
         );
+        requirementInp.emptyInput();
       }
     } else {
       return;
@@ -43,7 +44,7 @@ const Requirements: React.FC<NewCoursesState> = ({
   }
 
   function addForCourse(): void {
-    if (forCourseInp.isValid) {
+    if (forCourseInp.isValid && forCourseInp.value.length >= 20) {
       const forCourses = newCourseValues?.forCourse.map(
         (forCourse) => forCourse
       );
@@ -57,6 +58,7 @@ const Requirements: React.FC<NewCoursesState> = ({
           "forCourse",
           forCourseInp.value
         );
+        forCourseInp.emptyInput();
       }
     } else {
       return;

@@ -19,6 +19,7 @@ const Manage = () => {
     setCourseManage,
     courseManage,
     setnewCourseValues,
+    submitCreateCourseHandler,
   } = useContext(InstructorContext);
 
   useEffect(() => {
@@ -31,12 +32,11 @@ const Manage = () => {
     newCourseValues.language === "" &&
     newCourseValues.category === "";
 
-  console.log(newCourseValues);
-
   return (
     <section className="p-20 flex justify-center items-stretch gap-12">
       {!isCourseBasicsCreated && (
         <NewCourseSidebar
+          submitCreateCourseHandler={submitCreateCourseHandler}
           setCourseManage={setCourseManage}
           isFilledCurriculum={newCourseValues.sections.length > 0}
           isFilledRequirements={

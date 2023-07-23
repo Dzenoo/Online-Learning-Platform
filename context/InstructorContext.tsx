@@ -3,7 +3,7 @@ import {
   CourseManagamentCreation,
   InstructorContextProviderType,
 } from "@/types/instructor/InstructorContextTypes";
-import React, { createContext, useState } from "react";
+import React, { FormEvent, createContext, useState } from "react";
 
 export const InstructorContext = createContext<InstructorContextProviderType>({
   courseManage: CourseManagamentCreation.Requirements,
@@ -32,6 +32,7 @@ export const InstructorContext = createContext<InstructorContextProviderType>({
   setCourseManage: () => {},
   setCurrentStep: () => {},
   setnewCourseValues: () => {},
+  submitCreateCourseHandler: (e) => {},
 });
 export const InstructorProvider = ({
   children,
@@ -64,6 +65,30 @@ export const InstructorProvider = ({
     },
   });
 
+  function submitCreateCourseHandler(e: FormEvent): void {
+    e.preventDefault();
+    const formData = new FormData();
+
+    formData.append("type", newCourseValues.type);
+    formData.append("title", newCourseValues.title);
+    formData.append("category", newCourseValues.category);
+    formData.append("language", newCourseValues.language);
+    formData.append(
+      "requirements",
+      JSON.stringify(newCourseValues.requirements)
+    );
+    formData.append("forCourse", JSON.stringify(newCourseValues.forCourse));
+    formData.append("sections", JSON.stringify(newCourseValues.sections));
+    formData.append("captions", newCourseValues.captions);
+    formData.append("subtitle", newCourseValues.subtitle);
+    formData.append("description", newCourseValues.description);
+    formData.append("image", newCourseValues.image);
+    formData.append("level", newCourseValues.level);
+    formData.append("price", newCourseValues.price.toString());
+    formData.append("coupon", JSON.stringify(newCourseValues.coupon));
+    console.log(formData.values);
+  }
+
   return (
     <InstructorContext.Provider
       value={{
@@ -73,6 +98,7 @@ export const InstructorProvider = ({
         setCurrentStep,
         newCourseValues,
         setnewCourseValues,
+        submitCreateCourseHandler,
       }}
     >
       {children}
