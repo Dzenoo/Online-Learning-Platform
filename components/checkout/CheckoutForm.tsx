@@ -13,7 +13,7 @@ const CheckoutForm = () => {
   const cvv = useValidation([VALIDATOR_REQUIRE()]);
 
   return (
-    <form className="py-4">
+    <form className="py-4 flex flex-col gap-7">
       <Input
         type={InputType.Input}
         label="Email Address"
