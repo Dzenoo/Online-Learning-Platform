@@ -1,6 +1,11 @@
 import { connectToDB } from "@/library/database";
 import User from "@/models/user";
-import { hashPassword, responseMessage } from "@/utility/helpers";
+import {
+  generateToken,
+  hashPassword,
+  responseJson,
+  responseMessage,
+} from "@/utility/helpers";
 
 export const POST = async (request: Request) => {
   const { first_name, last_name, email, password } = await request.json();
@@ -40,9 +45,9 @@ export const POST = async (request: Request) => {
 
     const user = await createdUser.save();
 
-    if (user) {
-      return responseMessage("Successfully created account", 200);
-    }
+    const token = generateToken(user.id);
+
+    return responseJson(token, 200);
   } catch (error) {
     return responseMessage("Internal Server Error", 500);
   }

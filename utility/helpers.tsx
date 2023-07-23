@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { ReactNode, SetStateAction } from "react";
 import { hash, compare } from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export function convertToDiscountPrice(
   currentPrice: number,
@@ -54,4 +55,25 @@ export function responseMessage(message: string, status: number) {
 
 export function responseJson(data: any, status: number) {
   return new Response(JSON.stringify(data), { status: status });
+}
+
+export function generateToken(id: string) {
+  try {
+    const token = jwt.sign(
+      {
+        userId: id,
+      },
+      "secret",
+      { expiresIn: "1h" }
+    );
+
+    return token as string;
+  } catch (error) {
+    console.log("Cannot signup");
+  }
+}
+
+export async function validatePassword(password: string, newPassword: string) {
+  const isPasswordValid = await compare(password, newPassword);
+  return isPasswordValid;
 }
