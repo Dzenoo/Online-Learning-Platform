@@ -1,6 +1,6 @@
 import { connectToDB } from "@/library/database";
 import Course from "@/models/course";
-import { responseMessage } from "@/utility/helpers";
+import { responseJson, responseMessage } from "@/utility/helpers";
 
 export const GET = async (
   request: Request,
@@ -23,7 +23,11 @@ export const GET = async (
 
     const courses = await Course.find(query);
 
-    console.log(courses);
+    if (courses.length > 0) {
+      return responseJson(courses, 200);
+    } else {
+      return responseMessage("Could not find courses by these filters", 404);
+    }
   } catch (error) {
     console.log(error);
     return responseMessage("Internal server error", 500);
