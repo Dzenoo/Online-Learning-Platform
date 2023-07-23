@@ -45,6 +45,12 @@ const CourseSchema = new Schema({
     type: Number,
     default: 20,
   },
+  coupon: {
+    discountType: { type: String },
+    value: { type: String },
+    expiration: { type: Date },
+    name: { type: String },
+  },
   sections: [
     {
       title: { type: String, required: true },
@@ -55,10 +61,13 @@ const CourseSchema = new Schema({
       ],
     },
   ],
-  students: {
-    type: mongoose.Types.ObjectId,
-    ref: "Student",
-  },
+  students: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Student",
+      default: [],
+    },
+  ],
   instructor: {
     type: mongoose.Types.ObjectId,
     ref: "Instructor",
