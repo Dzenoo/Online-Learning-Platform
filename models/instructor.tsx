@@ -27,6 +27,15 @@ const InstructorSchema = new Schema({
     type: String,
     required: [true, "Password is required"],
   },
+  biography: {
+    type: String,
+    default:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  image: {
+    type: String,
+    default: process.env.PROFILEIMAGE,
+  },
   courses: {
     type: Array,
     default: [],
