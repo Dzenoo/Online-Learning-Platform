@@ -1,5 +1,6 @@
 import { connectToDB } from "@/library/database";
-import User from "@/models/user";
+import Instructor from "@/models/instructor";
+import Student from "@/models/student";
 import {
   generateToken,
   responseJson,
@@ -8,7 +9,7 @@ import {
 } from "@/utility/helpers";
 
 export const POST = async (request: Request) => {
-  const { email, password } = await request.json();
+  const { email, password, type } = await request.json();
 
   try {
     await connectToDB();
@@ -17,23 +18,55 @@ export const POST = async (request: Request) => {
       return responseMessage("Invalid data, please fill required fields!", 500);
     }
 
-    const existingUser = await User.findOne({
-      email,
-    });
+    if (type === "student") {
+      const existingStudent = await Student.findOne({
+        email,
+      });
 
-    if (!existingUser) {
-      return responseMessage("Invalid credentials, could not log you in.", 500);
+      if (!existingStudent) {
+        return responseMessage(
+          "Invalid credentials, could not log you in.",
+          500
+        );
+      }
+
+      const isPasswordValid = validatePassword(
+        password,
+        existingStudent.password
+      );
+
+      if (!isPasswordValid) {
+        return responseMessage("Invalid password, could not log you in.", 500);
+      }
+
+      const token = generateToken(existingStudent.id);
+
+      return responseJson(token, 200);
+    } else {
+      const existingInstructor = await Instructor.findOne({
+        email,
+      });
+
+      if (!existingInstructor) {
+        return responseMessage(
+          "Invalid credentials, could not log you in.",
+          500
+        );
+      }
+
+      const isPasswordValid = validatePassword(
+        password,
+        existingInstructor.password
+      );
+
+      if (!isPasswordValid) {
+        return responseMessage("Invalid password, could not log you in.", 500);
+      }
+
+      const token = generateToken(existingInstructor.id);
+
+      return responseJson(token, 200);
     }
-
-    const isPasswordValid = validatePassword(password, existingUser.password);
-
-    if (!isPasswordValid) {
-      return responseMessage("Invalid password, could not log you in.", 500);
-    }
-
-    const token = generateToken(existingUser.id);
-
-    return responseJson(token, 200);
   } catch (error) {
     return responseMessage("Internal Server Error", 500);
   }
