@@ -12,6 +12,9 @@ import React, { ChangeEvent, useState } from "react";
 
 const Coupons: React.FC<NewCoursesState> = ({ setnewCourseValues }) => {
   const [isCouponCreating, setisCouponCreating] = useState(false);
+  const [couponState, setcouponState] = useState<
+    "initial" | "error" | "success" | "outlined"
+  >("initial");
   const [coupon, setCoupon] = useState<CouponTypes>({
     discountType: CouponEnum.FixedCoupon,
     value: "",
@@ -33,11 +36,13 @@ const Coupons: React.FC<NewCoursesState> = ({ setnewCourseValues }) => {
   }
 
   function createCoupon(): void {
+    setcouponState("initial");
     if (coupon.value !== "" || coupon.expiration !== "") {
       setnewCourseValues((prevVal: NewCourseValuesTypes) => ({
         ...prevVal,
         coupon: coupon,
       }));
+      setcouponState("success");
     }
   }
 
@@ -134,7 +139,7 @@ const Coupons: React.FC<NewCoursesState> = ({ setnewCourseValues }) => {
               </div>
               <Button
                 type="button"
-                styleType="initial"
+                styleType={couponState}
                 onClick={createCoupon}
                 disabled={isButtonDisabled}
               >
