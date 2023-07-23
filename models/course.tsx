@@ -45,12 +45,6 @@ const CourseSchema = new Schema({
     type: Number,
     default: 20,
   },
-  coupon: {
-    discountType: { type: String },
-    value: { type: String },
-    expiration: { type: Date },
-    name: { type: String },
-  },
   requirements: [{ type: String, default: [] }],
   forCourse: [{ type: String, default: [] }],
   sections: [

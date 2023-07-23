@@ -14,7 +14,6 @@ export const POST = async (request: Request) => {
     duration,
     price,
     popularity,
-    coupon,
     sections,
     requirements,
     forCourse,
@@ -35,7 +34,6 @@ export const POST = async (request: Request) => {
       duration === "" ||
       price === "" ||
       popularity === "" ||
-      coupon === "" ||
       requirements.length === 0 ||
       forCourse.length === 0 ||
       sections === "" ||
@@ -55,7 +53,6 @@ export const POST = async (request: Request) => {
       duration,
       price,
       popularity,
-      coupon,
       requirements,
       forCourse,
       sections,

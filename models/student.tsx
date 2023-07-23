@@ -1,4 +1,4 @@
-import { Schema, model, models } from "mongoose";
+import mongoose, { Schema, model, models } from "mongoose";
 
 const StudentSchema = new Schema({
   first_name: {
@@ -27,6 +27,10 @@ const StudentSchema = new Schema({
   password: {
     type: String,
     required: [true, "Password is required"],
+  },
+  cart: {
+    items: [{ type: mongoose.Types.ObjectId, ref: "Course" }],
+    totalAmount: { type: Number, default: 0 },
   },
 });
 
