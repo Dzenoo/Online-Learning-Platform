@@ -1,17 +1,45 @@
+"use client";
 import Input from "@/components/shared/form/Input";
 import { useValidation } from "@/hooks/useValidation";
 import { NewCoursesState } from "@/types/instructor/InstructorContextTypes";
 import { InputType } from "@/types/form/InputTypes";
-import { removeRequirementHandler } from "@/utility/helpers";
-import { VALIDATOR_REQUIRE } from "@/utility/validators";
+import {
+  addRequirementHandler,
+  removeRequirementHandler,
+} from "@/utility/helpers";
+import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "@/utility/validators";
 import React from "react";
 
 const Requirements: React.FC<NewCoursesState> = ({
   setnewCourseValues,
   newCourseValues,
 }) => {
-  const requirementInp = useValidation([VALIDATOR_REQUIRE()]);
-  const forCourseInp = useValidation([VALIDATOR_REQUIRE()]);
+  const requirementInp = useValidation([VALIDATOR_MINLENGTH(20)]);
+  const forCourseInp = useValidation([VALIDATOR_MINLENGTH(20)]);
+
+  function addRequirement(): void {
+    if (requirementInp.isValid) {
+      const requirements = newCourseValues?.requirements.map(
+        (requirement) => requirement
+      );
+      if (
+        requirements?.find(
+          (requirement) => requirement === requirementInp.value
+        )
+      ) {
+        alert("Please enter different value!");
+        return;
+      }
+      {
+        addRequirementHandler(
+          setnewCourseValues,
+          "requirements",
+          requirementInp.value
+        );
+        forCourseInp.emptyInput();
+      }
+    }
+  }
 
   return (
     <div className="shadow-lg p-9">
@@ -30,9 +58,10 @@ const Requirements: React.FC<NewCoursesState> = ({
               <Input
                 type={InputType.Input}
                 value={requirementInp.value}
+                error={!requirementInp.isValid && requirementInp.isTouched}
                 onChange={requirementInp.onChangeHandler}
                 onBlur={requirementInp.onBlurHandler}
-                helperText="Please enter valid requirements"
+                helperText="Please enter valid requirements (min 20)"
                 id="requirements"
                 label="Requirements"
                 placeholder="e.g. Basics javascript knowledge"
@@ -41,16 +70,7 @@ const Requirements: React.FC<NewCoursesState> = ({
             <button
               disabled={!requirementInp.isValid}
               className="bg-yellow-400 p-2 mt-7 rounded-sm cursor-pointer text-white"
-              onClick={() => {
-                setnewCourseValues((prevState: any) => ({
-                  ...prevState,
-                  requirements: [
-                    ...prevState.requirements,
-                    requirementInp.value,
-                  ],
-                }));
-                requirementInp.emptyInput();
-              }}
+              onClick={addRequirement}
             >
               Add
             </button>

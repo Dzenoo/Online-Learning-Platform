@@ -14,6 +14,17 @@ export function createGraphicIcon(source: string, alt: string): ReactNode {
   return <Image src={source} alt={alt} width={40} height={40} />;
 }
 
+export function addRequirementHandler(
+  setStateAction: React.Dispatch<SetStateAction<any>>,
+  stateKey: string,
+  newValue: string
+): void {
+  setStateAction((prevState: any) => ({
+    ...prevState,
+    [stateKey]: [...prevState[stateKey], newValue],
+  }));
+}
+
 export function removeRequirementHandler(
   indexToRemove: number,
   setStateAction: React.Dispatch<SetStateAction<any>>,
