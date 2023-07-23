@@ -44,7 +44,6 @@ export const POST = async (request: Request) => {
     });
 
     const user = await createdUser.save();
-
     const token = generateToken(user.id);
 
     return responseJson(token, 200);
