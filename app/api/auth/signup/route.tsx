@@ -1,5 +1,6 @@
 import { connectToDB } from "@/library/database";
-import User from "@/models/user";
+import Instructor from "@/models/instructor";
+import Student from "@/models/student";
 import {
   generateToken,
   hashPassword,
@@ -8,7 +9,7 @@ import {
 } from "@/utility/helpers";
 
 export const POST = async (request: Request) => {
-  const { first_name, last_name, email, password } = await request.json();
+  const { first_name, last_name, email, password, type } = await request.json();
 
   try {
     await connectToDB();
@@ -22,31 +23,59 @@ export const POST = async (request: Request) => {
       return responseMessage("Invalid data, please fill required fields!", 500);
     }
 
-    const existingUser = await User.findOne({
-      email: email,
-      first_name: first_name,
-    });
+    if (type === "student") {
+      const existingStudent = await Student.findOne({
+        email: email,
+        first_name: first_name,
+      });
 
-    if (existingUser) {
-      return responseMessage(
-        "User already exist with this email or first name!",
-        500
-      );
+      if (existingStudent) {
+        return responseMessage(
+          "Student already exist with this email or first name!",
+          500
+        );
+      }
+
+      const hashedPassword = await hashPassword(password);
+
+      const createdStudent = new Student({
+        first_name,
+        last_name,
+        email,
+        password: hashedPassword,
+      });
+
+      const student = await createdStudent.save();
+      const token = generateToken(student.id);
+
+      return responseJson(token, 200);
+    } else {
+      const existingInstructor = await Instructor.findOne({
+        email: email,
+        first_name: first_name,
+      });
+
+      if (existingInstructor) {
+        return responseMessage(
+          "Instructor already exist with this email or first name!",
+          500
+        );
+      }
+
+      const hashedPassword = await hashPassword(password);
+
+      const createdInstructor = new Instructor({
+        first_name,
+        last_name,
+        email,
+        password: hashedPassword,
+      });
+
+      const instructor = await createdInstructor.save();
+      const token = generateToken(instructor.id);
+
+      return responseJson(token, 200);
     }
-
-    const hashedPassword = await hashPassword(password);
-
-    const createdUser = new User({
-      first_name,
-      last_name,
-      email,
-      password: hashedPassword,
-    });
-
-    const user = await createdUser.save();
-    const token = generateToken(user.id);
-
-    return responseJson(token, 200);
   } catch (error) {
     return responseMessage("Internal Server Error", 500);
   }

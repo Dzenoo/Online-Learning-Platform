@@ -1,6 +1,6 @@
 import { Schema, model, models } from "mongoose";
 
-const UserSchema = new Schema({
+const StudentSchema = new Schema({
   first_name: {
     type: String,
     required: [true, "First Name is required"],
@@ -20,6 +20,7 @@ const UserSchema = new Schema({
   },
   email: {
     type: String,
+    unique: true,
     required: [true, "Email is required"],
     match: [/^\S+@\S+\.\S+$/, "Email invalid, must be correct type"],
   },
@@ -29,6 +30,6 @@ const UserSchema = new Schema({
   },
 });
 
-const User = models.User || model("User", UserSchema);
+const Student = models.Student || model("Student", StudentSchema);
 
-export default User;
+export default Student;
