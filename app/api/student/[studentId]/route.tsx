@@ -1,5 +1,5 @@
 import { connectToDB } from "@/library/database";
-import Course from "@/models/course";
+import Student from "@/models/student";
 import { responseJson, responseMessage } from "@/utility/helpers";
 
 export const GET = async (
@@ -8,6 +8,16 @@ export const GET = async (
 ) => {
   try {
     await connectToDB();
+
+    const student = await Student.findById(params.studentId)
+      .populate(["courses", "favorites", "cart.items"])
+      .select("-password");
+
+    if (!student) {
+      return responseMessage("Student not found", 404);
+    }
+
+    return responseJson(student, 200);
   } catch (error) {
     console.log(error);
     return responseMessage("Internal server error", 500);
