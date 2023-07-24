@@ -27,9 +27,6 @@ const MainNavigation: React.FC = () => {
           <Link href="/my-courses" className="text-gray-400 font-light">
             My Courses
           </Link>
-          <Link href="/profile" className="text-gray-400 font-light">
-            Profile
-          </Link>
         </nav>
       )}
       {!isLoggedIn && (
