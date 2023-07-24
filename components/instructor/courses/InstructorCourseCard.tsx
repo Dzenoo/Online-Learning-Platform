@@ -17,8 +17,8 @@ const InstructorCourseCard: React.FC<InstructorCourseCardProps> = ({
           <p className="font-light text-md text-gray-400">{description}</p>
         </div>
         <div className="flex gap-2 pb-2">
-          <p className="text-blue-400 cursor-pointer">Edit</p>
-          <p className="text-red-400 cursor-pointer">Delete</p>
+          <p className="text-blue-400 cursor-pointer">Edit in proccess</p>
+          <p className="text-red-400 cursor-pointer">Delete in proccess</p>
         </div>
       </div>
     </div>
