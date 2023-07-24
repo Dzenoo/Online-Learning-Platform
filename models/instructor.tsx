@@ -1,4 +1,4 @@
-import { Schema, model, models } from "mongoose";
+import mongoose, { Schema, model, models } from "mongoose";
 
 const InstructorSchema = new Schema({
   first_name: {
@@ -36,10 +36,12 @@ const InstructorSchema = new Schema({
     type: String,
     default: process.env.PROFILEIMAGE,
   },
-  courses: {
-    type: Array,
-    default: [],
-  },
+  courses: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Course",
+    },
+  ],
 });
 
 const Instructor = models.Instructor || model("Instructor", InstructorSchema);

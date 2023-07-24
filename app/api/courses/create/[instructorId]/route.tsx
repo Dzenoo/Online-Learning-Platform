@@ -1,8 +1,12 @@
 import { connectToDB } from "@/library/database";
 import Course from "@/models/course";
+import Instructor from "@/models/instructor";
 import { responseMessage } from "@/utility/helpers";
 
-export const POST = async (request: Request) => {
+export const POST = async (
+  request: Request,
+  { params }: { params: { instructorId: string } }
+) => {
   const {
     title,
     subtitle,
@@ -17,7 +21,6 @@ export const POST = async (request: Request) => {
     sections,
     requirements,
     forCourse,
-    instructor,
   } = await request.json();
 
   try {
@@ -36,10 +39,18 @@ export const POST = async (request: Request) => {
       popularity === "" ||
       requirements.length === 0 ||
       forCourse.length === 0 ||
-      sections === "" ||
-      instructor === ""
+      sections === ""
     ) {
       return responseMessage("Invalid inputs, please enter valid data", 500);
+    }
+
+    const instructor = await Instructor.findById(params.instructorId);
+
+    if (!instructor) {
+      return responseMessage(
+        "Could not find instructor right now, please try again later",
+        500
+      );
     }
 
     const createdCourse = new Course({
@@ -56,7 +67,7 @@ export const POST = async (request: Request) => {
       requirements,
       forCourse,
       sections,
-      instructor,
+      instructor: params.instructorId,
     });
 
     if (!createdCourse) {
@@ -67,6 +78,8 @@ export const POST = async (request: Request) => {
     }
 
     const course = await createdCourse.save();
+    instructor.courses.push(course._id);
+    await instructor.save();
 
     if (course) {
       return responseMessage("Successfully created course", 201);
