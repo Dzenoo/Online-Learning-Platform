@@ -32,6 +32,7 @@ const StudentSchema = new Schema({
     items: [{ type: mongoose.Types.ObjectId, ref: "Course" }],
     totalAmount: { type: Number, default: 0 },
   },
+  favorites: [{ type: mongoose.Types.ObjectId, ref: "Course", default: [] }],
   courses: [{ type: mongoose.Types.ObjectId, ref: "Course", default: [] }],
 });
 
