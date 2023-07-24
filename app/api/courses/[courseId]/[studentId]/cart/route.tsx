@@ -22,14 +22,16 @@ export const PATCH = async (
     }
 
     if (student.cart.items.includes(course._id)) {
-      return responseMessage("Course is already added to cart ", 500);
+      student.cart.items.pull(course._id);
+      student.cart.totalAmount -= course.price;
+      await student.save();
+      return responseMessage("Course is removed from the cart ", 200);
+    } else {
+      student.cart.items.push(course._id);
+      student.cart.totalAmount += course.price;
+      await student.save();
+      return responseMessage("Course added to cart ", 201);
     }
-
-    student.cart.items.push(course._id);
-    student.cart.totalAmount += course.price;
-
-    await student.save();
-    return responseMessage("Course added to cart ", 201);
   } catch (error) {
     console.log(error);
     return responseMessage("Internal server error", 500);
