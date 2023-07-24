@@ -60,7 +60,7 @@ const MainNavigation: React.FC = () => {
           </Link>
         )}
         {isLoggedIn && (
-          <Link href="/instructor-dashboard">
+          <Link href="/notifications">
             {createGraphicIcon("/assets/graphics/bell.png", "notification")}
           </Link>
         )}
