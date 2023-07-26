@@ -28,7 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "context/InstructorContext.js"
+    "context/InstructorContext.js",
+    "models/course.jsx"
   ],
   "exclude": ["node_modules"]
 }

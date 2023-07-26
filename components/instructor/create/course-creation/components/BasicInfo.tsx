@@ -6,34 +6,12 @@ import {
   NewCourseValuesTypes,
   NewCoursesState,
 } from "@/types/instructor/InstructorContextTypes";
-import Image from "next/image";
 import React, { ChangeEvent } from "react";
 
 const BasicInfo: React.FC<NewCoursesState> = ({
   newCourseValues,
   setnewCourseValues,
 }) => {
-  function imageCourseHandler(e: ChangeEvent<HTMLInputElement>): void {
-    const file = e.target.files![0];
-
-    if (file) {
-      if (!file.type.startsWith("image/")) {
-        console.log("Please upload image");
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        const imageUrl = reader.result as string;
-        setnewCourseValues((prevState: NewCourseValuesTypes) => ({
-          ...prevState,
-          image: imageUrl,
-        }));
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-
   return (
     <div className="shadow-lg p-9">
       <div className="flex flex-col gap-2 mb-6">
@@ -110,28 +88,6 @@ const BasicInfo: React.FC<NewCoursesState> = ({
                   level: e.target.value,
                 }))
               }
-            />
-          </div>
-        </div>
-        <div>
-          <strong>Image</strong>
-          <div className="flex items-center gap-4">
-            <Image
-              src={
-                newCourseValues?.image
-                  ? newCourseValues?.image
-                  : "/assets/graphics/initial.png"
-              }
-              width={200}
-              height={200}
-              alt="initial"
-              className="border p-2"
-            />
-            <input
-              className="border p-4"
-              type="file"
-              accept="image/*"
-              onChange={imageCourseHandler}
             />
           </div>
         </div>

@@ -4,7 +4,7 @@ import {
 } from "@/types/instructor/InstructorContextTypes";
 import { getAuthData } from "@/utility/helpers";
 import useSwr from "swr";
-import React, { FormEvent, createContext, useEffect, useState } from "react";
+import React, { FormEvent, createContext, useState } from "react";
 
 export const InstructorContext = createContext<InstructorContextProviderType>({
   instructorData: [],
@@ -20,7 +20,6 @@ export const InstructorContext = createContext<InstructorContextProviderType>({
     captions: "",
     subtitle: "",
     description: "",
-    image: "",
     level: "",
     price: 0,
     sections: [],
@@ -81,15 +80,15 @@ export const InstructorProvider = ({
       requirements: newCourseValues.requirements,
       forCourse: newCourseValues.forCourse,
     };
-
-    console.log(courseData);
-    await fetch(`/api/courses/create/${instructorId}`, {
+    const response = await fetch(`/api/courses/create/${instructorId}`, {
       method: "POST",
       body: JSON.stringify(courseData),
       headers: { "Content-Type": "application/json" },
     });
 
-    // console.log(formData.values);
+    if (response.ok) {
+      alert("Created Course Finished");
+    }
   }
 
   return (

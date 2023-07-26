@@ -33,7 +33,6 @@ export interface NewCourseValuesTypes {
   captions: string;
   subtitle: string;
   description: string;
-  image: string;
   level: string;
   price: number;
   sections: SectionProps[];

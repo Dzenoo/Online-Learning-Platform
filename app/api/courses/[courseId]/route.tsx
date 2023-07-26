@@ -9,7 +9,9 @@ export const GET = async (
   try {
     await connectToDB();
 
-    const course = await Course.findById(params.courseId);
+    const course = await Course.findById(params.courseId).populate(
+      "instructor"
+    );
 
     if (!course) {
       return responseMessage(

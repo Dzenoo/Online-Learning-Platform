@@ -1,8 +1,12 @@
 export interface CourseCardProps {
-  id: string;
+  _id: string;
   title: string;
   image: string;
-  instructor: string;
+  instructor: {
+    first_name: string;
+    last_name: string;
+    image: string;
+  };
   category?: string;
   skillLevel?: string;
   language?: string;
@@ -14,7 +18,18 @@ export interface CourseCardProps {
   students?: number;
   articles?: number;
   lectures?: number;
-  sections?: number;
+  sections?: [
+    {
+      _id: string;
+      title: string;
+      lectures: [
+        {
+          _id: string;
+          title: string;
+        }
+      ];
+    }
+  ];
 }
 
 export interface CourseListProps {

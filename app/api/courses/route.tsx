@@ -6,7 +6,7 @@ export const GET = async () => {
   try {
     await connectToDB();
 
-    const courses = await Course.find({});
+    const courses = await Course.find({}).populate("instructor");
 
     if (!courses) {
       return responseMessage(

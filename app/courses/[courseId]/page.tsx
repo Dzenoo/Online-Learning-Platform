@@ -1,3 +1,4 @@
+"use client";
 import {
   CourseDetailsContent,
   CourseDetailsInfo,
@@ -7,18 +8,24 @@ import {
 import { CoursesData } from "@/data/coursesdata.config";
 import { CourseCardProps } from "@/types/courses/CourseInfoTypes";
 import Link from "next/link";
+import useSwr from "swr";
 import React from "react";
 
 export async function generateStaticParams() {
-  return CoursesData.map((course) => ({
-    courseId: course.id,
+  const courses = await fetch("/api/courses/");
+
+  const coursesData = await courses.json();
+
+  return coursesData.map((course: CourseCardProps) => ({
+    courseId: course._id,
   }));
 }
 
 const CourseDetails = ({ params }: { params: { courseId: string } }) => {
-  const course = CoursesData.find(
-    (course) => course.id === params.courseId
-  ) as CourseCardProps;
+  const fetcher = (...args: Parameters<typeof fetch>) =>
+    fetch(...args).then((res) => res.json());
+  const { data: course } = useSwr(`/api/courses/${params.courseId}`, fetcher);
+  const { data: courses } = useSwr(`/api/courses`, fetcher);
 
   return (
     <section className="p-7 flex flex-col gap-6 justify-center items-stretch">
@@ -38,8 +45,8 @@ const CourseDetails = ({ params }: { params: { courseId: string } }) => {
           Browse Related Courses
         </h1>
         <CourseList
-          courses={CoursesData.filter(
-            (course) => course.id !== params.courseId
+          courses={courses?.filter(
+            (course: CourseCardProps) => course._id !== params.courseId
           )}
         />
       </div>

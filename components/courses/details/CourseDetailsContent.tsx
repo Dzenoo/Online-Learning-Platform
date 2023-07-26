@@ -5,19 +5,25 @@ import React from "react";
 const CourseDetailsContent: React.FC<CourseDetailsProps> = ({ course }) => {
   return (
     <div className="p-6 flex-grow basis-1/2">
-      <div className="flex gap-6 w-full">
+      <div className="flex items-start gap-6 w-full">
         <Image
           src={course?.image}
           alt={course?.title}
-          width={470}
-          height={470}
+          width={270}
+          height={270}
           className="rounded-lg"
         />
         <div className="flex flex-col gap-3">
           <h1 className="font-extrabold text-4xl">{course?.title}</h1>
           <h2 className="text-lg flex gap-2 items-center">
-            <div className="bg-blue-400 w-12 h-12 rounded-full"></div>
-            {course?.instructor}
+            <Image
+              src={course?.instructor.image}
+              alt={course?.instructor.first_name}
+              width={100}
+              height={100}
+              className="rounded-lg"
+            />
+            {course?.instructor.first_name} {course?.instructor.last_name}
           </h2>
           <p className="text-gray-400 font-light">{course?.description}</p>
           <div className="text-lg flex gap-2 items-center">
@@ -28,7 +34,7 @@ const CourseDetailsContent: React.FC<CourseDetailsProps> = ({ course }) => {
               height={30}
             />
             <h2 className="font-bold">
-              Lessons: <strong>{course?.lessons}</strong>
+              Lessons: <strong>{course?.sections?.length}</strong>
             </h2>
           </div>
           <div className="text-lg flex gap-2 items-center">
@@ -63,7 +69,7 @@ const CourseDetailsContent: React.FC<CourseDetailsProps> = ({ course }) => {
         <h1 className="font-bold text-3xl mb-2">Course Content</h1>
         <div className="flex gap-2 mb-4">
           <p>
-            Sections: <strong>{course?.sections}</strong>
+            Sections: <strong>{course?.sections?.length}</strong>
           </p>
           <p>
             Lectures: <strong>{course?.lectures}</strong>

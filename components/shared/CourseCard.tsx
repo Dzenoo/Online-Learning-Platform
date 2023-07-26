@@ -7,7 +7,7 @@ import Link from "next/link";
 import { convertToDiscountPrice } from "@/utility/helpers";
 
 const CourseCard: React.FC<CourseCardProps> = ({
-  id,
+  _id,
   title,
   price,
   image,
@@ -17,7 +17,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
 
   return (
     <Card styles="max-w-sm flex flex-col gap-4 hover:shadow-xl transition">
-      <Link href={`/courses/${id}`}>
+      <Link href={`/courses/${_id}`}>
         <Image
           src={image}
           alt={title}
@@ -32,7 +32,9 @@ const CourseCard: React.FC<CourseCardProps> = ({
       </Link>
       <div>
         <h1 className="font-bold text-xl">{title}</h1>
-        <p className="font-light text-lg text-gray-400">{instructor}</p>
+        <p className="font-light text-lg text-gray-400">
+          {instructor.first_name} {instructor.last_name}
+        </p>
         <div className="flex items-center gap-2 mt-4">
           <Image
             src="/assets/graphics/dollar.png"
@@ -44,7 +46,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
           <span className="line-through text-gray-400 text-s">${price}</span>
         </div>
       </div>
-      <Link href={`/courses/${id}`}>
+      <Link href={`/courses/${_id}`}>
         <Button styleType="initial" type="button">
           Details
         </Button>

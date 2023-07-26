@@ -67,5 +67,4 @@ const CheckoutForm = () => {
     </form>
   );
 };
-
 export default CheckoutForm;
