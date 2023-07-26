@@ -11,10 +11,10 @@ const ProtectedRoutes = (
     const router = useRouter();
     useEffect(() => {
       const authData = getAuthData();
-      if (!authData.authToken) {
+      if (!authData?.authToken) {
         router.push("/login");
       }
-      if (!allowedRoles.includes(authData.typeAuth)) {
+      if (!allowedRoles.includes(authData?.typeAuth)) {
         router.push("/");
       }
     }, []);

@@ -10,7 +10,6 @@ import { getAuthData } from "@/utility/helpers";
 
 function LandingPage() {
   const authData = getAuthData();
-  console.log(authData);
 
   return (
     <section>

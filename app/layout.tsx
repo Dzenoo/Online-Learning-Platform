@@ -1,5 +1,13 @@
 "use client";
-import { Footer, MainNavigation } from "@/components/landing";
+
+import dynamic from "next/dynamic";
+
+import { Footer } from "@/components/landing";
+const MainNavigation = dynamic(
+  () => import("@/components/shared/navigation/MainNavigation"),
+  { ssr: false }
+);
+
 import "./globals.css";
 import type { Metadata } from "next";
 import { usePathname } from "next/navigation";

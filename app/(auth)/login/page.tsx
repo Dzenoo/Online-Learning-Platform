@@ -2,11 +2,15 @@
 
 import Login from "@/components/auth/Login";
 import ProtectedAuth from "@/components/shared/auth/ProtectedAuth";
+import { useAuth } from "@/hooks/useAuth";
 import { usePostHttp } from "@/hooks/usePostHttp";
 import { LoginData, LoginType } from "@/types/auth/LoginTypes";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const { sendRequest, isLoading, message } = usePostHttp();
+  const { signin } = useAuth();
+  const router = useRouter();
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -26,6 +30,8 @@ const LoginPage = () => {
       type: type,
     };
     const response = await sendRequest("POST", "/api/auth/login", loginData);
+    signin(response.token, response.type);
+    router.push("/");
   }
 
   return (

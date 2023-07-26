@@ -1,6 +1,7 @@
 "use client";
 
 import { CourseList } from "@/components/courses";
+import ProtectedRoutes from "@/components/shared/auth/ProtectedRoutes";
 import { CoursesData } from "@/data/coursesdata.config";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -39,4 +40,4 @@ const MyCoursesPage = () => {
   );
 };
 
-export default MyCoursesPage;
+export default ProtectedRoutes(MyCoursesPage, ["student"]);

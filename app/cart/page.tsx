@@ -1,5 +1,8 @@
+"use client";
+
 import { CartDetails, CartList } from "@/components/cart";
 import { CourseList } from "@/components/courses";
+import ProtectedRoutes from "@/components/shared/auth/ProtectedRoutes";
 import { CartData, CoursesData } from "@/data/coursesdata.config";
 import React from "react";
 
@@ -23,4 +26,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default ProtectedRoutes(CartPage, ["student"]);

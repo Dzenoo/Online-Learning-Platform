@@ -22,6 +22,15 @@ const InstructorNav: React.FC = () => {
       >
         My Courses
       </Button>
+      <Button
+        isLink={true}
+        linkHref=""
+        type="button"
+        styleType="initial"
+        additionalStyles="rounded-sm"
+      >
+        Home
+      </Button>
     </nav>
   );
 };

@@ -5,10 +5,12 @@ import ProtectedAuth from "@/components/shared/auth/ProtectedAuth";
 import { useAuth } from "@/hooks/useAuth";
 import { usePostHttp } from "@/hooks/usePostHttp";
 import { RegisterData, SignupType } from "@/types/auth/SignupTypes";
+import { useRouter } from "next/navigation";
 
 const SignupPage = () => {
   const { sendRequest, isLoading, message } = usePostHttp();
   const { signin } = useAuth();
+  const router = useRouter();
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -31,6 +33,7 @@ const SignupPage = () => {
     };
     const response = await sendRequest("POST", "/api/auth/signup", signupData);
     signin(response.token, response.type);
+    router.push("/");
   }
 
   return (

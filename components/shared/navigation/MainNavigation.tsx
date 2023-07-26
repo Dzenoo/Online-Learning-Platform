@@ -1,11 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Button from "../form/Button";
-import { createGraphicIcon } from "@/utility/helpers";
+import { createGraphicIcon, getAuthData } from "@/utility/helpers";
+import { useAuth } from "@/hooks/useAuth";
 
 const MainNavigation: React.FC = () => {
-  const isLoggedIn = true as boolean;
+  const { logout } = useAuth();
+  const authData = getAuthData();
+
+  const isInstructor = authData?.typeAuth === "instructor";
+  const isStudent = authData?.typeAuth === "student";
 
   return (
     <header className="p-4 shadow-md flex justify-between items-center sticky top-0 z-20 bg-white">
@@ -19,22 +26,27 @@ const MainNavigation: React.FC = () => {
           />
         </Link>
       </div>
-      {isLoggedIn && (
-        <nav className="flex gap-6 align-middle">
+      {isStudent && (
+        <div className="flex gap-6 align-middle">
           <Link href="/courses" className="text-gray-400 font-light">
             Courses
           </Link>
           <Link href="/my-courses" className="text-gray-400 font-light">
             My Courses
           </Link>
-        </nav>
+        </div>
       )}
-      {!isLoggedIn && (
-        <nav className="flex gap-6 align-middle">
+      {isInstructor && (
+        <Link href="/instructor-dashboard" className="text-gray-400 font-light">
+          Dashboard
+        </Link>
+      )}
+      {!authData?.authToken && (
+        <div className="flex gap-6 align-middle">
           <Link href="/" className="text-gray-400 font-light">
             Home
           </Link>
-          <Link href="/courses" className="text-gray-400 font-light">
+          <Link href="/" className="text-gray-400 font-light">
             About us
           </Link>
           <Link href="/" className="text-gray-400 font-light">
@@ -43,10 +55,10 @@ const MainNavigation: React.FC = () => {
           <Link href="/" className="text-gray-400 font-light">
             Contact us
           </Link>
-        </nav>
+        </div>
       )}
       <div className="flex gap-6 items-center">
-        {isLoggedIn && (
+        {isStudent && (
           <Link href="/cart" className="relative">
             {createGraphicIcon("/assets/graphics/shopping-cart.png", "cart")}
             <span className="w-6 h-6 bg-yellow-400 absolute rounded-full bottom-[18px] left-4 text-white font-bold text-sm text-center">
@@ -54,27 +66,28 @@ const MainNavigation: React.FC = () => {
             </span>
           </Link>
         )}
-        {isLoggedIn && (
+        {isStudent && (
           <Link href="/favorites">
             {createGraphicIcon("/assets/graphics/heart.png", "favorite")}
           </Link>
         )}
-        {isLoggedIn && (
+        {isStudent && (
           <Link href="/notifications">
             {createGraphicIcon("/assets/graphics/bell.png", "notification")}
           </Link>
         )}
-        {isLoggedIn && (
+        {authData?.authToken && (
           <Button
             styleType="initial"
             type="button"
             disabled={false}
             isLink={false}
+            onClick={logout}
           >
             Logout
           </Button>
         )}
-        {!isLoggedIn && (
+        {!authData?.authToken && (
           <Button
             styleType="initial"
             type="button"
@@ -85,7 +98,7 @@ const MainNavigation: React.FC = () => {
             Sign In
           </Button>
         )}
-        {!isLoggedIn && (
+        {!authData?.authToken && (
           <Button
             disabled={false}
             styleType="initial"

@@ -1,4 +1,7 @@
+"use client";
+
 import { CheckoutForm, CourseCheckout } from "@/components/checkout";
+import ProtectedRoutes from "@/components/shared/auth/ProtectedRoutes";
 import Button from "@/components/shared/form/Button";
 import React from "react";
 
@@ -38,4 +41,4 @@ const CheckoutPage = () => {
   );
 };
 
-export default CheckoutPage;
+export default ProtectedRoutes(CheckoutPage, ["student"]);

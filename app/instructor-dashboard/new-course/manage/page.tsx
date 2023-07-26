@@ -8,6 +8,7 @@ import {
   Pricing,
   Requirements,
 } from "@/components/instructor";
+import ProtectedRoutes from "@/components/shared/auth/ProtectedRoutes";
 import { InstructorContext } from "@/context/InstructorContext";
 import { CourseManagamentCreation } from "@/types/instructor/InstructorContextTypes";
 import React, { useContext, useEffect } from "react";
@@ -101,4 +102,4 @@ const Manage = () => {
   );
 };
 
-export default Manage;
+export default ProtectedRoutes(Manage, ["instructor"]);
