@@ -14,5 +14,9 @@ export const useAuth = () => {
     localStorage.setItem("authData", JSON.stringify(authData));
   }, []);
 
-  return { signin };
+  const logout = useCallback(() => {
+    localStorage.removeItem("authData");
+  }, []);
+
+  return { signin, logout };
 };
