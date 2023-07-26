@@ -1,11 +1,13 @@
 "use client";
 
 import Signup from "@/components/auth/Signup";
+import { useAuth } from "@/hooks/useAuth";
 import { usePostHttp } from "@/hooks/usePostHttp";
 import { RegisterData, SignupType } from "@/types/auth/SignupTypes";
 
 const SignupPage = () => {
   const { sendRequest, isLoading, message } = usePostHttp();
+  const { signin } = useAuth();
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -27,6 +29,7 @@ const SignupPage = () => {
       type: type,
     };
     const response = await sendRequest("POST", "/api/auth/signup", signupData);
+    signin(response.token, response.type);
   }
 
   return (
