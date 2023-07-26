@@ -78,7 +78,7 @@ export async function validatePassword(password: string, newPassword: string) {
   return isPasswordValid;
 }
 
-export function getAuthData(): void {
+export function getAuthData() {
   const authData =
     typeof window !== "undefined" && localStorage.getItem("authData")
       ? JSON.parse(localStorage.getItem("authData")!)

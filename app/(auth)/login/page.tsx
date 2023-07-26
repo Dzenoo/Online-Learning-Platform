@@ -1,6 +1,7 @@
 "use client";
 
 import Login from "@/components/auth/Login";
+import ProtectedAuth from "@/components/shared/auth/ProtectedAuth";
 import { usePostHttp } from "@/hooks/usePostHttp";
 import { LoginData, LoginType } from "@/types/auth/LoginTypes";
 
@@ -34,4 +35,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ProtectedAuth(LoginPage);

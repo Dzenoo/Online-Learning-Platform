@@ -1,4 +1,7 @@
+"use client";
+
 import { FilterCourses, InstructorCoursesList } from "@/components/instructor";
+import ProtectedRoutes from "@/components/shared/auth/ProtectedRoutes";
 import { CoursesData } from "@/data/coursesdata.config";
 import React from "react";
 
@@ -14,4 +17,4 @@ const InstructorDashboard = () => {
   );
 };
 
-export default InstructorDashboard;
+export default ProtectedRoutes(InstructorDashboard, ["instructor"]);

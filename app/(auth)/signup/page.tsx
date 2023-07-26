@@ -1,6 +1,7 @@
 "use client";
 
 import Signup from "@/components/auth/Signup";
+import ProtectedAuth from "@/components/shared/auth/ProtectedAuth";
 import { useAuth } from "@/hooks/useAuth";
 import { usePostHttp } from "@/hooks/usePostHttp";
 import { RegisterData, SignupType } from "@/types/auth/SignupTypes";
@@ -39,4 +40,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default ProtectedAuth(SignupPage);
