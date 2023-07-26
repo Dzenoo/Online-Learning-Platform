@@ -20,7 +20,7 @@ const NewCourseForm: React.FC = () => {
           <h2 className="font-bold text-2xl">
             Select what you want to create.
           </h2>
-          <div className="pt-12 flex justify-center items-center gap-4">
+          <div className="pt-12 flex justify-center items-stretch gap-4">
             <button
               type="button"
               onClick={() =>
@@ -53,6 +53,7 @@ const NewCourseForm: React.FC = () => {
             >
               {createGraphicIcon("/assets/graphics/news.png", "news")}
               <h2 className="font-bold text-xl">Test</h2>
+              <p>This is not working</p>
               <p className="text-gray-400">
                 Create a test to check your student knowledge from courses
               </p>

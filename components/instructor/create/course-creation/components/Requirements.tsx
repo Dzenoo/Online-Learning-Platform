@@ -15,7 +15,6 @@ const Requirements: React.FC<NewCoursesState> = ({
   newCourseValues,
 }) => {
   const requirementInp = useValidation([VALIDATOR_MINLENGTH(20)]);
-  const forCourseInp = useValidation([VALIDATOR_MINLENGTH(20)]);
 
   function addRequirement(): void {
     if (requirementInp.isValid && requirementInp.value.length >= 20) {
@@ -37,28 +36,6 @@ const Requirements: React.FC<NewCoursesState> = ({
           requirementInp.value
         );
         requirementInp.emptyInput();
-      }
-    } else {
-      return;
-    }
-  }
-
-  function addForCourse(): void {
-    if (forCourseInp.isValid && forCourseInp.value.length >= 20) {
-      const forCourses = newCourseValues?.forCourse.map(
-        (forCourse) => forCourse
-      );
-      if (forCourses?.find((forCourse) => forCourse === forCourseInp.value)) {
-        alert("Please enter different value!");
-        return;
-      }
-      {
-        addRequirementHandler(
-          setnewCourseValues,
-          "forCourse",
-          forCourseInp.value
-        );
-        forCourseInp.emptyInput();
       }
     } else {
       return;
@@ -123,52 +100,6 @@ const Requirements: React.FC<NewCoursesState> = ({
           </div>
         </div>
         {/*  */}
-        <div>
-          <div className="flex justify-between items-center gap-4">
-            <div className="w-full">
-              <Input
-                type={InputType.Input}
-                value={forCourseInp.value}
-                error={!forCourseInp.isValid && forCourseInp.isTouched}
-                onChange={forCourseInp.onChangeHandler}
-                onBlur={forCourseInp.onBlurHandler}
-                helperText="Please enter valid input (min 20)"
-                id="course_for"
-                label="This course is for"
-                placeholder="e.g. Web developers"
-              />
-            </div>
-            <button
-              disabled={!forCourseInp.isValid}
-              className="bg-yellow-400 p-2 mt-7 rounded-sm cursor-pointer text-white"
-              onClick={addForCourse}
-            >
-              Add
-            </button>
-          </div>
-          <div>
-            {newCourseValues?.forCourse.map((forCourse, ind) => (
-              <div
-                className="border mt-4 pl-2 flex justify-between items-center"
-                key={ind}
-              >
-                <h2 className="font-bold">{forCourse}</h2>
-                <button
-                  className="bg-red-600 px-4 py-2 rounded-sm cursor-pointer text-white"
-                  onClick={() =>
-                    removeRequirementHandler(
-                      ind,
-                      setnewCourseValues,
-                      "forCourse"
-                    )
-                  }
-                >
-                  X
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   );

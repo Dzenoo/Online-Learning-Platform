@@ -7,15 +7,16 @@ const InstructorCoursesList: React.FC<InstructorCourseListProps> = ({
 }) => {
   return (
     <ul className="flex flex-col gap-2 p-12">
-      {courses.map((course) => (
-        <InstructorCourseCard
-          key={course.id}
-          id={course.id}
-          title={course.title}
-          description={course.description}
-          image={course.image}
-        />
-      ))}
+      {courses?.length > 0 &&
+        courses?.map((course) => (
+          <InstructorCourseCard
+            key={course.id}
+            id={course.id}
+            title={course.title}
+            description={course.description}
+            image={course.image}
+          />
+        ))}
     </ul>
   );
 };

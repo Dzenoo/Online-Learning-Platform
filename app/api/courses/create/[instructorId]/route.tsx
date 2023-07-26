@@ -11,13 +11,13 @@ export const POST = async (
     title,
     subtitle,
     description,
-    image,
+    // image,
     skillLevel,
     category,
     language,
-    duration,
+    // duration,
     price,
-    popularity,
+    // popularity,
     sections,
     requirements,
     forCourse,
@@ -30,13 +30,13 @@ export const POST = async (
       title === "" ||
       subtitle === "" ||
       description === "" ||
-      image === "" ||
+      // image === "" ||
       skillLevel === "" ||
       category === "" ||
       language === "" ||
-      duration === "" ||
+      // duration === "" ||
       price === "" ||
-      popularity === "" ||
+      // popularity === "" ||
       requirements.length === 0 ||
       forCourse.length === 0 ||
       sections === ""
@@ -57,13 +57,13 @@ export const POST = async (
       title,
       subtitle,
       description,
-      image,
+      image: "img",
       skillLevel,
       category,
       language,
-      duration,
+      // duration,
       price,
-      popularity,
+      // popularity,
       requirements,
       forCourse,
       sections,

@@ -17,7 +17,6 @@ export interface LectureProps {
 
 export interface SectionProps {
   title: string;
-  id: string;
   index: number;
   lectures?: LectureProps[];
   setnewCourseValues: React.Dispatch<React.SetStateAction<any>>;
@@ -41,6 +40,7 @@ export interface NewCourseValuesTypes {
 }
 
 export interface InstructorContextProviderType {
+  instructorData: any;
   courseManage:
     | CourseManagamentCreation.Requirements
     | CourseManagamentCreation.Curriculum

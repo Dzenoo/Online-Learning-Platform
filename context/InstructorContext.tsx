@@ -2,9 +2,12 @@ import {
   CourseManagamentCreation,
   InstructorContextProviderType,
 } from "@/types/instructor/InstructorContextTypes";
-import React, { FormEvent, createContext, useState } from "react";
+import { getAuthData } from "@/utility/helpers";
+import useSwr from "swr";
+import React, { FormEvent, createContext, useEffect, useState } from "react";
 
 export const InstructorContext = createContext<InstructorContextProviderType>({
+  instructorData: [],
   courseManage: CourseManagamentCreation.Requirements,
   currentStep: 0,
   newCourseValues: {
@@ -27,6 +30,10 @@ export const InstructorContext = createContext<InstructorContextProviderType>({
   setnewCourseValues: () => {},
   submitCreateCourseHandler: (e) => {},
 });
+
+const fetcher = (...args: Parameters<typeof fetch>) =>
+  fetch(...args).then((res) => res.json());
+
 export const InstructorProvider = ({
   children,
 }: {
@@ -51,33 +58,44 @@ export const InstructorProvider = ({
     level: "",
     price: 0,
   });
+  const authData = getAuthData();
+  const instructorId = authData?.id;
 
-  function submitCreateCourseHandler(e: FormEvent): void {
+  const { data: instructorData } = useSwr(
+    `/api/instructor/${instructorId}`,
+    fetcher
+  );
+
+  async function submitCreateCourseHandler(e: FormEvent) {
     e.preventDefault();
-    const formData = new FormData();
 
-    formData.append("type", newCourseValues.type);
-    formData.append("title", newCourseValues.title);
-    formData.append("category", newCourseValues.category);
-    formData.append("language", newCourseValues.language);
-    formData.append(
-      "requirements",
-      JSON.stringify(newCourseValues.requirements)
-    );
-    formData.append("forCourse", JSON.stringify(newCourseValues.forCourse));
-    formData.append("sections", JSON.stringify(newCourseValues.sections));
-    formData.append("captions", newCourseValues.captions);
-    formData.append("subtitle", newCourseValues.subtitle);
-    formData.append("description", newCourseValues.description);
-    formData.append("image", newCourseValues.image);
-    formData.append("level", newCourseValues.level);
-    formData.append("price", newCourseValues.price.toString());
-    console.log(formData.values);
+    const courseData = {
+      title: newCourseValues.title,
+      subtitle: newCourseValues.subtitle,
+      description: newCourseValues.description,
+      skillLevel: newCourseValues.level,
+      category: newCourseValues.category,
+      language: newCourseValues.language,
+      price: newCourseValues.price,
+      sections: newCourseValues.sections,
+      requirements: newCourseValues.requirements,
+      forCourse: newCourseValues.forCourse,
+    };
+
+    console.log(courseData);
+    await fetch(`/api/courses/create/${instructorId}`, {
+      method: "POST",
+      body: JSON.stringify(courseData),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    // console.log(formData.values);
   }
 
   return (
     <InstructorContext.Provider
       value={{
+        instructorData: instructorData,
         courseManage: courseCreationType,
         setCourseManage: setcourseCreationType,
         currentStep,

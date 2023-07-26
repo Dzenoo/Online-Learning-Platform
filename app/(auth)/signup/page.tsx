@@ -32,7 +32,7 @@ const SignupPage = () => {
       type: type,
     };
     const response = await sendRequest("POST", "/api/auth/signup", signupData);
-    signin(response.token, response.type);
+    signin(response.token, response.type, response.id);
     router.push("/");
   }
 

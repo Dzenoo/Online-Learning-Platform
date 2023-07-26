@@ -11,7 +11,7 @@ export const GET = async (
     await connectToDB();
 
     const instructor = await Instructor.findById(params.instructorId)
-      .populate("courses")
+      .populate(["courses"])
       .select("-password");
 
     if (!instructor) {

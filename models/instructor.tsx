@@ -1,4 +1,5 @@
 import mongoose, { Schema, model, models } from "mongoose";
+import Course from "./course";
 
 const InstructorSchema = new Schema({
   first_name: {
@@ -39,7 +40,7 @@ const InstructorSchema = new Schema({
   courses: [
     {
       type: mongoose.Types.ObjectId,
-      ref: "Course",
+      ref: Course,
     },
   ],
 });

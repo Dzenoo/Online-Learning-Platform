@@ -30,7 +30,7 @@ const LoginPage = () => {
       type: type,
     };
     const response = await sendRequest("POST", "/api/auth/login", loginData);
-    signin(response.token, response.type);
+    signin(response.token, response.type, response.id);
     router.push("/");
   }
 

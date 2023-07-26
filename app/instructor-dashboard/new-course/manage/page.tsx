@@ -40,21 +40,17 @@ const Manage = () => {
           submitCreateCourseHandler={submitCreateCourseHandler}
           setCourseManage={setCourseManage}
           isFilledCurriculum={newCourseValues.sections.length > 0}
-          isFilledRequirements={
-            newCourseValues.requirements.length > 0 &&
-            newCourseValues.forCourse.length > 0
-          }
+          isFilledRequirements={newCourseValues.requirements.length > 0}
           isFilledCaptions={newCourseValues.captions !== ""}
           isFilledBasic={
             newCourseValues.title !== "" &&
             newCourseValues.subtitle !== "" &&
             newCourseValues.description !== "" &&
             newCourseValues.language !== "" &&
-            newCourseValues.category !== "" &&
-            newCourseValues.image !== ""
+            newCourseValues.category !== ""
           }
           isFilledPrice={newCourseValues.price !== 0}
-          isFilledForCourse={newCourseValues.title !== ""}
+          isFilledForCourse={newCourseValues.forCourse.length > 0}
         />
       )}
       {!isCourseBasicsCreated && (

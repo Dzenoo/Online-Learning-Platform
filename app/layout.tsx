@@ -12,6 +12,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { usePathname } from "next/navigation";
 import { InstructorProvider } from "@/context/InstructorContext";
+import { getAuthData } from "@/utility/helpers";
+import { StudentProvider } from "@/context/StudentContext";
 
 export const metadata: Metadata = {
   title: "Online Learning Application",
@@ -31,12 +33,17 @@ export default function RootLayout({
     pathname === "/instructor-dashboard/new-course/manage";
   const isLoginPathname = pathname === "/signup" || pathname === "/login";
   const showBoolean = !isInstructorPathname && !isLoginPathname;
+  const authData = getAuthData();
 
   return (
     <html lang="en">
       <body>
         {showBoolean && <MainNavigation />}
-        <InstructorProvider>{children}</InstructorProvider>
+        {authData?.typeAuth === "instructor" ? (
+          <InstructorProvider>{children}</InstructorProvider>
+        ) : (
+          <StudentProvider>{children}</StudentProvider>
+        )}
         <Footer />
       </body>
     </html>

@@ -14,7 +14,6 @@ import React, { useState } from "react";
 
 const Section: React.FC<SectionProps> = ({
   title,
-  id,
   index,
   lectures,
   setnewCourseValues,
@@ -24,7 +23,6 @@ const Section: React.FC<SectionProps> = ({
 
   function createLecture(): void {
     const newLecture = {
-      id: Math.random().toString(),
       title: newLectureInput.value,
     };
 
@@ -32,7 +30,7 @@ const Section: React.FC<SectionProps> = ({
       setnewCourseValues((prevState: any) => {
         const updatedSections = prevState.sections.map(
           (section: SectionProps) => {
-            if (section.id === id) {
+            if (section.title === title) {
               return {
                 ...section,
                 lectures: [...section.lectures!, newLecture],
@@ -52,7 +50,7 @@ const Section: React.FC<SectionProps> = ({
   }
 
   return (
-    <div id={id} className="shadow-md p-4 mt-4 flex flex-col gap-2 border">
+    <div id={title} className="shadow-md p-4 mt-4 flex flex-col gap-2 border">
       <div className="flex justify-between">
         <h1 className="font-bold text-2xl">
           Section {index}: {title}
@@ -93,7 +91,7 @@ const Section: React.FC<SectionProps> = ({
       )}
       <div>
         {lectures?.map((lecture: LectureProps, i: number) => (
-          <div key={lecture.id} id={lecture.id} className="border m-4 p-4">
+          <div key={i} id={lecture.id} className="border m-4 p-4">
             <h1 className="font-light text-md">
               Lecture {i + 1}: {lecture.title}
             </h1>
@@ -113,7 +111,6 @@ const Curriculum: React.FC<NewCoursesState> = ({
 
   function createSection(): void {
     const newSection = {
-      id: Math.random(),
       title: newSectionInput.value,
       lectures: [],
     };
@@ -178,10 +175,9 @@ const Curriculum: React.FC<NewCoursesState> = ({
       <div>
         {newCourseValues?.sections?.map((section: SectionProps, i: number) => (
           <Section
-            id={section.id}
             title={section.title}
             lectures={section.lectures}
-            key={section.id}
+            key={i}
             index={i + 1}
             setnewCourseValues={setnewCourseValues}
           />

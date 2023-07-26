@@ -44,6 +44,7 @@ export const POST = async (request: Request) => {
       const studentInfo = {
         token: token,
         type: type,
+        id: existingStudent._id,
       };
 
       return responseJson(studentInfo, 200);
@@ -73,6 +74,7 @@ export const POST = async (request: Request) => {
       const instructorInfo = {
         token: token,
         type: type,
+        id: existingInstructor._id,
       };
 
       return responseJson(instructorInfo, 200);

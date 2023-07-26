@@ -31,7 +31,8 @@ const CourseSchema = new Schema({
   },
   duration: {
     type: String,
-    required: [true, "Duration is required"],
+    default: 0,
+    // required: [true, "Duration is required"],
   },
   price: {
     type: Number,
@@ -39,7 +40,8 @@ const CourseSchema = new Schema({
   },
   popularity: {
     type: String,
-    required: [true, "Popularity is required"],
+    default: 0,
+    // required: [true, "Popularity is required"],
   },
   articles: {
     type: Number,
