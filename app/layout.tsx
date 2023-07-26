@@ -22,12 +22,12 @@ export default function RootLayout({
     pathname === "/instructor-dashboard/new-course" ||
     pathname === "/instructor-dashboard/new-course/manage";
   const isLoginPathname = pathname === "/signup" || pathname === "/login";
-  const showBoolean = !isInstructorPathname || !isLoginPathname;
+  const showBoolean = !isInstructorPathname && !isLoginPathname;
 
   return (
     <html lang="en">
       <body>
-        {!showBoolean && <MainNavigation />}
+        {showBoolean && <MainNavigation />}
         <InstructorProvider>{children}</InstructorProvider>
         <Footer />
       </body>
