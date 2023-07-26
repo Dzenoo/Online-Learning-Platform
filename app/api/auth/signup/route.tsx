@@ -7,6 +7,11 @@ import {
   responseJson,
   responseMessage,
 } from "@/utility/helpers";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Signup",
+};
 
 export const POST = async (request: Request) => {
   const { first_name, last_name, email, password, type } = await request.json();
