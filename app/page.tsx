@@ -1,10 +1,17 @@
+"use client";
+
 import {
   AfterHero,
   Categories,
   FeaturedCourses,
   Hero,
 } from "@/components/landing";
-export default function LandingPage() {
+import { getAuthData } from "@/utility/helpers";
+
+function LandingPage() {
+  const authData = getAuthData();
+  console.log(authData);
+
   return (
     <section>
       <Hero />
@@ -14,3 +21,4 @@ export default function LandingPage() {
     </section>
   );
 }
+export default LandingPage;

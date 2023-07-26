@@ -33,6 +33,7 @@ const FeaturedCourses: React.FC = () => {
         {CoursesData.map((course: CourseCardProps) => (
           <CourseCard
             id={course.id}
+            key={course.id}
             title={course.title}
             image={course.image}
             price={course.price}

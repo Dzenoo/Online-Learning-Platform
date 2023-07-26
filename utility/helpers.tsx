@@ -77,3 +77,12 @@ export async function validatePassword(password: string, newPassword: string) {
   const isPasswordValid = await compare(password, newPassword);
   return isPasswordValid;
 }
+
+export function getAuthData(): void {
+  const authData =
+    typeof window !== "undefined" && localStorage.getItem("authData")
+      ? JSON.parse(localStorage.getItem("authData")!)
+      : null;
+
+  return authData;
+}
