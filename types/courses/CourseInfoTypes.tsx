@@ -6,6 +6,8 @@ export interface CourseCardProps {
     first_name: string;
     last_name: string;
     image: string;
+    biography: string;
+    courses: [];
   };
   category?: string;
   skillLevel?: string;
@@ -15,8 +17,10 @@ export interface CourseCardProps {
   description?: string;
   price: number;
   lessons?: number;
-  students?: number;
+  students: string[];
   articles?: number;
+  requirements: string[];
+  forCourse: string[];
   lectures?: number;
   sections?: [
     {

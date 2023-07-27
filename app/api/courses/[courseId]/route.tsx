@@ -1,5 +1,6 @@
 import { connectToDB } from "@/library/database";
 import Course from "@/models/course";
+import Instructor from "@/models/instructor";
 import { responseJson, responseMessage } from "@/utility/helpers";
 
 export const GET = async (
@@ -9,9 +10,10 @@ export const GET = async (
   try {
     await connectToDB();
 
-    const course = await Course.findById(params.courseId).populate(
-      "instructor"
-    );
+    const course = await Course.findById(params.courseId).populate({
+      path: "instructor",
+      model: Instructor,
+    });
 
     if (!course) {
       return responseMessage(

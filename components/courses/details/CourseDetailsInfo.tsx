@@ -1,19 +1,31 @@
+"use client";
 import Button from "@/components/shared/form/Button";
+import { StudentContext } from "@/context/StudentContext";
+import { usePostHttp } from "@/hooks/usePostHttp";
 import { CourseDetailsProps } from "@/types/courses/CourseInfoTypes";
 import { convertToDiscountPrice, createGraphicIcon } from "@/utility/helpers";
-import React from "react";
+import React, { useContext } from "react";
 
 const CourseDetailsInfo: React.FC<CourseDetailsProps> = ({ course }) => {
-  let discountedPrice = convertToDiscountPrice(course?.price, 0.7) as number;
+  const { sendRequest, isLoading, message } = usePostHttp();
+  const { studentData } = useContext(StudentContext);
+
+  async function addToCart() {
+    const response = await sendRequest(
+      "POST",
+      `/api/courses/${course?._id}/${studentData?._id}/cart`
+    );
+
+    if (response.ok) {
+      alert("Added to cart");
+    }
+  }
 
   return (
     <div className="p-6 flex flex-col gap-7 flex-grow basis-1/3">
       <div className="flex items-center justify-between gap-7">
         <h1 className="flex items-center gap-4">
-          <span className="font-bold text-4xl">${discountedPrice}</span>{" "}
-          <span className="line-through text-gray-400 text-s">
-            ${course?.price}
-          </span>
+          <span className="font-bold text-4xl">${course?.price}</span>
         </h1>
       </div>
       <div className="pt-4 flex gap-12">
@@ -25,7 +37,9 @@ const CourseDetailsInfo: React.FC<CourseDetailsProps> = ({ course }) => {
             )}
             <h2 className="text-gray-400">
               Students:{" "}
-              <span className="font-bold text-black">{course?.students}</span>
+              <span className="font-bold text-black">
+                {course?.students.length}
+              </span>
             </h2>
           </div>
           <div className="flex items-center gap-2">
@@ -70,8 +84,17 @@ const CourseDetailsInfo: React.FC<CourseDetailsProps> = ({ course }) => {
           </div>
         </div>
       </div>
+      <div>
+        {isLoading && <p>Loading..</p>}
+        {message && <p>{message}</p>}
+      </div>
       <div className="flex gap-2">
-        <Button type="button" isLink={false} styleType="initial">
+        <Button
+          onClick={addToCart}
+          type="button"
+          isLink={false}
+          styleType="initial"
+        >
           <span className="flex items-center justify-center gap-4">
             {createGraphicIcon("/assets/graphics/agreement2.png", "agreement2")}
             Buy now

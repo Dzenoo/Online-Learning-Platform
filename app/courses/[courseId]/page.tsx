@@ -37,7 +37,7 @@ const CourseDetails = ({ params }: { params: { courseId: string } }) => {
         <CourseDetailsContent course={course} />
         <div className="p-4 flex flex-col items-center gap-2">
           <CourseDetailsInfo course={course} />
-          <InstructorDetails />
+          <InstructorDetails course={course} />
         </div>
       </div>
       <div>

@@ -3,7 +3,7 @@ import Course from "@/models/course";
 import Student from "@/models/student";
 import { responseJson, responseMessage } from "@/utility/helpers";
 
-export const PATCH = async (
+export const POST = async (
   request: Request,
   { params }: { params: { courseId: string; studentId: string } }
 ) => {

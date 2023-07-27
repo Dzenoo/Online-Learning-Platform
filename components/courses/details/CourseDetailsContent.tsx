@@ -19,8 +19,8 @@ const CourseDetailsContent: React.FC<CourseDetailsProps> = ({ course }) => {
             <Image
               src={course?.instructor.image}
               alt={course?.instructor.first_name}
-              width={100}
-              height={100}
+              width={40}
+              height={40}
               className="rounded-lg"
             />
             {course?.instructor.first_name} {course?.instructor.last_name}
@@ -50,19 +50,22 @@ const CourseDetailsContent: React.FC<CourseDetailsProps> = ({ course }) => {
       </div>
       <div className="mt-7 p-4">
         <h1 className="font-bold text-3xl mb-2">Prerequisites</h1>
-        <ul className="flex flex-col gap-2">
-          <li>
-            -Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </li>
-          <li>
-            -Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </li>
-          <li>
-            -Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </li>
+        <ul className="flex flex-col gap-2 mt-6">
+          {course?.requirements.map((text) => (
+            <li key={text} className="font-bold">
+              - {text}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="mt-7 p-4">
+        <h1 className="font-bold text-3xl mb-2">This course for:</h1>
+        <ul className="flex flex-col gap-2 mt-6">
+          {course?.forCourse.map((text) => (
+            <li key={text} className="font-bold">
+              - {text}
+            </li>
+          ))}
         </ul>
       </div>
       <div className="mt-4 p-4">
@@ -72,22 +75,37 @@ const CourseDetailsContent: React.FC<CourseDetailsProps> = ({ course }) => {
             Sections: <strong>{course?.sections?.length}</strong>
           </p>
           <p>
-            Lectures: <strong>{course?.lectures}</strong>
+            Lectures:{" "}
+            <strong>
+              {course?.sections?.reduce(
+                (acc, section) => acc + section.lectures.length,
+                0
+              )}
+            </strong>
           </p>
         </div>
         <ul className="flex flex-col ">
-          <li className="p-4 border flex justify-between cursor-pointer">
-            <h2 className="font-bold">First Section</h2>
-            <p>9 lectures</p>
-          </li>
-          <li className="p-4 border flex justify-between cursor-pointer">
-            <h2 className="font-bold">First Section</h2>
-            <p>9 lectures</p>
-          </li>
-          <li className="p-4 border flex justify-between cursor-pointer">
-            <h2 className="font-bold">First Section</h2>
-            <p>9 lectures</p>
-          </li>
+          {course?.sections?.map((section) => (
+            <li
+              key={section._id}
+              className="p-4 border flex flex-col justify-between cursor-pointer"
+            >
+              <div className="flex justify-between">
+                <h2 className="font-bold">{section.title}</h2>
+                <p>{section.lectures.length} lectures</p>
+              </div>
+              <div className="mt-2">
+                {section.lectures.map((lecture) => (
+                  <h2
+                    className="border border-gray-700 mt-2 p-2"
+                    key={lecture._id}
+                  >
+                    {lecture.title}
+                  </h2>
+                ))}
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
