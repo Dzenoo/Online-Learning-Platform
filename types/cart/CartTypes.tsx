@@ -1,12 +1,23 @@
 export interface CartItemProps {
-  id: string;
+  _id: string;
   image: string;
   title: string;
   instructor: string;
   language: string;
   price: number;
   duration: string;
-  lectures: number;
+  sections: [
+    {
+      _id: string;
+      title: string;
+      lectures: [
+        {
+          _id: string;
+          title: string;
+        }
+      ];
+    }
+  ];
   skillLevel: string;
 }
 

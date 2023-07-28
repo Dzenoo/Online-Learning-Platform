@@ -2,9 +2,9 @@
 
 import { CourseList } from "@/components/courses";
 import ProtectedRoutes from "@/components/shared/auth/ProtectedRoutes";
-import { CoursesData } from "@/data/coursesdata.config";
+import { StudentContext } from "@/context/StudentContext";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useContext } from "react";
 
 enum CourseType {
   MyCourse = "my-courses",
@@ -12,6 +12,8 @@ enum CourseType {
 }
 
 const FavoritesPage = () => {
+  const { studentData } = useContext(StudentContext);
+
   const router = useRouter();
 
   return (
@@ -34,7 +36,7 @@ const FavoritesPage = () => {
         </div>
       </div>
       <div className="mt-12">
-        <CourseList courses={CoursesData} />
+        <CourseList courses={studentData?.favorites} />
       </div>
     </section>
   );

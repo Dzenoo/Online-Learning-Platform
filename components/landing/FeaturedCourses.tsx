@@ -1,10 +1,9 @@
 import React from "react";
 import Button from "../shared/form/Button";
 import CourseCard from "../shared/CourseCard";
-import { CoursesData } from "@/data/coursesdata.config";
 import { CourseCardProps } from "@/types/courses/CourseInfoTypes";
 
-const FeaturedCourses: React.FC = () => {
+const FeaturedCourses = ({ courses }: { courses: [] }) => {
   return (
     <section className="flex flex-col gap-2 justify-center p-12 mt-12">
       <div className="flex justify-between gap-2 mb-6">
@@ -30,14 +29,17 @@ const FeaturedCourses: React.FC = () => {
         </div>
       </div>
       <div className="flex justify-center items-center gap-4 p-6 flex-wrap">
-        {CoursesData.map((course: CourseCardProps) => (
+        {courses?.map((course: CourseCardProps) => (
           <CourseCard
-            id={course.id}
-            key={course.id}
+            _id={course._id}
+            key={course._id}
             title={course.title}
             image={course.image}
             price={course.price}
             instructor={course.instructor}
+            students={[]}
+            requirements={[]}
+            forCourse={[]}
           />
         ))}
       </div>

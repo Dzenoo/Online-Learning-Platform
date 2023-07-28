@@ -6,6 +6,14 @@ import useSwr from "swr";
 export const StudentContext = createContext<StudentContextType>({
   studentData: {
     _id: "",
+    cart: {
+      items: [],
+      totalAmount: 0,
+    },
+    favorites: [],
+    courses: [],
+    first_name: "",
+    last_name: "",
   },
   // toggleCart: () => {},
   // addToFavorites: () => {},

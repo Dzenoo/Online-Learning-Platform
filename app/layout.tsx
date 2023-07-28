@@ -38,11 +38,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {showBoolean && <MainNavigation />}
         {authData?.typeAuth === "instructor" ? (
-          <InstructorProvider>{children}</InstructorProvider>
+          <InstructorProvider>
+            {showBoolean && <MainNavigation />}
+            {children}
+          </InstructorProvider>
         ) : (
-          <StudentProvider>{children}</StudentProvider>
+          <StudentProvider>
+            {showBoolean && <MainNavigation />}
+            {children}
+          </StudentProvider>
         )}
         <Footer />
       </body>

@@ -23,8 +23,13 @@ export const POST = async (
       return responseMessage("Cannot be found ", 404);
     }
 
+    if (studentToGift.courses.includes(params.courseId)) {
+      return responseMessage("Already gifted course", 500);
+    }
+
     studentToGift.courses.push(course._id);
     await studentToGift.save();
+    return responseMessage("Successfully gifted course", 200);
   } catch (error) {
     console.log(error);
     return responseMessage("Internal server error", 500);

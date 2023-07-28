@@ -2,12 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import Button from "../form/Button";
 import { createGraphicIcon, getAuthData } from "@/utility/helpers";
 import { useAuth } from "@/hooks/useAuth";
+import { StudentContext } from "@/context/StudentContext";
 
 const MainNavigation: React.FC = () => {
+  const { studentData } = useContext(StudentContext);
+
   const { logout } = useAuth();
   const authData = getAuthData();
 
@@ -62,7 +65,9 @@ const MainNavigation: React.FC = () => {
           <Link href="/cart" className="relative">
             {createGraphicIcon("/assets/graphics/shopping-cart.png", "cart")}
             <span className="w-6 h-6 bg-yellow-400 absolute rounded-full bottom-[18px] left-4 text-white font-bold text-sm text-center">
-              <span className="relative top-[2.4px]">2</span>
+              <span className="relative top-[2.4px]">
+                {studentData?.cart.items.length}
+              </span>
             </span>
           </Link>
         )}

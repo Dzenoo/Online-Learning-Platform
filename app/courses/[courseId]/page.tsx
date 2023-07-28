@@ -5,7 +5,6 @@ import {
   CourseList,
   InstructorDetails,
 } from "@/components/courses";
-import { CoursesData } from "@/data/coursesdata.config";
 import { CourseCardProps } from "@/types/courses/CourseInfoTypes";
 import Link from "next/link";
 import useSwr from "swr";

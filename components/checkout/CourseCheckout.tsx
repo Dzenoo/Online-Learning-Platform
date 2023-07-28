@@ -1,17 +1,20 @@
 import Image from "next/image";
 import React from "react";
 
-const CourseCheckout = () => {
+const CourseCheckout = ({
+  image,
+  title,
+  price,
+}: {
+  image: string;
+  title: string;
+  price: number;
+}) => {
   return (
     <div className="mt-6 flex items-center justify-between">
-      <Image
-        src="/assets/images/typescript-img.png"
-        alt="typescript"
-        width={100}
-        height={100}
-      />
-      <h1 className="font-bold text-xl">Understanding Typescript</h1>
-      <p className="font-bold">$12.99</p>
+      <Image src={image} alt={title} width={100} height={100} />
+      <h1 className="font-bold text-md">{title}</h1>
+      <p className="font-bold">${price}</p>
     </div>
   );
 };
