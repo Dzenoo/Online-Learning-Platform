@@ -2,7 +2,6 @@ export enum LoginType {
   Instructor = "instructor",
   Student = "student",
 }
-
 export interface LoginData {
   email: string;
   password: string;

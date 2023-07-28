@@ -2,7 +2,6 @@ export enum SignupType {
   Instructor = "instructor",
   Student = "student",
 }
-
 export interface RegisterData {
   first_name: string;
   last_name: string;
