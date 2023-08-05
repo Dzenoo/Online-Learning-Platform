@@ -1,6 +1,6 @@
 "use client";
 
-import { FilterCourses, InstructorCoursesList } from "@/components/instructor";
+import { InstructorCoursesList } from "@/components/instructor";
 import ProtectedRoutes from "@/components/shared/auth/ProtectedRoutes";
 import { InstructorContext } from "@/context/InstructorContext";
 import React, { useContext } from "react";
@@ -12,7 +12,6 @@ const InstructorDashboard = () => {
     <section>
       <div className="p-[2.4em]">
         <h1 className="headingTitle">Courses</h1>
-        <FilterCourses />
       </div>
       <InstructorCoursesList courses={instructorData?.courses} />
     </section>

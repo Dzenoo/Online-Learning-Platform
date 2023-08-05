@@ -10,7 +10,7 @@ const InstructorCourseCard: React.FC<InstructorCourseCardProps> = ({
 }) => {
   return (
     <div id={id} className="flex gap-2 shadow-sm">
-      <Image src={image} alt={title} width={200} height={200} />
+      <Image src={image} alt={title} width={400} height={200} />
       <div className="flex flex-col gap-2 justify-between">
         <div>
           <h1 className="font-bold text-2xl">{title}</h1>
