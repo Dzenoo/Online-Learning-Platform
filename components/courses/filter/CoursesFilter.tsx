@@ -6,20 +6,12 @@ import {
   categoryFilters,
   durationFilters,
   languageFilters,
-  popularityFilters,
-  priceRangeFilters,
   skillLevelFilters,
 } from "@/data/filterdata.config";
-import Input from "@/components/shared/form/Input";
-import { useValidation } from "@/hooks/useValidation";
-import { VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH } from "@/utility/validators";
 import Image from "next/image";
-import { InputType } from "@/types/form/InputTypes";
+import { CourseFilterProps } from "@/types/courses/CourseInfoTypes";
 
-const CoursesFilter: React.FC = () => {
-  const min = useValidation([VALIDATOR_MINLENGTH(3)]);
-  const max = useValidation([VALIDATOR_MAXLENGTH(10)]);
-
+const CoursesFilter: React.FC<CourseFilterProps> = ({ setFilterData }) => {
   return (
     <div className="shadow-md p-4 overflow-x-hidden rounded-md flex flex-col gap-4">
       <div className="flex justify-between items-center">
@@ -33,49 +25,54 @@ const CoursesFilter: React.FC = () => {
       </div>
       <div className="flex flex-col gap-4">
         <h1 className="font-bold text-xl">Category</h1>
-        <Select id="category" options={categoryFilters} onChange={undefined} />
-      </div>
-      <div className="flex flex-col gap-4">
-        <h1 className="font-bold text-xl">Price</h1>
-        <div>
-          <Input
-            id="min_value"
-            type={InputType.Input}
-            placeholder="Min"
-            label="Min"
-            value={min.value}
-            onChange={min.onChangeHandler}
-            error={false}
-          />
-          <Input
-            placeholder="Max"
-            label="Max"
-            value={max.value}
-            onChange={max.onChangeHandler}
-            error={false}
-            id="max_value"
-            type={InputType.Input}
-          />
-        </div>
+        <Select
+          id="category"
+          options={categoryFilters}
+          onChange={(e: any) =>
+            setFilterData((prevState: any) => ({
+              ...prevState,
+              category: e.target.value,
+            }))
+          }
+        />
       </div>
       <div className="flex flex-col gap-4">
         <h1 className="font-bold text-xl">Skill Level</h1>
-        <Select id="skill" options={skillLevelFilters} onChange={undefined} />
+        <Select
+          id="skill"
+          options={skillLevelFilters}
+          onChange={(e: any) =>
+            setFilterData((prevState: any) => ({
+              ...prevState,
+              skillLevel: e.target.value,
+            }))
+          }
+        />
       </div>
       <div className="flex flex-col gap-4">
         <h1 className="font-bold text-xl">Language</h1>
-        <Select id="language" options={languageFilters} onChange={undefined} />
+        <Select
+          id="language"
+          options={languageFilters}
+          onChange={(e: any) =>
+            setFilterData((prevState: any) => ({
+              ...prevState,
+              language: e.target.value,
+            }))
+          }
+        />
       </div>
       <div className="flex flex-col gap-4">
         <h1 className="font-bold text-xl">Duration</h1>
-        <Select id="duration" options={durationFilters} onChange={undefined} />
-      </div>
-      <div className="flex flex-col gap-4">
-        <h1 className="font-bold text-xl">Popularity</h1>
         <Select
-          id="popularity"
-          options={popularityFilters}
-          onChange={undefined}
+          id="duration"
+          options={durationFilters}
+          onChange={(e: any) =>
+            setFilterData((prevState: any) => ({
+              ...prevState,
+              duration: e.target.value,
+            }))
+          }
         />
       </div>
     </div>

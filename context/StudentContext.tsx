@@ -1,6 +1,6 @@
 import { StudentContextType } from "@/types/student/StudentContextType";
 import { getAuthData } from "@/utility/helpers";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import useSwr from "swr";
 
 export const StudentContext = createContext<StudentContextType>({
@@ -15,6 +15,13 @@ export const StudentContext = createContext<StudentContextType>({
     first_name: "",
     last_name: "",
   },
+  filterData: {
+    category: "",
+    skillLevel: "",
+    language: "",
+    duration: "",
+  },
+  setFilterData: () => {},
   // toggleCart: () => {},
   // addToFavorites: () => {},
 });
@@ -27,6 +34,13 @@ export const StudentProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const [filterData, setFilterData] = useState({
+    category: "",
+    skillLevel: "",
+    language: "",
+    duration: "",
+  });
+
   const authData = getAuthData();
   const studentId = authData?.id;
 
@@ -36,6 +50,8 @@ export const StudentProvider = ({
     <StudentContext.Provider
       value={{
         studentData,
+        filterData,
+        setFilterData,
       }}
     >
       {children}

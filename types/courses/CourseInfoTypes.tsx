@@ -1,3 +1,5 @@
+import { SetStateAction } from "react";
+
 export interface CourseCardProps {
   _id: string;
   title: string;
@@ -38,8 +40,18 @@ export interface CourseCardProps {
 
 export interface CourseListProps {
   courses: CourseCardProps[];
+  filterData: {
+    category: string;
+    skillLevel: string;
+    language: string;
+    duration: string;
+  };
 }
 
 export interface CourseDetailsProps {
   course: CourseCardProps;
+}
+
+export interface CourseFilterProps {
+  setFilterData: React.Dispatch<SetStateAction<any>>;
 }

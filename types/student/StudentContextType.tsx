@@ -1,3 +1,4 @@
+import { SetStateAction } from "react";
 import { CartItemProps } from "../cart/CartTypes";
 import { CourseCardProps } from "../courses/CourseInfoTypes";
 
@@ -13,6 +14,13 @@ export interface StudentContextType {
     first_name: string;
     last_name: string;
   };
+  filterData: {
+    category: string;
+    skillLevel: string;
+    language: string;
+    duration: string;
+  };
+  setFilterData: React.Dispatch<SetStateAction<any>>;
   //   toggleCart: () => void;
   //   addToFavorites: () => void;
 }
