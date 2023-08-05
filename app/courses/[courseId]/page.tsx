@@ -8,7 +8,8 @@ import {
 import { CourseCardProps } from "@/types/courses/CourseInfoTypes";
 import Link from "next/link";
 import useSwr from "swr";
-import React from "react";
+import React, { useContext } from "react";
+import { StudentContext } from "@/context/StudentContext";
 
 export async function generateStaticParams() {
   const courses = await fetch("/api/courses/");
@@ -21,6 +22,7 @@ export async function generateStaticParams() {
 }
 
 const CourseDetails = ({ params }: { params: { courseId: string } }) => {
+  const { filterData } = useContext(StudentContext);
   const fetcher = (...args: Parameters<typeof fetch>) =>
     fetch(...args).then((res) => res.json());
   const { data: course } = useSwr(`/api/courses/${params.courseId}`, fetcher);
@@ -47,6 +49,7 @@ const CourseDetails = ({ params }: { params: { courseId: string } }) => {
           courses={courses?.filter(
             (course: CourseCardProps) => course._id !== params.courseId
           )}
+          filterData={filterData}
         />
       </div>
     </section>

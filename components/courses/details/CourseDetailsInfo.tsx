@@ -66,8 +66,10 @@ const GiftForm = ({ courseId }: { courseId: string }) => {
 const CourseDetailsInfo: React.FC<CourseDetailsProps> = ({ course }) => {
   const [isBuyingGift, setisBuyingGift] = useState(false);
   const { sendRequest, isLoading, message } = usePostHttp();
-  const { studentData } = useContext(StudentContext);
+  const { studentData, addToFavorites } = useContext(StudentContext);
+
   const studentCartIds = studentData?.cart.items.map((item: any) => item._id);
+  const studentCoursesIds = studentData?.courses.map((item: any) => item._id);
 
   async function addToCart() {
     const response = await sendRequest(
@@ -143,32 +145,55 @@ const CourseDetailsInfo: React.FC<CourseDetailsProps> = ({ course }) => {
         {isLoading && <p>Loading..</p>}
         {message && <p>{message}</p>}
       </div>
-      <div className="flex gap-2">
-        <Button
-          onClick={addToCart}
-          type="button"
-          isLink={false}
-          styleType="initial"
-        >
-          <span className="flex items-center justify-center gap-4">
-            {createGraphicIcon("/assets/graphics/agreement2.png", "agreement2")}
-            {studentCartIds?.includes(course?._id)
-              ? "Remove from cart"
-              : "Add to cart"}
-          </span>
-        </Button>
-        <Button
-          onClick={() => setisBuyingGift((prevState) => !prevState)}
-          type="button"
-          isLink={false}
-          styleType="outlined"
-        >
-          <span className="text-black hover:text-white flex items-center justify-center gap-4">
-            {createGraphicIcon("/assets/graphics/gift-box.png", "gift")}
-            Buy as gift
-          </span>
-        </Button>
-      </div>
+      {!studentCoursesIds?.includes(course?._id) ? (
+        <div className="flex gap-2">
+          <Button
+            onClick={addToCart}
+            type="button"
+            isLink={false}
+            styleType="initial"
+          >
+            <span className="flex items-center justify-center gap-4">
+              {createGraphicIcon(
+                "/assets/graphics/agreement2.png",
+                "agreement2"
+              )}
+              {studentCartIds?.includes(course?._id)
+                ? "Remove from cart"
+                : "Add to cart"}
+            </span>
+          </Button>
+          <Button
+            onClick={() => setisBuyingGift((prevState) => !prevState)}
+            type="button"
+            isLink={false}
+            styleType="outlined"
+          >
+            <span className="text-black hover:text-white flex items-center justify-center gap-4">
+              {createGraphicIcon("/assets/graphics/gift-box.png", "gift")}
+              Buy as gift
+            </span>
+          </Button>
+          <Button
+            onClick={() => addToFavorites(course?._id)}
+            type="button"
+            isLink={false}
+            styleType="outlined"
+          >
+            <span className="text-black hover:text-white flex items-center justify-center gap-4">
+              Add to Favorites
+            </span>
+          </Button>
+        </div>
+      ) : (
+        <div>
+          <Button type="button" isLink={false} styleType="initial">
+            <span className="flex items-center justify-center gap-4">
+              Start Progress Course
+            </span>
+          </Button>
+        </div>
+      )}
       {isBuyingGift && <GiftForm courseId={course?._id} />}
     </div>
   );

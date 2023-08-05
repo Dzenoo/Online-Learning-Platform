@@ -5,9 +5,15 @@ import ProtectedRoutes from "@/components/shared/auth/ProtectedRoutes";
 import Button from "@/components/shared/form/Button";
 import { StudentContext } from "@/context/StudentContext";
 import React, { useContext } from "react";
+import { useRouter } from "next/navigation";
 
 const CheckoutPage = () => {
+  const router = useRouter();
   const { studentData } = useContext(StudentContext);
+
+  if (studentData?.cart.items.length <= 0) {
+    router.push("/cart");
+  }
 
   return (
     <section className="py-20 px-40 flex gap-12 items-stretch justify-center">

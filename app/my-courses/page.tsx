@@ -13,7 +13,7 @@ enum CourseType {
 }
 
 const MyCoursesPage = () => {
-  const { studentData } = useContext(StudentContext);
+  const { studentData, filterData } = useContext(StudentContext);
   const router = useRouter();
 
   return (
@@ -36,7 +36,7 @@ const MyCoursesPage = () => {
         </div>
       </div>
       <div className="mt-12">
-        <CourseList courses={studentData?.courses} />
+        <CourseList courses={studentData?.courses} filterData={filterData} />
       </div>
     </section>
   );

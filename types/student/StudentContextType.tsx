@@ -21,6 +21,7 @@ export interface StudentContextType {
     duration: string;
   };
   setFilterData: React.Dispatch<SetStateAction<any>>;
+  addToFavorites: (id: string) => void;
   //   toggleCart: () => void;
   //   addToFavorites: () => void;
 }

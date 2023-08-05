@@ -5,13 +5,20 @@ import { CourseList } from "@/components/courses";
 import ProtectedRoutes from "@/components/shared/auth/ProtectedRoutes";
 import { StudentContext } from "@/context/StudentContext";
 import useSwr from "swr";
+import { ClipLoader } from "react-spinners";
 import React, { useContext } from "react";
 
 const CartPage = () => {
-  const { studentData } = useContext(StudentContext);
+  const { studentData, filterData } = useContext(StudentContext);
   const fetcher = (...args: Parameters<typeof fetch>) =>
     fetch(...args).then((res) => res.json());
   const { data: coursesData } = useSwr("/api/courses", fetcher);
+
+  if (!studentData) {
+    <div className="loader_wrapper">
+      <ClipLoader />
+    </div>;
+  }
 
   return (
     <section className="p-6 px-40 border flex flex-col gap-2 items-stretch justify-center">
@@ -32,6 +39,7 @@ const CartPage = () => {
           courses={coursesData?.filter((data: any) =>
             studentData?.cart.items.includes(data._id)
           )}
+          filterData={filterData}
         />
       </div>
     </section>

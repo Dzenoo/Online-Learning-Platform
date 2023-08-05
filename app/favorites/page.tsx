@@ -12,7 +12,7 @@ enum CourseType {
 }
 
 const FavoritesPage = () => {
-  const { studentData } = useContext(StudentContext);
+  const { studentData, filterData } = useContext(StudentContext);
 
   const router = useRouter();
 
@@ -36,7 +36,7 @@ const FavoritesPage = () => {
         </div>
       </div>
       <div className="mt-12">
-        <CourseList courses={studentData?.favorites} />
+        <CourseList courses={studentData?.favorites} filterData={filterData} />
       </div>
     </section>
   );

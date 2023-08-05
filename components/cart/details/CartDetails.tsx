@@ -6,6 +6,8 @@ type CartDetails = {
 };
 
 const CartDetails: React.FC<CartDetails> = ({ totalAmount }) => {
+  const isDisabledCheckout = totalAmount <= 0;
+
   return (
     <div className="flex-grow flex flex-col justify-between gap-4 shadow-md p-4">
       <div className="flex justify-between items-center gap-3">
@@ -17,7 +19,7 @@ const CartDetails: React.FC<CartDetails> = ({ totalAmount }) => {
         linkHref="checkout"
         styleType="initial"
         type="button"
-        disabled={false}
+        disabled={isDisabledCheckout}
         additionalStyles="rounded-sm"
       >
         Checkout

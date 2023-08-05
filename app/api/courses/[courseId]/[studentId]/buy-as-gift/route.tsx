@@ -23,6 +23,13 @@ export const POST = async (
       return responseMessage("Cannot be found ", 404);
     }
 
+    if (studentToGift.favorites.includes(params.courseId)) {
+      studentToGift.favorites.pull(course._id);
+      studentToGift.courses.push(course._id);
+      await studentToGift.save();
+      return responseMessage("Successfully gifted course", 200);
+    }
+
     if (studentToGift.courses.includes(params.courseId)) {
       return responseMessage("Already gifted course", 500);
     }

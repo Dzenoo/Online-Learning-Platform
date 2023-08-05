@@ -4,16 +4,21 @@ import Login from "@/components/auth/Login";
 import ProtectedAuth from "@/components/shared/auth/ProtectedAuth";
 import { useAuth } from "@/hooks/useAuth";
 import { usePostHttp } from "@/hooks/usePostHttp";
+import { ClipLoader } from "react-spinners";
 import { LoginData, LoginType } from "@/types/auth/LoginTypes";
 import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
-  const { sendRequest, isLoading, message } = usePostHttp();
+  const { sendRequest, setIsLoading, isLoading, message } = usePostHttp();
   const { signin } = useAuth();
   const router = useRouter();
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="loader_wrapper">
+        <ClipLoader />
+      </div>
+    );
   }
 
   if (message) {
@@ -30,8 +35,14 @@ const LoginPage = () => {
       type: type,
     };
     const response = await sendRequest("POST", "/api/auth/login", loginData);
-    signin(response.token, response.type, response.id);
-    router.push("/");
+
+    if (!response) {
+      alert("Not valid credentials");
+      setIsLoading(false);
+    } else {
+      signin(response.token, response.type, response.id);
+      router.push("/");
+    }
   }
 
   return (

@@ -1,7 +1,7 @@
 import { SetStateAction } from "react";
 
 export interface CourseCardProps {
-  _id: string;
+  _id: any;
   title: string;
   image: string;
   instructor: {
@@ -40,7 +40,7 @@ export interface CourseCardProps {
 
 export interface CourseListProps {
   courses: CourseCardProps[];
-  filterData: {
+  filterData?: {
     category: string;
     skillLevel: string;
     language: string;

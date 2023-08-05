@@ -43,5 +43,5 @@ export const usePostHttp = () => {
     }
   }
 
-  return { sendRequest, isLoading, message };
+  return { sendRequest, setIsLoading, isLoading, message };
 };

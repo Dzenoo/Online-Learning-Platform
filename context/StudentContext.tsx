@@ -1,3 +1,4 @@
+import { usePostHttp } from "@/hooks/usePostHttp";
 import { StudentContextType } from "@/types/student/StudentContextType";
 import { getAuthData } from "@/utility/helpers";
 import { createContext, useState } from "react";
@@ -22,6 +23,7 @@ export const StudentContext = createContext<StudentContextType>({
     duration: "",
   },
   setFilterData: () => {},
+  addToFavorites: (id) => {},
   // toggleCart: () => {},
   // addToFavorites: () => {},
 });
@@ -41,10 +43,18 @@ export const StudentProvider = ({
     duration: "",
   });
 
+  const { sendRequest, isLoading, message } = usePostHttp();
+
   const authData = getAuthData();
   const studentId = authData?.id;
-
   const { data: studentData } = useSwr(`/api/student/${studentId}`, fetcher);
+
+  async function addToFavorites(id: string) {
+    await sendRequest(
+      "POST",
+      `/api/courses/${id}/${studentData?._id}/move-to-favorites`
+    );
+  }
 
   return (
     <StudentContext.Provider
@@ -52,6 +62,7 @@ export const StudentProvider = ({
         studentData,
         filterData,
         setFilterData,
+        addToFavorites,
       }}
     >
       {children}
