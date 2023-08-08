@@ -24,6 +24,7 @@ export const StudentContext = createContext<StudentContextType>({
   },
   setFilterData: () => {},
   addToFavorites: (id) => {},
+  purchaseCourseBuy: (courseId) => {},
   // toggleCart: () => {},
   // addToFavorites: () => {},
 });
@@ -56,6 +57,13 @@ export const StudentProvider = ({
     );
   }
 
+  async function purchaseCourseBuy(courseId: string) {
+    await sendRequest(
+      "POST",
+      `/api/courses/${courseId}/${studentData?._id}/buy`
+    );
+  }
+
   return (
     <StudentContext.Provider
       value={{
@@ -63,6 +71,7 @@ export const StudentProvider = ({
         filterData,
         setFilterData,
         addToFavorites,
+        purchaseCourseBuy,
       }}
     >
       {children}

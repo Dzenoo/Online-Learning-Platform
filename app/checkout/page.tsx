@@ -4,12 +4,13 @@ import { CheckoutForm, CourseCheckout } from "@/components/checkout";
 import ProtectedRoutes from "@/components/shared/auth/ProtectedRoutes";
 import Button from "@/components/shared/form/Button";
 import { StudentContext } from "@/context/StudentContext";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const CheckoutPage = () => {
   const router = useRouter();
-  const { studentData } = useContext(StudentContext);
+  const [isDisabled, setisDisabled] = useState(false);
+  const { studentData, purchaseCourseBuy } = useContext(StudentContext);
 
   if (studentData?.cart.items.length <= 0) {
     router.push("/cart");
@@ -20,7 +21,7 @@ const CheckoutPage = () => {
       <div className="basis-1/2">
         <h1 className="headingTitle">Checkout</h1>
         <h1 className="text-xl font-bold mt-2">Payment Details</h1>
-        <CheckoutForm />
+        <CheckoutForm setisDisabled={setisDisabled} />
       </div>
       <div className="basis-1/3 flex flex-col gap-12">
         <div className="flex flex-col gap-4">
@@ -30,7 +31,12 @@ const CheckoutPage = () => {
           <h1 className="headingTitle flex justify-between">
             Total <span>${studentData?.cart.totalAmount}</span>
           </h1>
-          <Button type="button" styleType="initial">
+          <Button
+            type="button"
+            styleType="initial"
+            disabled={isDisabled}
+            onClick={() => purchaseCourseBuy(studentData.cart.items[0]._id)}
+          >
             Complete Checkout
           </Button>
         </div>

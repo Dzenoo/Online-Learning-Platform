@@ -1,16 +1,31 @@
 "use client";
 
-import React from "react";
+import React, { SetStateAction } from "react";
 import Input from "../shared/form/Input";
 import { InputType } from "@/types/form/InputTypes";
 import { useValidation } from "@/hooks/useValidation";
 import { VALIDATOR_REQUIRE } from "@/utility/validators";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({
+  setisDisabled,
+}: {
+  setisDisabled: React.Dispatch<SetStateAction<boolean>>;
+}) => {
   const email = useValidation([VALIDATOR_REQUIRE()]);
   const credit_card_num = useValidation([VALIDATOR_REQUIRE()]);
   const expiration = useValidation([VALIDATOR_REQUIRE()]);
   const cvv = useValidation([VALIDATOR_REQUIRE()]);
+
+  if (
+    !email.isValid ||
+    !credit_card_num.isValid ||
+    !expiration.isValid ||
+    !cvv.isValid
+  ) {
+    setisDisabled(true);
+  } else {
+    setisDisabled(false);
+  }
 
   return (
     <form className="py-4 flex flex-col gap-7">

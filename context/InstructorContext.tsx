@@ -59,7 +59,6 @@ export const InstructorProvider = ({
   });
   const authData = getAuthData();
   const instructorId = authData?.id;
-
   const { data: instructorData } = useSwr(
     `/api/instructor/${instructorId}`,
     fetcher
@@ -67,7 +66,6 @@ export const InstructorProvider = ({
 
   async function submitCreateCourseHandler(e: FormEvent) {
     e.preventDefault();
-
     const courseData = {
       title: newCourseValues.title,
       subtitle: newCourseValues.subtitle,
