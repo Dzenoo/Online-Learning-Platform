@@ -58,10 +58,14 @@ export const StudentProvider = ({
   }
 
   async function purchaseCourseBuy(courseId: string) {
-    await sendRequest(
+    const response = await sendRequest(
       "POST",
       `/api/courses/${courseId}/${studentData?._id}/buy`
     );
+
+    if (response) {
+      alert(response.message);
+    }
   }
 
   return (

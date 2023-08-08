@@ -8,7 +8,7 @@ const Card = ({
   styles?: string;
 }) => {
   return (
-    <div className={`bg-white shadow-md w-fit p-3 rounded-md ${styles}`}>
+    <div className={`bg-white shadow-md w-96 h-max p-3 rounded-md ${styles}`}>
       {children}
     </div>
   );

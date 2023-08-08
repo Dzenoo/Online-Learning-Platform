@@ -42,8 +42,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
             width={40}
             height={20}
           />
-          <p className="font-bold text-2xl">${discountedPrice}</p>
-          <span className="line-through text-gray-400 text-s">${price}</span>
+          <p className="font-bold text-2xl">${price}</p>
         </div>
       </div>
       <Link href={`/courses/${_id}`}>

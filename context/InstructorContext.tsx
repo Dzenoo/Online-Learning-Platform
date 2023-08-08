@@ -3,6 +3,7 @@ import {
   InstructorContextProviderType,
 } from "@/types/instructor/InstructorContextTypes";
 import { getAuthData } from "@/utility/helpers";
+import { useRouter } from "next/navigation";
 import useSwr from "swr";
 import React, { FormEvent, createContext, useState } from "react";
 
@@ -57,6 +58,7 @@ export const InstructorProvider = ({
     level: "",
     price: 0,
   });
+  const router = useRouter();
   const authData = getAuthData();
   const instructorId = authData?.id;
   const { data: instructorData } = useSwr(
@@ -86,6 +88,7 @@ export const InstructorProvider = ({
 
     if (response.ok) {
       alert("Created Course Finished");
+      router.push("instructor-dashboard");
     }
   }
 
