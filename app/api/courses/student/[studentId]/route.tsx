@@ -28,7 +28,7 @@ export const POST = async (
 
     await student.save();
     return responseMessage(
-      "Payment is successful.The Courses are purchased.",
+      "Payment is successful. The Courses are purchased.",
       200
     );
   } catch (error) {

@@ -24,7 +24,7 @@ export const StudentContext = createContext<StudentContextType>({
   },
   setFilterData: () => {},
   addToFavorites: (id) => {},
-  purchaseCourseBuy: (courseId) => {},
+  purchaseCourseBuy: () => {},
   // toggleCart: () => {},
   // addToFavorites: () => {},
 });
@@ -57,10 +57,10 @@ export const StudentProvider = ({
     );
   }
 
-  async function purchaseCourseBuy(courseId: string) {
+  async function purchaseCourseBuy() {
     const response = await sendRequest(
       "POST",
-      `/api/courses/${courseId}/${studentData?._id}/buy`
+      `/api/courses/student/${studentData?._id}`
     );
 
     if (response) {

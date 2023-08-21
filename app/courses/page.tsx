@@ -27,4 +27,4 @@ const CoursesPage: React.FC = () => {
   );
 };
 
-export default ProtectedRoutes(CoursesPage, []);
+export default ProtectedRoutes(CoursesPage, ["student"]);

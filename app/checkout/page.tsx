@@ -35,7 +35,7 @@ const CheckoutPage = () => {
             type="button"
             styleType="initial"
             disabled={isDisabled}
-            onClick={() => purchaseCourseBuy(studentData.cart.items[0]._id)}
+            onClick={purchaseCourseBuy}
           >
             Complete Checkout
           </Button>

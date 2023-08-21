@@ -6,8 +6,8 @@ import Button from "../shared/form/Button";
 import { useValidation } from "@/hooks/useValidation";
 import {
   VALIDATOR_EMAIL,
+  VALIDATOR_FIRSTNAME,
   VALIDATOR_MINLENGTH,
-  VALIDATOR_REQUIRE,
 } from "@/utility/validators";
 import Link from "next/link";
 import { SignupType, SubmitProps } from "@/types/auth/SignupTypes";
@@ -18,11 +18,11 @@ const Signup: React.FC<SubmitProps> = ({ register }) => {
 
   const first_name = useValidation([
     VALIDATOR_MINLENGTH(3),
-    VALIDATOR_REQUIRE(),
+    VALIDATOR_FIRSTNAME(),
   ]);
   const last_name = useValidation([
     VALIDATOR_MINLENGTH(3),
-    VALIDATOR_REQUIRE(),
+    VALIDATOR_FIRSTNAME(),
   ]);
   const email = useValidation([VALIDATOR_EMAIL()]);
   const password = useValidation([VALIDATOR_MINLENGTH(3)]);

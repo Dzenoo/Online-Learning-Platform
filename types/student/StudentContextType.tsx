@@ -22,7 +22,7 @@ export interface StudentContextType {
   };
   setFilterData: React.Dispatch<SetStateAction<any>>;
   addToFavorites: (id: string) => void;
-  purchaseCourseBuy: (courseId: string) => void;
+  purchaseCourseBuy: () => void;
   //   toggleCart: () => void;
   //   addToFavorites: () => void;
 }

@@ -14,9 +14,7 @@ const ProtectedRoutes = (
       if (!authData?.authToken) {
         router.push("/login");
       }
-      if (allowedRoles.length === 0) {
-        router.push("/login");
-      } else if (!allowedRoles.includes(authData?.typeAuth)) {
+      if (!allowedRoles.includes(authData?.typeAuth)) {
         router.push("/");
       }
     }, []);
