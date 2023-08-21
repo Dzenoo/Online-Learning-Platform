@@ -1,5 +1,6 @@
 "use client";
 import { CourseList, CoursesFilter, CoursesInput } from "@/components/courses";
+import ProtectedRoutes from "@/components/shared/auth/ProtectedRoutes";
 import { StudentContext } from "@/context/StudentContext";
 import { CoursesData } from "@/data/coursesdata.config";
 import React, { useContext } from "react";
@@ -26,4 +27,4 @@ const CoursesPage: React.FC = () => {
   );
 };
 
-export default CoursesPage;
+export default ProtectedRoutes(CoursesPage, []);
